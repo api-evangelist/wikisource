@@ -1,0 +1,112 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+
+provider: Wikisource
+providerId: wikisource
+created: '2026-06-13'
+modified: '2026-06-13'
+reconciled: true
+
+tags:
+  - FinOps
+  - FOCUS
+  - Open Knowledge
+  - Public Domain
+  - Free API
+
+description: >-
+  Wikisource APIs carry no direct monetary cost — all three API surfaces (MediaWiki Action API,
+  MediaWiki Core REST API, Wikimedia REST API v1) are provided free by the Wikimedia Foundation
+  under donor funding. There are no billing lines, subscription fees, or usage tiers. FinOps
+  considerations are therefore internal: compute and bandwidth consumed by API integrations
+  represent an indirect cost to the consuming organisation, and compliance with Wikimedia usage
+  policies (User-Agent, serial requests, caching) is the primary lever for keeping that indirect
+  cost low. Organisations with high-volume Wikisource text-extraction needs should prefer bulk
+  XML dumps from dumps.wikimedia.org over repeated API calls.
+
+sources:
+  - https://foundation.wikimedia.org/wiki/Policy:Wikimedia_Foundation_API_Usage_Guidelines
+  - https://www.mediawiki.org/wiki/API:Etiquette
+  - https://dumps.wikimedia.org/
+  - https://focus.finops.org/focus-specification/v1-3/
+
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+
+publisherName: Wikimedia Foundation
+serviceCategory: Open Data / Public Domain Texts
+
+billingModel:
+  pricingCategory: Free (donor-funded non-profit)
+  billingFrequency: N/A
+  billingCurrency: N/A
+  chargeCategories:
+    - No direct charges
+
+focusColumns:
+  ServiceName: Wikisource
+  ServiceCategory: Open Data
+  ServiceSubcategory: Public Domain Text Library
+  ProviderName: Wikimedia Foundation
+  PublisherName: Wikimedia Foundation
+  InvoiceIssuerName: N/A
+  BillingCurrency: N/A
+  ChargeCategory: N/A
+
+meters:
+  - name: api_read_requests
+    unit: request
+    aggregation: sum
+    dimensions:
+      - api_surface
+      - language_edition
+      - endpoint_path
+  - name: api_write_requests
+    unit: request
+    aggregation: sum
+    dimensions:
+      - api_surface
+      - language_edition
+      - action_type
+  - name: bulk_dump_downloads
+    unit: download
+    aggregation: sum
+    dimensions:
+      - language_edition
+      - dump_type
+      - date
+  - name: bandwidth_egress_gb
+    unit: GB
+    aggregation: sum
+    dimensions:
+      - api_surface
+      - language_edition
+
+principles:
+  - name: Visibility
+    description: >-
+      Track internal API call volumes by language edition and endpoint path. Monitor for
+      unexpectedly high read bursts (approaching the 200 RPS REST v1 ceiling) and log
+      ratelimited / 429 responses to identify throttling incidents before they cause data gaps.
+  - name: Allocation
+    description: >-
+      Tag API traffic by consuming team and use case (corpus research, legal document retrieval,
+      proofread-status automation, etc.). Map language-edition usage to specific product lines
+      where Wikisource content is embedded.
+  - name: Optimization
+    description: >-
+      Prefer bulk XML dumps over repeated API calls for large one-off or periodic text extraction
+      jobs. Cache REST API v1 responses locally and reuse within TTL. Batch Action API calls using
+      pipe-separated titles to minimise round-trips. Reserve live API calls for real-time or
+      incremental update scenarios only.
+  - name: Accountability
+    description: >-
+      Designate an owner for each Wikisource integration. Ensure all clients set a compliant
+      User-Agent to prevent IP blocks that would disrupt dependent services. Review usage patterns
+      quarterly against Wikimedia's fair-use expectations and update to bulk dumps where API access
+      is used inefficiently.

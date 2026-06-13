@@ -1,0 +1,98 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+
+provider: Wikisource
+providerId: wikisource
+created: '2026-06-13'
+modified: '2026-06-13'
+reconciled: true
+
+tags:
+  - Open Knowledge
+  - Public Domain
+  - Literature
+  - Historical Documents
+  - Free API
+
+description: >-
+  All Wikisource APIs — MediaWiki Action API, MediaWiki Core REST API, and the Wikimedia REST API v1
+  — are free of charge under the Wikimedia API usage guidelines. No registration, API key, or payment
+  is required for read access. Write access (page edits, proofread-status updates) requires OAuth 2.0
+  via meta.wikimedia.org, which is also free. The only mandatory requirement is a contactable
+  User-Agent header; violating usage guidelines or failing to identify your client may result in an
+  IP block without notice.
+
+sources:
+  - https://foundation.wikimedia.org/wiki/Policy:Wikimedia_Foundation_API_Usage_Guidelines
+  - https://www.mediawiki.org/wiki/API:Etiquette
+  - https://en.wikisource.org/api/rest_v1/
+  - https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use
+
+plans:
+  - id: wikisource-free
+    name: Wikisource Free API
+    type: free
+    description: >-
+      Unrestricted free access to all Wikisource API surfaces. No key or account needed for
+      read operations; OAuth 2.0 account required only for write operations. Must comply with
+      Wikimedia API usage guidelines and set a contactable User-Agent.
+    entries:
+      - label: Action API read requests
+        name: action_api_read_requests
+        type: metered
+        metric: request
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: 'free'
+        userMultiplied: false
+      - label: Action API write requests
+        name: action_api_write_requests
+        type: metered
+        metric: request
+        limit: 'account-based, see userinfo ratelimits'
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: 'free'
+        userMultiplied: false
+      - label: Core REST API requests
+        name: core_rest_requests
+        type: metered
+        metric: request
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: 'free'
+        userMultiplied: false
+      - label: REST API v1 cached reads
+        name: rest_v1_requests
+        type: metered
+        metric: request
+        limit: 200
+        timeFrame: second
+        geo: global
+        unit: 1
+        price: 'free'
+        userMultiplied: false
+      - label: Bulk XML dumps
+        name: bulk_dumps
+        type: flat
+        metric: download
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: 'free'
+        userMultiplied: false
+    elements:
+      - name: Anonymous read access (no key required)
+      - name: OAuth 2.0 write access (free account at meta.wikimedia.org)
+      - name: Cached reads at ~200 RPS via REST API v1
+      - name: 70+ language editions at {lang}.wikisource.org
+      - name: ProofreadPage status querying and updating
+      - name: Wikitext-to-HTML transforms
+      - name: Bulk text dumps at dumps.wikimedia.org

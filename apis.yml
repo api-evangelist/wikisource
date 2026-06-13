@@ -1,0 +1,191 @@
+aid: wikisource
+name: Wikisource
+description: >-
+  Wikisource is the Wikimedia Foundation's free library of source texts — public-domain and
+  freely-licensed books, historical documents, legal texts, constitutions, speeches, and other
+  transcribed primary-source works in over 70 languages. The platform exposes its content through
+  the same API surfaces as all MediaWiki installations: the MediaWiki Action API (action=query|parse|edit
+  at /w/api.php), the MediaWiki Core REST API (/w/rest.php/v1/ for page CRUD, search, history, and
+  transforms), and the legacy Wikimedia REST API v1 (/api/rest_v1/ for cached reads at up to 200 RPS).
+  All APIs are free at point of use and governed by the Wikimedia API usage guidelines — a contactable
+  User-Agent is mandatory and serial requests are preferred over parallel bursts.
+url: https://en.wikisource.org/wiki/Wikisource:Wikisource
+image: https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Wikisource-logo.svg/120px-Wikisource-logo.svg.png
+specificationVersion: '0.19'
+created: '2026-06-13'
+modified: '2026-06-13'
+x-type: opensource
+x-category: Open Data
+x-tier: 2
+x-tier-reason: Sister Wikimedia project; free public-domain text library with full MediaWiki API surface
+tags:
+  - Open Data
+  - Open Knowledge
+  - Literature
+  - Historical Documents
+  - Public Domain
+  - Transcription
+  - Primary Sources
+  - Non-Profit
+  - Open Source
+apis:
+  - name: MediaWiki Action API
+    description: >-
+      The primary programmatic interface to Wikisource, exposed at /w/api.php on each language
+      subdomain. Operations are dispatched via the action= parameter (query, parse, edit, upload,
+      login, patrol, ...). Key for reading transcribed texts, searching categories, and editing or
+      proofread-status updating. JSON is the recommended response format. Requests must carry a
+      contactable User-Agent header.
+    humanURL: https://www.mediawiki.org/wiki/API:Main_page
+    baseURL: https://en.wikisource.org/w/api.php
+    tags:
+      - Action API
+      - Read
+      - Write
+      - Edit
+      - Search
+      - Parse
+    properties:
+      - type: Documentation
+        url: https://www.mediawiki.org/wiki/API:Main_page
+      - type: Sandbox
+        url: https://en.wikisource.org/wiki/Special:ApiSandbox
+      - type: Tutorials
+        url: https://www.mediawiki.org/wiki/API:Tutorial
+      - type: Etiquette
+        url: https://www.mediawiki.org/wiki/API:Etiquette
+
+  - name: MediaWiki Core REST API
+    description: >-
+      Modern REST surface available on Wikisource at /w/rest.php/v1/. Provides page reads (source,
+      HTML, bare metadata), full-text search, file metadata, page history, revision retrieval and
+      comparison, and wikitext-to-HTML / HTML-to-wikitext transforms. Well-suited for integrations
+      that need standard HTTP verbs rather than the action= dispatch style.
+    humanURL: https://www.mediawiki.org/wiki/API:REST_API
+    baseURL: https://en.wikisource.org/w/rest.php/v1
+    tags:
+      - REST API
+      - Core
+      - Pages
+      - Search
+      - History
+      - Transforms
+    properties:
+      - type: Documentation
+        url: https://www.mediawiki.org/wiki/API:REST_API/Reference
+      - type: Sandbox
+        url: https://en.wikisource.org/wiki/Special:RestSandbox
+      - type: APIPortal
+        url: https://api.wikimedia.org/wiki/Core_REST_API
+
+  - name: Wikimedia REST API v1
+    description: >-
+      Caching-optimised read API available at /api/rest_v1/ on each Wikisource language subdomain.
+      Provides page summaries, full HTML, media lists, and language links for Wikisource pages.
+      Backed by Varnish CDN; anonymous read traffic is limited to approximately 200 requests per
+      second per client. Provide a contactable User-Agent; GET is preferred for cacheability.
+    humanURL: https://en.wikisource.org/api/rest_v1/
+    baseURL: https://en.wikisource.org/api/rest_v1
+    tags:
+      - REST API
+      - Cached
+      - Summaries
+      - HTML
+      - Read
+    properties:
+      - type: Documentation
+        url: https://en.wikisource.org/api/rest_v1/
+      - type: Specification
+        url: https://en.wikisource.org/api/rest_v1/?spec
+
+common:
+  - type: Website
+    url: https://wikisource.org
+  - type: Website
+    title: English Wikisource
+    url: https://en.wikisource.org
+  - type: Documentation
+    url: https://www.mediawiki.org/wiki/API:Main_page
+  - type: APIPortal
+    url: https://api.wikimedia.org/wiki/Main_Page
+  - type: APICatalog
+    url: https://api.wikimedia.org/wiki/API_catalog
+  - type: Foundation
+    url: https://wikimediafoundation.org/
+  - type: Governance
+    url: https://meta.wikimedia.org/wiki/Wikimedia_Foundation
+  - type: License
+    url: https://creativecommons.org/licenses/by-sa/4.0/
+    title: CC BY-SA 4.0 (text content)
+  - type: Policy
+    url: https://foundation.wikimedia.org/wiki/Policy:Wikimedia_Foundation_API_Usage_Guidelines
+    title: API Usage Guidelines
+  - type: Policy
+    url: https://www.mediawiki.org/wiki/API:Etiquette
+    title: API Etiquette
+  - type: TermsOfService
+    url: https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use
+  - type: GitHubOrganization
+    url: https://github.com/wikimedia
+  - type: SourceCode
+    url: https://gerrit.wikimedia.org/
+    title: Wikimedia Gerrit (canonical source)
+  - type: Status
+    url: https://www.wikimediastatus.net/
+  - type: BulkDownload
+    url: https://dumps.wikimedia.org/
+    title: Wikimedia Database Dumps (includes Wikisource)
+  - type: Plans
+    url: plans/wikisource-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/wikisource-rate-limits.yml
+  - type: FinOps
+    url: finops/wikisource-finops.yml
+
+features:
+  - name: 70+ Language Editions
+    description: Wikisource operates in over 70 language editions; each subdomain ({lang}.wikisource.org) exposes the full MediaWiki API surface at the same paths.
+  - name: Public-Domain Source Texts
+    description: Hosts transcribed books, legal texts, constitutions, speeches, and historical documents no longer under copyright — all freely accessible via the API.
+  - name: Proofread Page Extension
+    description: Wikisource uses the ProofreadPage MediaWiki extension; its status levels (without text, not proofread, problematic, proofread, validated) are queryable via the Action API.
+  - name: Wikitext-to-HTML Transforms
+    description: Convert raw wikitext (including Wikisource templates and page-scan transclusions) to rendered HTML via /transform/wikitext/to/html/{title}.
+  - name: Cached Anonymous Reads at 200 RPS
+    description: The REST API v1 layer is Varnish-cached, supporting anonymous read bursts up to ~200 requests/s per client without authentication.
+  - name: OAuth 2.0 Write Access
+    description: Page edits and proofread-status updates authenticate via OAuth 2.0 tokens issued at meta.wikimedia.org — the same mechanism across all Wikimedia projects.
+  - name: Bulk Text Dumps
+    description: Full periodic XML dumps of every Wikisource language edition are available at dumps.wikimedia.org for offline corpus processing.
+
+useCases:
+  - name: Digitised Literature and Corpus Research
+    description: Access transcribed works of literature, philosophy, and science for NLP corpus building, stylometric analysis, or training data curation.
+  - name: Legal and Historical Document Retrieval
+    description: Retrieve constitutions, treaties, legislation, and court opinions as structured wikitext or rendered HTML for legal research platforms.
+  - name: AI Grounding with Primary Sources
+    description: Ground LLM responses with primary-source citations rather than encyclopedic summaries — page summaries and full HTML available via the REST API.
+  - name: Multilingual Text Collection
+    description: Pull source texts across 70+ language editions for multilingual NLP models, translation studies, or cross-lingual information retrieval.
+  - name: Proofread Status Monitoring
+    description: Query and update ProofreadPage statuses to build community dashboards or automated quality-assurance workflows for text digitisation projects.
+  - name: Offline Reading Applications
+    description: Consume periodic bulk dumps to ship offline-readable collections of public-domain literature to schools and low-connectivity environments.
+
+integrations:
+  - name: Wikipedia
+    description: Wikipedia articles often link to Wikisource for full-text versions of cited primary sources via interwiki links.
+  - name: Wikidata
+    description: Wikisource works are described as Wikidata items (edition type Q3331189); author pages link to Wikidata QIDs for authority control.
+  - name: Wikimedia Commons
+    description: Page-scan images underlying the ProofreadPage workflow are hosted on Commons and accessed via the Commons Action API.
+  - name: Internet Archive
+    description: Many Wikisource digitisation projects use scans sourced from the Internet Archive's Open Library collection.
+
+solutions:
+  - name: Free Public-Domain Text Library
+    description: A non-profit, volunteer-curated repository of transcribed source texts funded by the Wikimedia Foundation — freely readable and downloadable with no API keys required.
+
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

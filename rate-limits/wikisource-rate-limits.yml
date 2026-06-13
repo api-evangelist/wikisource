@@ -1,0 +1,104 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+
+provider: Wikisource
+providerId: wikisource
+created: '2026-06-13'
+modified: '2026-06-13'
+reconciled: true
+
+tags:
+  - Rate Limiting
+  - Open Knowledge
+  - Public Domain
+  - Literature
+
+description: >-
+  Wikisource uses the same MediaWiki rate-limit infrastructure as all Wikimedia projects. Read
+  operations via the Action API have no hard published per-second ceiling but are subject to
+  fair-use enforcement — serial requests and batched titles are strongly preferred over parallel
+  bursts. The cached REST API v1 documents a soft 200 requests/s per-client ceiling. Write
+  operations (edits, proofread-status changes) are governed by per-user-right server limits
+  retrievable via action=query&meta=userinfo&uiprop=ratelimits. A contactable User-Agent is
+  mandatory on all requests; omitting it may cause IP-level blocks without notice.
+
+sources:
+  - https://www.mediawiki.org/wiki/API:Etiquette
+  - https://foundation.wikimedia.org/wiki/Policy:Wikimedia_Foundation_API_Usage_Guidelines
+  - https://en.wikisource.org/api/rest_v1/
+
+headers:
+  retryAfter: Retry-After
+  rateLimitRemaining: X-RateLimit-Remaining
+  rateLimitReset: X-RateLimit-Reset
+
+responseCodes:
+  throttled: 429
+  rateLimited: 429
+  serverBusy: 503
+
+limits:
+  - name: REST API v1 - cached anonymous reads
+    scope: client
+    metric: requests_per_second
+    limit: 200
+    timeFrame: second
+    notes: >-
+      Soft per-client cap on the Varnish-cached REST API v1 layer. Most requests are served from
+      cache, so the limit primarily affects cold (uncached) paths and write-through scenarios.
+
+  - name: Action API - read operations
+    scope: client
+    metric: requests_per_second
+    limit: 'serial (one in flight)'
+    notes: >-
+      No hard speed number is published. Wikimedia expects clients to issue requests serially and
+      to batch multiple page titles in a single call using pipe-separated values
+      (titles=PageA|PageB|PageC) rather than issuing sequential single-item requests.
+
+  - name: Action API - write operations
+    scope: account/right
+    metric: varies
+    limit: 'see action=query&meta=userinfo&uiprop=ratelimits'
+    notes: >-
+      Per-user-right rate limits enforced server-side for edits, moves, uploads, and other
+      data-modifying actions. Returns errorcode=ratelimited; retry with exponential backoff.
+
+  - name: Action API - bot accounts
+    scope: account
+    metric: requests_per_second
+    limit: 'elevated (bot flag required)'
+    notes: >-
+      Accounts with the bot flag receive higher write-rate limits. Apply through Wikisource
+      community processes or via Wikimedia Stewards for cross-wiki bots.
+
+policies:
+  - name: Contactable User-Agent (Mandatory)
+    description: >-
+      Every request must include a non-generic User-Agent header in the form
+      "clientname/version (contact: email or URL) framework/version". Requests with browser-like
+      or absent User-Agent strings may be blocked at IP level without warning.
+
+  - name: Serial Requests Preferred
+    description: >-
+      Issue read requests sequentially rather than in parallel. Use pipe-separated
+      titles=A|B|C batching and list/generator queries to retrieve many items in a single
+      round-trip instead of multiple parallel calls.
+
+  - name: Use maxlag for Non-Interactive Jobs
+    description: >-
+      Pass maxlag=5 (or a similarly conservative value) on bot or batch traffic. MediaWiki
+      returns a maxlag-exceeded error during replication lag peaks, signalling the client to
+      pause before retrying.
+
+  - name: Exponential Backoff on ratelimited / 429
+    description: >-
+      When the Action API returns errorcode=ratelimited or any API returns HTTP 429, apply
+      exponential backoff with increasing delays between retries. Honour the Retry-After response
+      header when present.
+
+  - name: Prefer GET and Enable Compression
+    description: >-
+      Use GET (cacheable) for all read operations and set Accept-Encoding: gzip to reduce
+      payload sizes. Cache responses locally where appropriate to avoid redundant round-trips.
