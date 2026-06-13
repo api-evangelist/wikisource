@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://en.wikisource.org/api/rest_v1/schemas/revisionInfo",
+  "title": "revisionInfo",
+  "type": "object",
+  "description": "Complete information about the revision",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "page_id": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "rev": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "tid": {
+      "type": "string"
+    },
+    "comment": {
+      "type": "string"
+    },
+    "restrictions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "user_id": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "user_text": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "redirect": {
+      "type": "boolean"
+    },
+    "page_language": {
+      "type": "string"
+    }
+  }
+}

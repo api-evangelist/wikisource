@@ -1,0 +1,69 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "wiki": "https://www.mediawiki.org/wiki/",
+    "wikisource": "https://wikisource.org/",
+    "wikidata": "https://www.wikidata.org/wiki/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": { "@id": "schema:url", "@type": "@id" },
+    "license": { "@id": "schema:license", "@type": "@id" },
+    "author": "schema:author",
+    "dateModified": { "@id": "schema:dateModified", "@type": "xsd:date" },
+    "datePublished": { "@id": "schema:datePublished", "@type": "xsd:date" },
+    "inLanguage": "schema:inLanguage",
+    "isPartOf": { "@id": "schema:isPartOf", "@type": "@id" },
+
+    "Page": "schema:CreativeWork",
+    "Book": "schema:Book",
+    "Article": "schema:Article",
+    "Person": "schema:Person",
+    "Organization": "schema:Organization",
+
+    "title": "schema:headline",
+    "pageId": { "@id": "wiki:API:Query#prop=info", "@type": "xsd:integer" },
+    "namespace": { "@id": "wiki:Help:Namespaces", "@type": "xsd:integer" },
+    "revisionId": { "@id": "wiki:API:Revisions", "@type": "xsd:integer" },
+    "touched": { "@id": "schema:dateModified", "@type": "xsd:dateTime" },
+    "length": { "@id": "schema:contentSize", "@type": "xsd:integer" },
+    "extract": "schema:abstract",
+    "contentModel": "wiki:Content_model",
+    "watchers": { "@id": "wiki:API:Watchers", "@type": "xsd:integer" },
+
+    "thumbnail": {
+      "@id": "schema:thumbnail",
+      "@type": "@id"
+    },
+    "originalimage": {
+      "@id": "schema:image",
+      "@type": "@id"
+    },
+    "source": { "@id": "schema:url", "@type": "@id" },
+    "width": { "@id": "schema:width", "@type": "xsd:integer" },
+    "height": { "@id": "schema:height", "@type": "xsd:integer" },
+
+    "titles": "schema:alternateName",
+    "lang": "schema:inLanguage",
+    "dir": "schema:text",
+    "timestamp": { "@id": "schema:dateCreated", "@type": "xsd:dateTime" },
+
+    "wikisourceWork": {
+      "@id": "wikisource:Special:Statistics",
+      "@type": "@id"
+    },
+    "wikidataItem": {
+      "@id": "wikidata:Special:EntityData",
+      "@type": "@id"
+    },
+    "proofreaderStatus": "wiki:Extension:ProofreadPage",
+
+    "WebAPI": "schema:WebAPI",
+    "EntryPoint": "schema:EntryPoint",
+    "contentType": "schema:encodingType",
+    "httpMethod": "schema:httpMethod",
+    "urlTemplate": "schema:urlTemplate"
+  }
+}

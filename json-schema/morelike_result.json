@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://en.wikisource.org/api/rest_v1/schemas/morelike_result",
+  "title": "morelike_result",
+  "type": "array",
+  "description": "the prioritized list of Wikidata IDs recommended for creation as Wikipedia articles",
+  "items": {
+    "type": "object",
+    "properties": {
+      "wikidata_id": {
+        "type": "string",
+        "description": "Wikidata ID for the item"
+      },
+      "score": {
+        "type": "number",
+        "description": "Score of the recommendation. The higher the score, the more important the recommendation is."
+      },
+      "source_language": {
+        "type": "string",
+        "description": "Source of the recommendation -- which wiki is recommending the current article."
+      }
+    }
+  }
+}

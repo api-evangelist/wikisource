@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://en.wikisource.org/api/rest_v1/schemas/cx_dict",
+  "title": "cx_dict",
+  "type": "object",
+  "properties": {
+    "source": {
+      "type": "string",
+      "description": "the original word to look up"
+    },
+    "translations": {
+      "type": "array",
+      "description": "the translations found",
+      "items": {
+        "type": "object",
+        "properties": {
+          "phrase": {
+            "type": "string",
+            "description": "the translated phrase"
+          },
+          "info": {
+            "type": "string",
+            "description": "extra information about the phrase"
+          },
+          "sources": {
+            "type": "string",
+            "description": "the source dictionary used for the translation"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://en.wikisource.org/api/rest_v1/schemas/listing",
+  "title": "listing",
+  "description": "The result format for listings",
+  "required": [
+    "items"
+  ],
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "_links": {
+      "type": "object",
+      "properties": {
+        "next": {
+          "type": "object",
+          "properties": {
+            "href": {
+              "type": "string",
+              "description": "Relative link to next result page."
+            }
+          }
+        }
+      }
+    }
+  }
+}

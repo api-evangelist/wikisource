@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://en.wikisource.org/api/rest_v1/schemas/originalimage",
+  "title": "originalimage",
+  "type": "object",
+  "properties": {
+    "source": {
+      "type": "string",
+      "description": "Original image URI"
+    },
+    "width": {
+      "type": "integer",
+      "description": "Original image width"
+    },
+    "height": {
+      "type": "integer",
+      "description": "Original image height"
+    }
+  },
+  "required": [
+    "height",
+    "source",
+    "width"
+  ]
+}

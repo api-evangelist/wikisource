@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://en.wikisource.org/api/rest_v1/schemas/revisions",
+  "title": "revisions",
+  "description": "The result format for revision listing",
+  "required": [
+    "items"
+  ],
+  "type": "object",
+  "properties": {
+    "items": {
+      "$ref": "#/components/schemas/revisionIdentifier"
+    }
+  }
+}

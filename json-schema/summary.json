@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://en.wikisource.org/api/rest_v1/schemas/summary",
+  "title": "summary",
+  "type": "object",
+  "properties": {
+    "titles": {
+      "$ref": "#/components/schemas/titles_set"
+    },
+    "title": {
+      "deprecated": true,
+      "type": "string",
+      "description": "The page title.\nDeprecated: Use `titles.normalized` instead.\n"
+    },
+    "displaytitle": {
+      "deprecated": true,
+      "type": "string",
+      "description": "The page title how it should be shown to the user.\nDeprecated: Use `titles.display` instead.\n"
+    },
+    "pageid": {
+      "type": "integer",
+      "description": "The page ID"
+    },
+    "extract": {
+      "type": "string",
+      "description": "First several sentences of an article in plain text"
+    },
+    "extract_html": {
+      "type": "string",
+      "description": "First several sentences of an article in simple HTML format"
+    },
+    "thumbnail": {
+      "$ref": "#/components/schemas/thumbnail"
+    },
+    "originalimage": {
+      "$ref": "#/components/schemas/originalimage"
+    },
+    "lang": {
+      "type": "string",
+      "description": "The page language code",
+      "example": "en"
+    },
+    "dir": {
+      "type": "string",
+      "description": "The page language direction code",
+      "example": "ltr"
+    },
+    "timestamp": {
+      "type": "string",
+      "description": "The time when the page was last edited in the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format",
+      "example": {}
+    },
+    "description": {
+      "type": "string",
+      "description": "Wikidata description for the page",
+      "example": "American poet"
+    },
+    "coordinates": {
+      "type": "object",
+      "description": "The coordinates of the item",
+      "properties": {
+        "lat": {
+          "type": "number",
+          "description": "The latitude"
+        },
+        "lon": {
+          "type": "number",
+          "description": "The longitude"
+        }
+      },
+      "required": [
+        "lat",
+        "lon"
+      ]
+    }
+  },
+  "required": [
+    "dir",
+    "extract",
+    "lang",
+    "titles"
+  ]
+}

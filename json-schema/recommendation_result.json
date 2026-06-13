@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://en.wikisource.org/api/rest_v1/schemas/recommendation_result",
+  "title": "recommendation_result",
+  "type": "object",
+  "properties": {
+    "count": {
+      "type": "integer",
+      "description": "the number of recommendations returned"
+    },
+    "items": {
+      "type": "array",
+      "description": "the list of articles recommended for translation",
+      "items": {
+        "type": "object",
+        "properties": {
+          "wikidata_id": {
+            "type": "string",
+            "description": "wikidata id for the item"
+          },
+          "title": {
+            "type": "string",
+            "description": "title of the article in the source language"
+          },
+          "sitelink_count": {
+            "type": "integer",
+            "description": "count of sites the wikidata item is linked to"
+          }
+        }
+      }
+    }
+  }
+}

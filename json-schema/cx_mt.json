@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://en.wikisource.org/api/rest_v1/schemas/cx_mt",
+  "title": "cx_mt",
+  "type": "object",
+  "properties": {
+    "contents": {
+      "type": "string",
+      "description": "the translated content"
+    }
+  }
+}

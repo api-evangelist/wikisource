@@ -1,0 +1,817 @@
+{
+  "api": "Wikimedia REST API v1",
+  "baseURL": "https://en.wikisource.org/api/rest_v1",
+  "examples": [
+    {
+      "method": "GET",
+      "path": "/page/",
+      "summary": "List page-related API entry points.",
+      "tags": [
+        "Page content"
+      ],
+      "parameters": []
+    },
+    {
+      "method": "GET",
+      "path": "/page/title/{title}",
+      "summary": "Get revision metadata for a title.",
+      "tags": [
+        "Page content"
+      ],
+      "parameters": [
+        {
+          "name": "title",
+          "in": "path",
+          "required": true,
+          "description": "Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/page/title/{title}/{revision}",
+      "summary": "Get revision metadata for a title.",
+      "tags": [
+        "Page content"
+      ],
+      "parameters": [
+        {
+          "name": "title",
+          "in": "path",
+          "required": true,
+          "description": "Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+        },
+        {
+          "name": "revision",
+          "in": "path",
+          "required": true,
+          "description": "The revision id"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/page/html/{title}",
+      "summary": "Get latest HTML for a title.",
+      "tags": [
+        "Page content"
+      ],
+      "parameters": [
+        {
+          "name": "title",
+          "in": "path",
+          "required": true,
+          "description": "Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+        },
+        {
+          "name": "redirect",
+          "in": "query",
+          "required": false,
+          "description": "Requests for [redirect pages](https://www.mediawiki.org/wiki/Help:Redirects) return HTTP 302 with a redirect target in `Location` header and content in the body.\nTo get a 200 response instead, supply `false` to the `redirect` parameter.\n"
+        },
+        {
+          "name": "stash",
+          "in": "query",
+          "required": false,
+          "description": "Whether to temporary stash data-parsoid metadata in order to support transforming the\nmodified content later. If this parameter is set, requests are rate-limited on\na per-client basis (max 5 requests per second per client)\n"
+        },
+        {
+          "name": "Accept-Language",
+          "in": "header",
+          "required": false,
+          "description": "The desired language variant code for wikis where LanguageConverter is enabled. Example: `sr-el` for Latin transcription of the Serbian language.\n"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/page/html/{title}/{revision}",
+      "summary": "Get HTML for a specific title/revision & optionally timeuuid.",
+      "tags": [
+        "Page content"
+      ],
+      "parameters": [
+        {
+          "name": "title",
+          "in": "path",
+          "required": true,
+          "description": "Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+        },
+        {
+          "name": "revision",
+          "in": "path",
+          "required": true,
+          "description": "The revision"
+        },
+        {
+          "name": "redirect",
+          "in": "query",
+          "required": false,
+          "description": "Requests for [redirect pages](https://www.mediawiki.org/wiki/Help:Redirects) return HTTP 302 with a redirect target in `Location` header and content in the body.\nTo get a 200 response instead, supply `false` to the `redirect` parameter.\n"
+        },
+        {
+          "name": "stash",
+          "in": "query",
+          "required": false,
+          "description": "Whether to temporary stash data-parsoid metadata in order to support transforming the\nmodified content later. If this parameter is set, requests are rate-limited on\na per-client basis (max 5 requests per second per client)\n"
+        },
+        {
+          "name": "Accept-Language",
+          "in": "header",
+          "required": false,
+          "description": "The desired language variant code for wikis where LanguageConverter is enabled. Example: `sr-el` for Latin transcription of the Serbian language.\n"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/page/lint/{title}",
+      "summary": "Get the linter errors for a specific title/revision.",
+      "tags": [
+        "Page content"
+      ],
+      "parameters": [
+        {
+          "name": "title",
+          "in": "path",
+          "required": true,
+          "description": "Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/page/lint/{title}/{revision}",
+      "summary": "Get the linter errors for a specific title/revision.",
+      "tags": [
+        "Page content"
+      ],
+      "parameters": [
+        {
+          "name": "title",
+          "in": "path",
+          "required": true,
+          "description": "Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+        },
+        {
+          "name": "revision",
+          "in": "path",
+          "required": true,
+          "description": "The revision"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/page/summary/{title}",
+      "summary": "Get basic metadata and simplified article introduction.",
+      "tags": [
+        "Page content"
+      ],
+      "parameters": [
+        {
+          "name": "title",
+          "in": "path",
+          "required": true,
+          "description": "Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+        },
+        {
+          "name": "redirect",
+          "in": "query",
+          "required": false,
+          "description": "Requests for [redirect pages](https://www.mediawiki.org/wiki/Help:Redirects) return HTTP 302 with a redirect target in `Location` header and content in the body.\nTo get a 200 response instead, supply `false` to the `redirect` parameter.\n"
+        },
+        {
+          "name": "Accept-Language",
+          "in": "header",
+          "required": false,
+          "description": "The desired language variant code for wikis where LanguageConverter is enabled. Example: `sr-el` for Latin transcription of the Serbian language.\n"
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/transform/html/to/wikitext",
+      "summary": "Transform HTML to Wikitext",
+      "tags": [
+        "Transforms"
+      ],
+      "parameters": [
+        {
+          "name": "if-match",
+          "in": "header",
+          "required": false,
+          "description": "The `ETag` header of the original render indicating it's revision and timeuuid.\nRequired if both `title` and `revision` parameters are present.\n"
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/transform/html/to/wikitext/{title}",
+      "summary": "Transform HTML to Wikitext",
+      "tags": [
+        "Transforms"
+      ],
+      "parameters": [
+        {
+          "name": "title",
+          "in": "path",
+          "required": true,
+          "description": "Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+        },
+        {
+          "name": "if-match",
+          "in": "header",
+          "required": false,
+          "description": "The `ETag` header of the original render indicating it's revision and timeuuid.\nRequired if both `title` and `revision` parameters are present.\n"
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/transform/html/to/wikitext/{title}/{revision}",
+      "summary": "Transform HTML to Wikitext",
+      "tags": [
+        "Transforms"
+      ],
+      "parameters": [
+        {
+          "name": "title",
+          "in": "path",
+          "required": true,
+          "description": "Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+        },
+        {
+          "name": "revision",
+          "in": "path",
+          "required": true,
+          "description": "The page revision"
+        },
+        {
+          "name": "if-match",
+          "in": "header",
+          "required": false,
+          "description": "The `ETag` header of the original render indicating it's revision and timeuuid.\nRequired if both `title` and `revision` parameters are present.\n"
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/transform/wikitext/to/html",
+      "summary": "Transform Wikitext to HTML",
+      "tags": [
+        "Transforms"
+      ],
+      "parameters": []
+    },
+    {
+      "method": "POST",
+      "path": "/transform/wikitext/to/html/{title}",
+      "summary": "Transform Wikitext to HTML",
+      "tags": [
+        "Transforms"
+      ],
+      "parameters": [
+        {
+          "name": "title",
+          "in": "path",
+          "required": true,
+          "description": "Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/transform/wikitext/to/html/{title}/{revision}",
+      "summary": "Transform Wikitext to HTML",
+      "tags": [
+        "Transforms"
+      ],
+      "parameters": [
+        {
+          "name": "title",
+          "in": "path",
+          "required": true,
+          "description": "Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+        },
+        {
+          "name": "revision",
+          "in": "path",
+          "required": true,
+          "description": "The page revision"
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/transform/wikitext/to/lint",
+      "summary": "Check Wikitext for lint errors",
+      "tags": [
+        "Transforms"
+      ],
+      "parameters": []
+    },
+    {
+      "method": "POST",
+      "path": "/transform/wikitext/to/lint/{title}",
+      "summary": "Check Wikitext for lint errors",
+      "tags": [
+        "Transforms"
+      ],
+      "parameters": [
+        {
+          "name": "title",
+          "in": "path",
+          "required": true,
+          "description": "Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/transform/wikitext/to/lint/{title}/{revision}",
+      "summary": "Check Wikitext for lint errors",
+      "tags": [
+        "Transforms"
+      ],
+      "parameters": [
+        {
+          "name": "title",
+          "in": "path",
+          "required": true,
+          "description": "Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+        },
+        {
+          "name": "revision",
+          "in": "path",
+          "required": true,
+          "description": "The page revision"
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/media/math/check/{type}",
+      "summary": "Check and normalize a TeX formula.",
+      "tags": [
+        "Math"
+      ],
+      "parameters": [
+        {
+          "name": "type",
+          "in": "path",
+          "required": true,
+          "description": "The input type of the given formula; can be tex or inline-tex"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/media/math/formula/{hash}",
+      "summary": "Get a previously-stored formula",
+      "tags": [
+        "Math"
+      ],
+      "parameters": [
+        {
+          "name": "hash",
+          "in": "path",
+          "required": true,
+          "description": "The hash string of the previous POST data"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/media/math/render/{format}/{hash}",
+      "summary": "Get rendered formula in the given format.",
+      "tags": [
+        "Math"
+      ],
+      "parameters": [
+        {
+          "name": "format",
+          "in": "path",
+          "required": true,
+          "description": "The output format; can be svg or mml"
+        },
+        {
+          "name": "hash",
+          "in": "path",
+          "required": true,
+          "description": "The hash string of the previous POST data"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/data/citation/{format}/{query}",
+      "summary": "Get citation data given an article identifier.",
+      "tags": [
+        "Citation"
+      ],
+      "parameters": [
+        {
+          "name": "format",
+          "in": "path",
+          "required": true,
+          "description": "The format to use for the resulting citation data"
+        },
+        {
+          "name": "query",
+          "in": "path",
+          "required": true,
+          "description": "URL of an article, DOI, PMCID or PMID in the URL-encoded format. Note that on the Swagger-UI doc page you don't need to URI-encode the parameter manually, it will be done by the docs engine.\n"
+        },
+        {
+          "name": "Accept-Language",
+          "in": "header",
+          "required": false,
+          "description": "For some articles the result depends on the `Accept-Language` header, so provide it if localized content is required.\n"
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/data/lists/setup",
+      "summary": "Opt in to use reading lists.",
+      "tags": [
+        "Reading lists"
+      ],
+      "parameters": [
+        {
+          "name": "csrf_token",
+          "in": "query",
+          "required": true,
+          "description": "The CRSF edit token provided by the MediaWiki API"
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/data/lists/teardown",
+      "summary": "Opt out from using reading lists.",
+      "tags": [
+        "Reading lists"
+      ],
+      "parameters": [
+        {
+          "name": "csrf_token",
+          "in": "query",
+          "required": true,
+          "description": "The CRSF edit token provided by the MediaWiki API"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/data/lists/",
+      "summary": "Get all lists of the current user.",
+      "tags": [
+        "Reading lists"
+      ],
+      "parameters": [
+        {
+          "name": "next",
+          "in": "query",
+          "required": false,
+          "description": "Continuation parameter from previous request"
+        },
+        {
+          "name": "sort",
+          "in": "query",
+          "required": false,
+          "description": "Sort order\n- `name`: by name, ascending;\n- `updated`: by last modification date, descending.\n"
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/data/lists/",
+      "summary": "Create a new list for the current user.",
+      "tags": [
+        "Reading lists"
+      ],
+      "parameters": [
+        {
+          "name": "csrf_token",
+          "in": "query",
+          "required": true,
+          "description": "The CRSF edit token provided by the MediaWiki API"
+        }
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/data/lists/{id}",
+      "summary": "Update a list.",
+      "tags": [
+        "Reading lists"
+      ],
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "csrf_token",
+          "in": "query",
+          "required": true,
+          "description": "The CRSF edit token provided by the MediaWiki API"
+        }
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/data/lists/{id}",
+      "summary": "Delete a list.",
+      "tags": [
+        "Reading lists"
+      ],
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/data/lists/batch",
+      "summary": "Create multiple new lists for the current user.",
+      "tags": [
+        "Reading lists"
+      ],
+      "parameters": [
+        {
+          "name": "csrf_token",
+          "in": "query",
+          "required": true,
+          "description": "The CRSF edit token provided by the MediaWiki API"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/data/lists/{id}/entries/",
+      "summary": "Get all entries of a given list.",
+      "tags": [
+        "Reading lists"
+      ],
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "next",
+          "in": "query",
+          "required": false,
+          "description": "Continuation parameter from previous request"
+        },
+        {
+          "name": "sort",
+          "in": "query",
+          "required": false,
+          "description": "Sort order\n- `name`: by page title, ascending;\n- `updated`: by last modification date, descending.\n"
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/data/lists/{id}/entries/",
+      "summary": "Create a new list entry.",
+      "tags": [
+        "Reading lists"
+      ],
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "csrf_token",
+          "in": "query",
+          "required": true,
+          "description": "The CRSF edit token provided by the MediaWiki API"
+        }
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/data/lists/{id}/entries/{entry_id}",
+      "summary": "Delete a list entry.",
+      "tags": [
+        "Reading lists"
+      ],
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "entry_id",
+          "in": "path",
+          "required": true,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/data/lists/{id}/entries/batch",
+      "summary": "Create multiple new list entries.",
+      "tags": [
+        "Reading lists"
+      ],
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "csrf_token",
+          "in": "query",
+          "required": true,
+          "description": "The CRSF edit token provided by the MediaWiki API"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/data/lists/pages/{project}/{title}",
+      "summary": "Get lists of the current user which contain a given page.",
+      "tags": [
+        "Reading lists"
+      ],
+      "parameters": [
+        {
+          "name": "project",
+          "in": "path",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "title",
+          "in": "path",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "next",
+          "in": "query",
+          "required": false,
+          "description": "Continuation parameter from previous request"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/data/lists/changes/since/{date}",
+      "summary": "Get recent changes to the lists",
+      "tags": [
+        "Reading lists"
+      ],
+      "parameters": [
+        {
+          "name": "date",
+          "in": "path",
+          "required": true,
+          "description": "Cutoff date (in ISO 8601). To ensure reliable synchronization, the API\nmight return changes which are slightly older than the cutoff date.\n"
+        },
+        {
+          "name": "next",
+          "in": "query",
+          "required": false,
+          "description": "Continuation parameter from previous request"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/data/recommendation/article/creation/translation/{from_lang}",
+      "summary": "Recommend articles for translation.",
+      "tags": [
+        "Recommendation"
+      ],
+      "parameters": [
+        {
+          "name": "from_lang",
+          "in": "path",
+          "required": true,
+          "description": "The source language code"
+        },
+        {
+          "name": "count",
+          "in": "query",
+          "required": false,
+          "description": "The max number of articles to return"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/data/recommendation/article/creation/translation/{from_lang}/{seed_article}",
+      "summary": "Recommend articles for translation.",
+      "tags": [
+        "Recommendation"
+      ],
+      "parameters": [
+        {
+          "name": "from_lang",
+          "in": "path",
+          "required": true,
+          "description": "The source language code"
+        },
+        {
+          "name": "seed_article",
+          "in": "path",
+          "required": true,
+          "description": "The article to use as a search seed"
+        },
+        {
+          "name": "count",
+          "in": "query",
+          "required": false,
+          "description": "The max number of articles to return"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/data/recommendation/article/creation/morelike/{seed_article}",
+      "summary": "Recommend missing articles",
+      "tags": [
+        "Recommendation"
+      ],
+      "parameters": [
+        {
+          "name": "seed_article",
+          "in": "path",
+          "required": true,
+          "description": "The article title used to search similar but missing articles"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/data/css/mobile/{type}",
+      "summary": "Get CSS for mobile apps.",
+      "tags": [
+        "Mobile"
+      ],
+      "parameters": [
+        {
+          "name": "type",
+          "in": "path",
+          "required": true,
+          "description": "The desired CSS bundle"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/data/javascript/mobile/{type}",
+      "summary": "Get JavaScript for mobileapps",
+      "tags": [
+        "Mobile"
+      ],
+      "parameters": [
+        {
+          "name": "type",
+          "in": "path",
+          "required": true,
+          "description": "The desired JavaScript bundle"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/data/i18n/{type}",
+      "summary": "Get internationalization info",
+      "tags": [
+        "Mobile"
+      ],
+      "parameters": [
+        {
+          "name": "type",
+          "in": "path",
+          "required": true,
+          "description": "The desired internationalization bundle"
+        }
+      ]
+    }
+  ]
+}

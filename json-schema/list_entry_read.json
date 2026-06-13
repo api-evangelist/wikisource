@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://en.wikisource.org/api/rest_v1/schemas/list_entry_read",
+  "title": "list_entry",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "example": 64
+    },
+    "project": {
+      "type": "string",
+      "description": "Domain of the wiki containing the page.",
+      "example": "https://en.wikipedia.org"
+    },
+    "title": {
+      "type": "string",
+      "description": "Title of the page containing the page, in database format.",
+      "example": "Barack_Obama"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation date (in ISO 8601)"
+    },
+    "updated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last modification date (in ISO 8601)"
+    }
+  }
+}

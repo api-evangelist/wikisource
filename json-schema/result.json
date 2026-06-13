@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://en.wikisource.org/api/rest_v1/schemas/result",
+  "title": "result",
+  "required": [
+    "title",
+    "url",
+    "itemType"
+  ],
+  "type": "object",
+  "properties": {
+    "itemType": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}
