@@ -1,0 +1,41 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: wikisource.org
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep  4 20:06:43 2026 GMT
+  hsts: true
+  hsts_max_age: 106384710
+- host: en.wikisource.org
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep  4 20:06:43 2026 GMT
+  hsts: true
+  hsts_max_age: 106384710
+- host: www.mediawiki.org
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep  4 20:06:43 2026 GMT
+  hsts: true
+  hsts_max_age: 106384710
+domains:
+- domain: wikisource.org
+  dnssec: false
+  caa:
+  - 0 issue "letsencrypt.org"
+  - 0 issue "pki.goog"
+  - 0 iodef "mailto:dns-admin@wikimedia.org"
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+- domain: mediawiki.org
+  dnssec: false
+  caa:
+  - 0 issue "pki.goog"
+  - 0 iodef "mailto:dns-admin@wikimedia.org"
+  - 0 issue "letsencrypt.org"
+  spf: true
+  dmarc: true
+  dmarc_policy: reject

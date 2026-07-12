@@ -99,6 +99,10 @@ apis:
         url: https://en.wikisource.org/api/rest_v1/?spec
 
 common:
+  - type: VulnerabilityDisclosure
+    url: security/wikisource-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/wikisource-domain-security.yml
   - type: Website
     url: https://wikisource.org
   - type: Website
