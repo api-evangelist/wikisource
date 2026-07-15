@@ -99,6 +99,8 @@ apis:
         url: https://en.wikisource.org/api/rest_v1/?spec
 
 common:
+  - type: AgenticAccess
+    url: agentic-access/wikisource-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/wikisource-vulnerability-disclosure.yml
   - type: DomainSecurity
