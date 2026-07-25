@@ -1,0 +1,100 @@
+openapi: 3.0.1
+info:
+  version: 1.0.0
+  title: Wikimedia REST Citation API
+  description: "This API provides cacheable and straightforward access to Wikimedia content and data, in machine-readable formats.\n### Global Rules\n- Limit your clients to no more than 200 requests/s to this API.\n  Each API endpoint's documentation may detail more specific usage limits.\n- Set a unique `User-Agent` or `Api-User-Agent` header that\n  allows us to contact you quickly. Email addresses or URLs\n  of contact pages work well.\n\nBy using this API, you agree to Wikimedia's [Terms of Use](https://wikimediafoundation.org/wiki/Terms_of_Use) and [Privacy Policy](https://wikimediafoundation.org/wiki/Privacy_policy). Unless otherwise specified in the endpoint documentation below, content accessed via this API is licensed under the [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) and [GFDL](https://www.gnu.org/copyleft/fdl.html) licenses, and you irrevocably agree to release modifications or additions made through this API under these licenses. Check the [Wikimedia REST API documentation](https://www.mediawiki.org/wiki/Wikimedia_REST_API) for background and details.\n### Endpoint documentation\nPlease consult each endpoint's documentation for details on:\n- Licensing information for the specific type of content\n  and data served via the endpoint.\n- Stability markers to inform you about development status and\n  change policy, according to\n  [our API version policy](https://www.mediawiki.org/wiki/API_versioning).\n- Endpoint specific usage limits.\n"
+  termsOfService: https://wikimediafoundation.org/wiki/Terms_of_Use
+  contact:
+    name: the Wikimedia Services team
+    url: http://mediawiki.org/wiki/Wikimedia_REST_API
+  license:
+    name: Apache2
+    url: http://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: /api/rest_v1
+tags:
+- name: Citation
+  description: generation of citation data
+paths:
+  /data/citation/{format}/{query}:
+    get:
+      tags:
+      - Citation
+      summary: Get citation data given an article identifier.
+      description: "Generates citation data given a URL, DOI, PMID, or PMCID.\n\nAutomated requests can be made at a rate of 1 request per second (rps).\n\nSee more at [Citoid service documentation](https://www.mediawiki.org/wiki/Citoid)\n\nThe citation data can be requested in one of the following formats:\n  - `mediawiki`: format designed for MediaWiki to be used with `templateData`.\n    Uses [Zotero field names](https://aurimasv.github.io/z2csl/typeMap.xml).\n  - `mediawiki-basefields`: `mediawiki` format with Zotero `basefield` field names.\n  - `zotero`: format used by [Zotero](https://www.zotero.org/).\n  - `bibtex`: format used in conjunction with LaTeX documents.\n    See [bibtex.org](http://www.bibtex.org/).\n  - `wikibase`: format designed for [Wikibase](https://www.mediawiki.org/wiki/Extension:Wikibase_Repository).\n\nStability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)\n"
+      parameters:
+      - name: format
+        in: path
+        description: The format to use for the resulting citation data
+        schema:
+          type: string
+          enum:
+          - mediawiki
+          - mediawiki-basefields
+          - zotero
+          - bibtex
+          - wikibase
+        required: true
+      - name: query
+        in: path
+        description: 'URL of an article, DOI, PMCID or PMID in the URL-encoded format. Note that on the Swagger-UI doc page you don''t need to URI-encode the parameter manually, it will be done by the docs engine.
+
+          '
+        required: true
+        schema:
+          type: string
+      - name: Accept-Language
+        in: header
+        description: 'For some articles the result depends on the `Accept-Language` header, so provide it if localized content is required.
+
+          '
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The citation data in the requested format
+          content:
+            application/json; charset=utf-8;:
+              schema:
+                $ref: '#/components/schemas/result'
+            application/x-bibtex; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/result'
+        '404':
+          description: Citation data was not found.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      operationId: getCitation
+      x-monitor: false
+components:
+  schemas:
+    result:
+      required:
+      - title
+      - url
+      - itemType
+      type: object
+      properties:
+        itemType:
+          type: string
+        title:
+          type: string
+        url:
+          type: string
+    problem:
+      required:
+      - type
+      type: object
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        detail:
+          type: string
+        instance:
+          type: string
+x-host-basePath: /api/rest_v1
+x-default-params: {}

@@ -1,0 +1,230 @@
+openapi: 3.0.1
+info:
+  version: 1.0.0
+  title: Wikimedia REST Citation Math API
+  description: "This API provides cacheable and straightforward access to Wikimedia content and data, in machine-readable formats.\n### Global Rules\n- Limit your clients to no more than 200 requests/s to this API.\n  Each API endpoint's documentation may detail more specific usage limits.\n- Set a unique `User-Agent` or `Api-User-Agent` header that\n  allows us to contact you quickly. Email addresses or URLs\n  of contact pages work well.\n\nBy using this API, you agree to Wikimedia's [Terms of Use](https://wikimediafoundation.org/wiki/Terms_of_Use) and [Privacy Policy](https://wikimediafoundation.org/wiki/Privacy_policy). Unless otherwise specified in the endpoint documentation below, content accessed via this API is licensed under the [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) and [GFDL](https://www.gnu.org/copyleft/fdl.html) licenses, and you irrevocably agree to release modifications or additions made through this API under these licenses. Check the [Wikimedia REST API documentation](https://www.mediawiki.org/wiki/Wikimedia_REST_API) for background and details.\n### Endpoint documentation\nPlease consult each endpoint's documentation for details on:\n- Licensing information for the specific type of content\n  and data served via the endpoint.\n- Stability markers to inform you about development status and\n  change policy, according to\n  [our API version policy](https://www.mediawiki.org/wiki/API_versioning).\n- Endpoint specific usage limits.\n"
+  termsOfService: https://wikimediafoundation.org/wiki/Terms_of_Use
+  contact:
+    name: the Wikimedia Services team
+    url: http://mediawiki.org/wiki/Wikimedia_REST_API
+  license:
+    name: Apache2
+    url: http://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: /api/rest_v1
+tags:
+- name: Math
+  description: formula rendering
+paths:
+  /media/math/check/{type}:
+    post:
+      deprecated: true
+      tags:
+      - Math
+      summary: Check and normalize a TeX formula.
+      description: 'Checks the supplied TeX formula for correctness and returns the
+
+        normalised formula representation as well as information about
+
+        identifiers. Available types are tex and inline-tex. The response
+
+        contains the `x-resource-location` header which can be used to retrieve
+
+        the render of the checked formula in one of the supported rendering
+
+        formats. Just append the value of the header to `/media/math/{format}/`
+
+        and perform a GET request against that URL.
+
+
+        **NOTE**: the use of this endpoint is *strongly discouraged*. Instead, use the identical endpoint of the (canonical) Math API on the `wikimedia.org` domain.
+
+
+        Stability: [deprecated](https://www.mediawiki.org/wiki/API_versioning#Deprecated).
+
+        '
+      parameters:
+      - name: type
+        in: path
+        description: The input type of the given formula; can be tex or inline-tex
+        required: true
+        schema:
+          type: string
+          enum:
+          - tex
+          - inline-tex
+          - chem
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              required:
+              - q
+              properties:
+                q:
+                  type: string
+                  description: The formula to check
+        required: true
+      responses:
+        '200':
+          description: Information about the checked formula
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid type
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: true
+      x-amples:
+      - title: Mathoid - check test formula
+        request:
+          params:
+            domain: wikimedia.org
+            type: tex
+          body:
+            q: E=mc^{2}
+        response:
+          status: 200
+          headers:
+            content-type: /^application\/json/
+            x-resource-location: /.+/
+            cache-control: no-cache
+          body:
+            success: true
+            checked: /.+/
+  /media/math/formula/{hash}:
+    get:
+      deprecated: true
+      tags:
+      - Math
+      summary: Get a previously-stored formula
+      description: 'Returns the previously-stored formula via `/media/math/check/{type}` for
+
+        the given hash.
+
+
+        **NOTE**: the use of this endpoint is *strongly discouraged*. Instead, use the identical endpoint of the (canonical) Math API on the `wikimedia.org` domain.
+
+
+        Stability: [deprecated](https://www.mediawiki.org/wiki/API_versioning#Deprecated).
+
+        '
+      parameters:
+      - name: hash
+        in: path
+        description: The hash string of the previous POST data
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        '200':
+          description: Information about the checked formula
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Data for the given hash cannot be found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /media/math/render/{format}/{hash}:
+    get:
+      deprecated: true
+      tags:
+      - Math
+      summary: Get rendered formula in the given format.
+      description: 'Given a request hash, renders a TeX formula into its mathematic
+
+        representation in the given format. When a request is issued to the
+
+        `/media/math/check/{format}` POST endpoint, the response contains the
+
+        `x-resource-location` header denoting the hash ID of the POST data. Once
+
+        obtained, this endpoint has to be used to obtain the actual render.
+
+
+        **NOTE**: the use of this endpoint is *strongly discouraged*. Instead, use the identical endpoint of the (canonical) Math API on the `wikimedia.org` domain.
+
+
+        Stability: [deprecated](https://www.mediawiki.org/wiki/API_versioning#Deprecated).
+
+        '
+      parameters:
+      - name: format
+        in: path
+        description: The output format; can be svg or mml
+        required: true
+        schema:
+          type: string
+          enum:
+          - svg
+          - mml
+          - png
+      - name: hash
+        in: path
+        description: The hash string of the previous POST data
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        '200':
+          description: The rendered formula
+          content:
+            image/svg+xml:
+              schema:
+                type: string
+            application/mathml+xml:
+              schema:
+                type: string
+        '404':
+          description: Unknown format or hash ID
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+components:
+  schemas:
+    problem:
+      required:
+      - type
+      type: object
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        detail:
+          type: string
+        instance:
+          type: string
+x-host-basePath: /api/rest_v1
+x-default-params: {}

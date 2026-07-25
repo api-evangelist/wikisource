@@ -1,0 +1,767 @@
+openapi: 3.0.1
+info:
+  version: 1.0.0
+  title: Wikimedia REST Citation Transforms API
+  description: "This API provides cacheable and straightforward access to Wikimedia content and data, in machine-readable formats.\n### Global Rules\n- Limit your clients to no more than 200 requests/s to this API.\n  Each API endpoint's documentation may detail more specific usage limits.\n- Set a unique `User-Agent` or `Api-User-Agent` header that\n  allows us to contact you quickly. Email addresses or URLs\n  of contact pages work well.\n\nBy using this API, you agree to Wikimedia's [Terms of Use](https://wikimediafoundation.org/wiki/Terms_of_Use) and [Privacy Policy](https://wikimediafoundation.org/wiki/Privacy_policy). Unless otherwise specified in the endpoint documentation below, content accessed via this API is licensed under the [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) and [GFDL](https://www.gnu.org/copyleft/fdl.html) licenses, and you irrevocably agree to release modifications or additions made through this API under these licenses. Check the [Wikimedia REST API documentation](https://www.mediawiki.org/wiki/Wikimedia_REST_API) for background and details.\n### Endpoint documentation\nPlease consult each endpoint's documentation for details on:\n- Licensing information for the specific type of content\n  and data served via the endpoint.\n- Stability markers to inform you about development status and\n  change policy, according to\n  [our API version policy](https://www.mediawiki.org/wiki/API_versioning).\n- Endpoint specific usage limits.\n"
+  termsOfService: https://wikimediafoundation.org/wiki/Terms_of_Use
+  contact:
+    name: the Wikimedia Services team
+    url: http://mediawiki.org/wiki/Wikimedia_REST_API
+  license:
+    name: Apache2
+    url: http://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: /api/rest_v1
+tags:
+- name: Transforms
+  description: convert content between HTML and Wikitext
+paths:
+  /transform/html/to/wikitext:
+    post:
+      tags:
+      - Transforms
+      summary: Transform HTML to Wikitext
+      description: 'Transform [Parsoid HTML](https://www.mediawiki.org/wiki/Parsoid/MediaWiki_DOM_spec)
+
+        to Wikitext.
+
+
+        When converting pre-existing (possibly modified) content, you should
+
+        pass in the `title`, `revision`, and `If-Match` header. This lets
+
+        [Parsoid](https://www.mediawiki.org/wiki/Parsoid) preserve small
+
+        syntactic variations in wikitext, which ensures that diffs are
+
+        readable.
+
+
+        - Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)
+
+        - Rate limit: 25 req/s
+
+        '
+      parameters:
+      - name: if-match
+        in: header
+        description: 'The `ETag` header of the original render indicating it''s revision and timeuuid.
+
+          Required if both `title` and `revision` parameters are present.
+
+          '
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              required:
+              - html
+              properties:
+                html:
+                  type: string
+                  description: The HTML to transform
+                  x-textarea: true
+                scrub_wikitext:
+                  type: boolean
+                  description: Normalise the DOM to yield cleaner wikitext?
+        required: true
+      responses:
+        '200':
+          description: MediaWiki Wikitext.
+          content:
+            text/plain; charset=utf-8; profile="https://www.mediawiki.org/wiki/Specs/wikitext/1.0.0":
+              schema:
+                type: string
+        '403':
+          description: Access to the specific revision is restricted
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        '404':
+          description: Unknown page title or revision
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        '409':
+          description: Revision was restricted
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        '410':
+          description: Page was deleted
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /transform/html/to/wikitext/{title}:
+    post:
+      tags:
+      - Transforms
+      summary: Transform HTML to Wikitext
+      description: 'Transform [Parsoid HTML](https://www.mediawiki.org/wiki/Parsoid/MediaWiki_DOM_spec)
+
+        to Wikitext.
+
+
+        When converting pre-existing (possibly modified) content, you should
+
+        pass in the `title`, `revision`, and `If-Match` header. This lets
+
+        [Parsoid](https://www.mediawiki.org/wiki/Parsoid) preserve small
+
+        syntactic variations in wikitext, which ensures that diffs are
+
+        readable.
+
+
+        - Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)
+
+        - Rate limit: 25 req/s
+
+        '
+      parameters:
+      - name: title
+        in: path
+        description: 'Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`.'
+        required: true
+        schema:
+          type: string
+      - name: if-match
+        in: header
+        description: 'The `ETag` header of the original render indicating it''s revision and timeuuid.
+
+          Required if both `title` and `revision` parameters are present.
+
+          '
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              required:
+              - html
+              properties:
+                html:
+                  type: string
+                  description: The HTML to transform
+                  x-textarea: true
+                scrub_wikitext:
+                  type: boolean
+                  description: Normalise the DOM to yield cleaner wikitext?
+        required: true
+      responses:
+        '200':
+          description: MediaWiki Wikitext.
+          content:
+            text/plain; charset=utf-8; profile="https://www.mediawiki.org/wiki/Specs/wikitext/1.0.0":
+              schema:
+                type: string
+        '403':
+          description: Access to the specific revision is restricted
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        '404':
+          description: Unknown page title or revision
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        '409':
+          description: Revision was restricted
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        '410':
+          description: Page was deleted
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /transform/html/to/wikitext/{title}/{revision}:
+    post:
+      tags:
+      - Transforms
+      summary: Transform HTML to Wikitext
+      description: 'Transform [Parsoid HTML](https://www.mediawiki.org/wiki/Parsoid/MediaWiki_DOM_spec)
+
+        to Wikitext.
+
+
+        When converting pre-existing (possibly modified) content, you should
+
+        pass in the `title`, `revision`, and `If-Match` header. This lets
+
+        [Parsoid](https://www.mediawiki.org/wiki/Parsoid) preserve small
+
+        syntactic variations in wikitext, which ensures that diffs are
+
+        readable.
+
+
+        - Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)
+
+        - Rate limit: 25 req/s
+
+        '
+      parameters:
+      - name: title
+        in: path
+        description: 'Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`.'
+        required: true
+        schema:
+          type: string
+      - name: revision
+        in: path
+        description: The page revision
+        required: true
+        schema:
+          type: integer
+      - name: if-match
+        in: header
+        description: 'The `ETag` header of the original render indicating it''s revision and timeuuid.
+
+          Required if both `title` and `revision` parameters are present.
+
+          '
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              required:
+              - html
+              properties:
+                html:
+                  type: string
+                  description: The HTML to transform
+                  x-textarea: true
+                scrub_wikitext:
+                  type: boolean
+                  description: Normalise the DOM to yield cleaner wikitext?
+        required: true
+      responses:
+        '200':
+          description: MediaWiki Wikitext.
+          content:
+            text/plain; charset=utf-8; profile="https://www.mediawiki.org/wiki/Specs/wikitext/1.0.0":
+              schema:
+                type: string
+        '403':
+          description: Access to the specific revision is restricted
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        '404':
+          description: Unknown page title or revision
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        '409':
+          description: Revision was restricted
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        '410':
+          description: Page was deleted
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /transform/wikitext/to/html:
+    post:
+      tags:
+      - Transforms
+      summary: Transform Wikitext to HTML
+      description: 'Transform wikitext to HTML. Note that if you set `stash: true`, you
+
+        also need to supply the title.
+
+
+        - Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)
+
+        - Rate limit: 25 req/s (5 req/s when `stash: true`)
+
+        '
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              required:
+              - wikitext
+              properties:
+                wikitext:
+                  type: string
+                  description: The Wikitext to transform to HTML
+                  x-textarea: true
+                body_only:
+                  type: boolean
+                  description: Return only `body.innerHTML`
+                stash:
+                  type: boolean
+                  description: Whether to temporarily stash the result of the transformation
+        required: true
+      responses:
+        '200':
+          description: See wikipage https://www.mediawiki.org/wiki/Parsoid/MediaWiki_DOM_spec
+          content:
+            text/html; charset=utf-8; profile="https://www.mediawiki.org/wiki/Specs/HTML/2.1.0":
+              schema:
+                type: string
+        '403':
+          description: access to the specific revision is restricted
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        '404':
+          description: Unknown page title or revision
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        '409':
+          description: Revision was restricted
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        '410':
+          description: Page was deleted
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /transform/wikitext/to/html/{title}:
+    post:
+      tags:
+      - Transforms
+      summary: Transform Wikitext to HTML
+      description: 'Transform wikitext to HTML. Note that if you set `stash: true`, you
+
+        also need to supply the title.
+
+
+        - Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)
+
+        - Rate limit: 25 req/s (5 req/s when `stash: true`)
+
+        '
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              required:
+              - wikitext
+              properties:
+                wikitext:
+                  type: string
+                  description: The Wikitext to transform to HTML
+                  x-textarea: true
+                body_only:
+                  type: boolean
+                  description: Return only `body.innerHTML`
+                stash:
+                  type: boolean
+                  description: Whether to temporarily stash the result of the transformation
+        required: true
+      responses:
+        '200':
+          description: See wikipage https://www.mediawiki.org/wiki/Parsoid/MediaWiki_DOM_spec
+          content:
+            text/html; charset=utf-8; profile="https://www.mediawiki.org/wiki/Specs/HTML/2.1.0":
+              schema:
+                type: string
+        '403':
+          description: access to the specific revision is restricted
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        '404':
+          description: Unknown page title or revision
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        '409':
+          description: Revision was restricted
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        '410':
+          description: Page was deleted
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: true
+      parameters:
+      - name: title
+        in: path
+        description: 'Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`.'
+        required: true
+        schema:
+          type: string
+      x-amples:
+      - title: Transform wikitext to html
+        request:
+          params:
+            domain: en.wikipedia.org
+            title: User:BSitzmann_(WMF)/MCS/Test/Frankenstein
+          body:
+            wikitext: == Heading ==
+            body_only: true
+        response:
+          status: 200
+          headers:
+            content-type: /^text\/html.+/
+          body: /^<h2.*>Heading<\/h2>$/
+  /transform/wikitext/to/html/{title}/{revision}:
+    post:
+      tags:
+      - Transforms
+      summary: Transform Wikitext to HTML
+      description: 'Transform wikitext to HTML. Note that if you set `stash: true`, you
+
+        also need to supply the title.
+
+
+        - Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)
+
+        - Rate limit: 25 req/s (5 req/s when `stash: true`)
+
+        '
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              required:
+              - wikitext
+              properties:
+                wikitext:
+                  type: string
+                  description: The Wikitext to transform to HTML
+                  x-textarea: true
+                body_only:
+                  type: boolean
+                  description: Return only `body.innerHTML`
+                stash:
+                  type: boolean
+                  description: Whether to temporarily stash the result of the transformation
+        required: true
+      responses:
+        '200':
+          description: See wikipage https://www.mediawiki.org/wiki/Parsoid/MediaWiki_DOM_spec
+          content:
+            text/html; charset=utf-8; profile="https://www.mediawiki.org/wiki/Specs/HTML/2.1.0":
+              schema:
+                type: string
+        '403':
+          description: access to the specific revision is restricted
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        '404':
+          description: Unknown page title or revision
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        '409':
+          description: Revision was restricted
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        '410':
+          description: Page was deleted
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+      parameters:
+      - name: title
+        in: path
+        description: 'Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`.'
+        required: true
+        schema:
+          type: string
+      - name: revision
+        in: path
+        description: The page revision
+        required: true
+        schema:
+          type: integer
+  /transform/wikitext/to/lint:
+    post:
+      tags:
+      - Transforms
+      summary: Check Wikitext for lint errors
+      description: 'Parse the supplied wikitext and check it for lint errors.
+
+
+        - Stability: [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)
+
+        - Rate limit: 25 req/s
+
+        '
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              required:
+              - wikitext
+              properties:
+                wikitext:
+                  type: string
+                  description: The Wikitext to check
+                  x-textarea: true
+          application/json:
+            schema:
+              required:
+              - wikitext
+              properties:
+                wikitext:
+                  type: string
+                  description: The Wikitext to check
+                  x-textarea: true
+        required: true
+      responses:
+        '200':
+          description: Linter errors, if any, as a JSON blob
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Unknown page title
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        '409':
+          description: Latest revision was restricted
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        '410':
+          description: Page was deleted
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /transform/wikitext/to/lint/{title}:
+    post:
+      tags:
+      - Transforms
+      summary: Check Wikitext for lint errors
+      description: 'Parse the supplied wikitext and check it for lint errors.
+
+
+        - Stability: [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)
+
+        - Rate limit: 25 req/s
+
+        '
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              required:
+              - wikitext
+              properties:
+                wikitext:
+                  type: string
+                  description: The Wikitext to check
+                  x-textarea: true
+        required: true
+      responses:
+        '200':
+          description: Linter errors, if any, as a JSON blob
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Unknown page title
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        '409':
+          description: Latest revision was restricted
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        '410':
+          description: Page was deleted
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+      parameters:
+      - name: title
+        in: path
+        description: 'Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`.'
+        required: true
+        schema:
+          type: string
+  /transform/wikitext/to/lint/{title}/{revision}:
+    post:
+      tags:
+      - Transforms
+      summary: Check Wikitext for lint errors
+      description: 'Parse the supplied wikitext and check it for lint errors.
+
+
+        - Stability: [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)
+
+        - Rate limit: 25 req/s
+
+        '
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              required:
+              - wikitext
+              properties:
+                wikitext:
+                  type: string
+                  description: The Wikitext to check
+                  x-textarea: true
+        required: true
+      responses:
+        '200':
+          description: Linter errors, if any, as a JSON blob
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Unknown page title
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        '409':
+          description: Latest revision was restricted
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        '410':
+          description: Page was deleted
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+      parameters:
+      - name: title
+        in: path
+        description: 'Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`.'
+        required: true
+        schema:
+          type: string
+      - name: revision
+        in: path
+        description: The page revision
+        required: true
+        schema:
+          type: integer
+components:
+  schemas:
+    problem:
+      required:
+      - type
+      type: object
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        detail:
+          type: string
+        instance:
+          type: string
+x-host-basePath: /api/rest_v1
+x-default-params: {}

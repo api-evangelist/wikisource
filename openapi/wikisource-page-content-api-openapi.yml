@@ -1,0 +1,979 @@
+openapi: 3.0.1
+info:
+  version: 1.0.0
+  title: Wikimedia REST Citation Page content API
+  description: "This API provides cacheable and straightforward access to Wikimedia content and data, in machine-readable formats.\n### Global Rules\n- Limit your clients to no more than 200 requests/s to this API.\n  Each API endpoint's documentation may detail more specific usage limits.\n- Set a unique `User-Agent` or `Api-User-Agent` header that\n  allows us to contact you quickly. Email addresses or URLs\n  of contact pages work well.\n\nBy using this API, you agree to Wikimedia's [Terms of Use](https://wikimediafoundation.org/wiki/Terms_of_Use) and [Privacy Policy](https://wikimediafoundation.org/wiki/Privacy_policy). Unless otherwise specified in the endpoint documentation below, content accessed via this API is licensed under the [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) and [GFDL](https://www.gnu.org/copyleft/fdl.html) licenses, and you irrevocably agree to release modifications or additions made through this API under these licenses. Check the [Wikimedia REST API documentation](https://www.mediawiki.org/wiki/Wikimedia_REST_API) for background and details.\n### Endpoint documentation\nPlease consult each endpoint's documentation for details on:\n- Licensing information for the specific type of content\n  and data served via the endpoint.\n- Stability markers to inform you about development status and\n  change policy, according to\n  [our API version policy](https://www.mediawiki.org/wiki/API_versioning).\n- Endpoint specific usage limits.\n"
+  termsOfService: https://wikimediafoundation.org/wiki/Terms_of_Use
+  contact:
+    name: the Wikimedia Services team
+    url: http://mediawiki.org/wiki/Wikimedia_REST_API
+  license:
+    name: Apache2
+    url: http://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: /api/rest_v1
+tags:
+- name: Page content
+  description: page content in different formats
+paths:
+  /page/:
+    get:
+      tags:
+      - Page content
+      summary: List page-related API entry points.
+      description: 'Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)
+
+        '
+      responses:
+        '200':
+          description: A list of page-related API end points.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listing'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /page/title/{title}:
+    get:
+      tags:
+      - Page content
+      summary: Get revision metadata for a title.
+      description: 'Returns the revision metadata for the given title. If a revision ID is provided,
+
+        metadata for that revision is returned, otherwise the latest revision ID is assumed.
+
+
+        Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable).
+
+        '
+      parameters:
+      - name: title
+        in: path
+        description: 'Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`.'
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The latest revision metadata for the provided title.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/revision'
+        '301':
+          description: 'A permanent redirect is returned if the supplied article title was not in the normalized form.
+
+            To avoid these redirects, you can use the [mediawiki-title](https://github.com/wikimedia/mediawiki-title) library to perform
+
+            title normalization client side.
+
+
+            Beware that redirected pre-flighted cross-origin requests (such as those sending custom request headers like `Api-User-Agent`)
+
+            will fail in most current browsers [due to a spec bug](https://github.com/whatwg/fetch/issues/204).
+
+            '
+        '302':
+          description: 'The page is a [redirect page](https://www.mediawiki.org/wiki/Help:Redirects).
+
+            The `location` header points to the redirect target.
+
+            If you would like to avoid automatically following redirect pages, set the `redirect=false` query parameter.
+
+
+            Beware that redirected pre-flighted cross-origin requests (such as those sending custom request headers like `Api-User-Agent`)
+
+            will fail in most current browsers [due to a spec bug](https://github.com/whatwg/fetch/issues/204).
+
+            '
+        '404':
+          description: Unknown page title or no revisions found.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: true
+      x-amples:
+      - title: Get rev by title from storage
+        request:
+          params:
+            domain: en.wikipedia.org
+            title: User:BSitzmann_(WMF)/MCS/Test/Frankenstein
+        response:
+          status: 200
+          headers:
+            etag: /.+/
+            content-type: application/json
+          body:
+            items:
+            - title: User:BSitzmann_(WMF)/MCS/Test/Frankenstein
+              rev: /\d+/
+              tid: /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/
+              comment: /.*/
+              page_language: en
+  /page/title/{title}/{revision}:
+    get:
+      tags:
+      - Page content
+      summary: Get revision metadata for a title.
+      description: 'Returns the revision metadata for the given title. If a revision ID is provided,
+
+        metadata for that revision is returned, otherwise the latest revision ID is assumed.
+
+
+        Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable).
+
+        '
+      parameters:
+      - name: title
+        in: path
+        description: 'Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`.'
+        required: true
+        schema:
+          type: string
+      - name: revision
+        in: path
+        description: The revision id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: The latest revision metadata for the provided title.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/revision'
+        '301':
+          description: 'A permanent redirect is returned if the supplied article title was not in the normalized form.
+
+            To avoid these redirects, you can use the [mediawiki-title](https://github.com/wikimedia/mediawiki-title) library to perform
+
+            title normalization client side.
+
+
+            Beware that redirected pre-flighted cross-origin requests (such as those sending custom request headers like `Api-User-Agent`)
+
+            will fail in most current browsers [due to a spec bug](https://github.com/whatwg/fetch/issues/204).
+
+            '
+        '302':
+          description: 'The page is a [redirect page](https://www.mediawiki.org/wiki/Help:Redirects).
+
+            The `location` header points to the redirect target.
+
+            If you would like to avoid automatically following redirect pages, set the `redirect=false` query parameter.
+
+
+            Beware that redirected pre-flighted cross-origin requests (such as those sending custom request headers like `Api-User-Agent`)
+
+            will fail in most current browsers [due to a spec bug](https://github.com/whatwg/fetch/issues/204).
+
+            '
+        '404':
+          description: Unknown page title or no revisions found.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+      x-amples:
+      - title: Get rev by title from storage
+        request:
+          params:
+            domain: en.wikipedia.org
+            title: User:BSitzmann_(WMF)/MCS/Test/Frankenstein
+        response:
+          status: 200
+          headers:
+            etag: /.+/
+            content-type: application/json
+          body:
+            items:
+            - title: User:BSitzmann_(WMF)/MCS/Test/Frankenstein
+              rev: /\d+/
+              tid: /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/
+              comment: /.*/
+              page_language: en
+  /page/html/{title}:
+    get:
+      tags:
+      - Page content
+      summary: Get latest HTML for a title.
+      description: 'Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)
+
+        '
+      parameters:
+      - name: title
+        in: path
+        description: 'Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`.'
+        required: true
+        schema:
+          type: string
+      - name: redirect
+        in: query
+        description: 'Requests for [redirect pages](https://www.mediawiki.org/wiki/Help:Redirects) return HTTP 302 with a redirect target in `Location` header and content in the body.
+
+          To get a 200 response instead, supply `false` to the `redirect` parameter.
+
+          '
+        schema:
+          type: boolean
+        required: false
+      - name: stash
+        in: query
+        description: 'Whether to temporary stash data-parsoid metadata in order to support transforming the
+
+          modified content later. If this parameter is set, requests are rate-limited on
+
+          a per-client basis (max 5 requests per second per client)
+
+          '
+        schema:
+          type: boolean
+      - name: Accept-Language
+        in: header
+        description: 'The desired language variant code for wikis where LanguageConverter is enabled. Example: `sr-el` for Latin transcription of the Serbian language.
+
+          '
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'The latest HTML for the given page title.
+
+
+            See [the MediaWiki DOM
+
+            spec](https://www.mediawiki.org/wiki/Parsoid/MediaWiki_DOM_spec) for a
+
+            description of the MediaWiki-specific semantic markup in this HTML.
+
+            Note that additional metadata is available in the HTML head.
+
+            '
+          headers:
+            ETag:
+              description: 'ETag header indicating the revision and render timeuuid
+
+                separated by a slash:
+
+                "701384379/154d7bca-c264-11e5-8c2f-1b51b33b59fc"
+
+                This ETag can be passed to the HTML save end point (as
+
+                `base_etag` POST parameter), and can also be used to retrieve
+
+                the exact corresponding data-parsoid metadata, by requesting
+
+                the specific `revision` and `tid` indicated by the `ETag`.
+
+                '
+              schema:
+                type: string
+          content:
+            text/html; charset=utf-8; profile="https://www.mediawiki.org/wiki/Specs/HTML/2.1.0":
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: object
+        '301':
+          description: 'A permanent redirect is returned if the supplied article title was not in the normalized form.
+
+            To avoid this kind of redirect, you can use the [mediawiki-title](https://github.com/wikimedia/mediawiki-title) library to perform
+
+            title normalization client-side.
+
+
+            Beware that redirected pre-flighted cross-origin requests (such as those sending custom request headers like `Api-User-Agent`)
+
+            will fail in most current browsers [due to a spec bug](https://github.com/whatwg/fetch/issues/204).
+
+            '
+        '302':
+          description: 'The page is a [redirect page](https://www.mediawiki.org/wiki/Help:Redirects).
+
+            The `location` header points to the redirect target, and the body contains the actual page contents as HTML.
+
+            If you would like to avoid automatically following redirect pages, set the `redirect=false` query parameter.
+
+
+            Beware that redirected pre-flighted cross-origin requests (such as those sending custom request headers like `Api-User-Agent`)
+
+            will fail in most current browsers [due to a spec bug](https://github.com/whatwg/fetch/issues/204).
+
+            '
+        '404':
+          description: Unknown page title
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: true
+      x-amples:
+      - title: Get html by title from storage
+        request:
+          params:
+            domain: en.wikipedia.org
+            title: User:BSitzmann_(WMF)/MCS/Test/Frankenstein
+        response:
+          status: 200
+          headers:
+            etag: /.+/
+            content-type: /^text\/html.+/
+          body: /^<!DOCTYPE html>.*/
+  /page/html/{title}/{revision}:
+    get:
+      tags:
+      - Page content
+      summary: Get HTML for a specific title/revision & optionally timeuuid.
+      description: 'Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)
+
+        '
+      operationId: getFormatRevision
+      parameters:
+      - name: title
+        in: path
+        description: 'Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`.'
+        required: true
+        schema:
+          type: string
+      - name: revision
+        in: path
+        description: The revision
+        required: true
+        schema:
+          type: integer
+      - name: redirect
+        in: query
+        description: 'Requests for [redirect pages](https://www.mediawiki.org/wiki/Help:Redirects) return HTTP 302 with a redirect target in `Location` header and content in the body.
+
+          To get a 200 response instead, supply `false` to the `redirect` parameter.
+
+          '
+        schema:
+          type: boolean
+      - name: stash
+        in: query
+        description: 'Whether to temporary stash data-parsoid metadata in order to support transforming the
+
+          modified content later. If this parameter is set, requests are rate-limited on
+
+          a per-client basis (max 5 requests per second per client)
+
+          '
+        schema:
+          type: boolean
+      - name: Accept-Language
+        in: header
+        description: 'The desired language variant code for wikis where LanguageConverter is enabled. Example: `sr-el` for Latin transcription of the Serbian language.
+
+          '
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'The html for the given page, revision and tid.
+
+
+            See [the MediaWiki DOM
+
+            spec](https://www.mediawiki.org/wiki/Parsoid/MediaWiki_DOM_spec) for a
+
+            description of the MediaWiki-specific semantic markup in this HTML.
+
+            Note that additional metadata is available in the HTML head.
+
+
+            This HTML can be edited using arbitrary HTML tools. The modified HTML
+
+            can be converted back to wikitext using the
+
+            [/transform/html/to/wikitext{/title}{/revision}](#!/Transforms/transform_html_to_wikitext__title___revision__post)
+
+            entry point.
+
+            '
+          headers:
+            ETag:
+              description: 'ETag header indicating the revision and render timeuuid
+
+                separated by a slash:
+
+                "701384379/154d7bca-c264-11e5-8c2f-1b51b33b59fc"
+
+                This ETag can be passed to the HTML save end point (as
+
+                `base_etag` POST parameter), and can also be used to retrieve
+
+                the exact corresponding data-parsoid metadata, by requesting
+
+                the specific `revision` and `tid` indicated by the `ETag`.
+
+                '
+              schema:
+                type: string
+          content:
+            text/html; charset=utf-8; profile="https://www.mediawiki.org/wiki/Specs/HTML/2.1.0":
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: object
+        '301':
+          description: 'A permanent redirect is returned if the supplied article title was not in the normalized form.
+
+            To avoid this kind of redirect, you can use the [mediawiki-title](https://github.com/wikimedia/mediawiki-title) library to perform
+
+            title normalization client-side.
+
+
+            Beware that redirected pre-flighted cross-origin requests (such as those sending custom request headers like `Api-User-Agent`)
+
+            will fail in most current browsers [due to a spec bug](https://github.com/whatwg/fetch/issues/204).
+
+            '
+        '302':
+          description: 'The page is a [redirect page](https://www.mediawiki.org/wiki/Help:Redirects).
+
+            The `location` header points to the redirect target, and the body contains the actual page revision contents as HTML.
+
+            If you would like to avoid automatically following redirect pages, set the `redirect=false` query parameter.
+
+
+            Beware that redirected pre-flighted cross-origin requests (such as those sending custom request headers like `Api-User-Agent`)
+
+            will fail in most current browsers [due to a spec bug](https://github.com/whatwg/fetch/issues/204).
+
+            '
+        '400':
+          description: Invalid revision or tid
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        '403':
+          description: Access to the specific revision is restricted
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        '404':
+          description: Unknown page, revision or tid
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /page/lint/{title}:
+    get:
+      tags:
+      - Page content
+      summary: Get the linter errors for a specific title/revision.
+      description: 'Stability: [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)
+
+        '
+      parameters:
+      - name: title
+        in: path
+        description: 'Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`.'
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'The lint errors for the given page and optionally revision.
+
+
+            See [the Linter extension docs](https://www.mediawiki.org/wiki/Extension:Linter) for more
+
+            details.
+
+            '
+          content:
+            application/json:
+              schema:
+                type: object
+        '301':
+          description: 'A permanent redirect is returned if the supplied article title was not in the normalized form.
+
+            To avoid this kind of redirect, you can use the [mediawiki-title](https://github.com/wikimedia/mediawiki-title) library to perform
+
+            title normalization client-side.
+
+
+            Beware that redirected pre-flighted cross-origin requests (such as those sending custom request headers like `Api-User-Agent`)
+
+            will fail in most current browsers [due to a spec bug](https://github.com/whatwg/fetch/issues/204).
+
+            '
+        '302':
+          description: 'The page is a [redirect page](https://www.mediawiki.org/wiki/Help:Redirects).
+
+            The `location` header points to the redirect target, and the body contains the actual page revision contents as HTML.
+
+            If you would like to avoid automatically following redirect pages, set the `redirect=false` query parameter.
+
+
+            Beware that redirected pre-flighted cross-origin requests (such as those sending custom request headers like `Api-User-Agent`)
+
+            will fail in most current browsers [due to a spec bug](https://github.com/whatwg/fetch/issues/204).
+
+            '
+        '400':
+          description: Invalid revision or tid
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        '403':
+          description: Access to the specific revision is restricted
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        '404':
+          description: Unknown page, revision or tid
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /page/lint/{title}/{revision}:
+    get:
+      tags:
+      - Page content
+      summary: Get the linter errors for a specific title/revision.
+      description: 'Stability: [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)
+
+        '
+      parameters:
+      - name: title
+        in: path
+        description: 'Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`.'
+        required: true
+        schema:
+          type: string
+      - name: revision
+        in: path
+        description: The revision
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: 'The lint errors for the given page and optionally revision.
+
+
+            See [the Linter extension docs](https://www.mediawiki.org/wiki/Extension:Linter) for more
+
+            details.
+
+            '
+          content:
+            application/json:
+              schema:
+                type: object
+        '301':
+          description: 'A permanent redirect is returned if the supplied article title was not in the normalized form.
+
+            To avoid this kind of redirect, you can use the [mediawiki-title](https://github.com/wikimedia/mediawiki-title) library to perform
+
+            title normalization client-side.
+
+
+            Beware that redirected pre-flighted cross-origin requests (such as those sending custom request headers like `Api-User-Agent`)
+
+            will fail in most current browsers [due to a spec bug](https://github.com/whatwg/fetch/issues/204).
+
+            '
+        '302':
+          description: 'The page is a [redirect page](https://www.mediawiki.org/wiki/Help:Redirects).
+
+            The `location` header points to the redirect target, and the body contains the actual page revision contents as HTML.
+
+            If you would like to avoid automatically following redirect pages, set the `redirect=false` query parameter.
+
+
+            Beware that redirected pre-flighted cross-origin requests (such as those sending custom request headers like `Api-User-Agent`)
+
+            will fail in most current browsers [due to a spec bug](https://github.com/whatwg/fetch/issues/204).
+
+            '
+        '400':
+          description: Invalid revision or tid
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        '403':
+          description: Access to the specific revision is restricted
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        '404':
+          description: Unknown page, revision or tid
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /page/summary/{title}:
+    get:
+      tags:
+      - Page content
+      summary: Get basic metadata and simplified article introduction.
+      description: 'The summary response includes an extract of the first paragraph of the page in plain text
+
+        and HTML as well as the type of page. This is useful for page previews (fka. Hovercards,
+
+        aka. Popups) on the web and link previews in the apps.
+
+
+        Stability: [stable](https://www.mediawiki.org/wiki/Wikimedia_Product/Wikimedia_Product_Infrastructure_team/API_endpoint_stability_policy#Stable)
+
+
+        Please follow [wikitech-l](https://lists.wikimedia.org/mailman/listinfo/wikitech-l) or [mediawiki-api-announce](https://lists.wikimedia.org/mailman/listinfo/mediawiki-api-announce) for announcements of breaking changes.
+
+        '
+      parameters:
+      - name: title
+        in: path
+        description: 'Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`.'
+        required: true
+        schema:
+          type: string
+      - name: redirect
+        in: query
+        description: 'Requests for [redirect pages](https://www.mediawiki.org/wiki/Help:Redirects) return HTTP 302 with a redirect target in `Location` header and content in the body.
+
+          To get a 200 response instead, supply `false` to the `redirect` parameter.
+
+          '
+        schema:
+          type: boolean
+      - name: Accept-Language
+        in: header
+        description: 'The desired language variant code for wikis where LanguageConverter is enabled. Example: `sr-el` for Latin transcription of the Serbian language.
+
+          '
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The summary for the given page
+          headers:
+            ETag:
+              description: 'Syntax: "{revision}/{tid}". Example: "701384379/154d7bca-c264-11e5-8c2f-1b51b33b59fc"
+
+                '
+              schema:
+                type: string
+          content:
+            application/json; charset=utf-8; profile="https://www.mediawiki.org/wiki/Specs/Summary/1.4.2":
+              schema:
+                $ref: '#/components/schemas/summary'
+        '301':
+          description: 'A permanent redirect is returned if the supplied article title was not in the normalized form.
+
+            To avoid this kind of redirect, you can use the [mediawiki-title](https://github.com/wikimedia/mediawiki-title) library to perform
+
+            title normalization client-side.
+
+
+            Beware that redirected pre-flighted cross-origin requests (such as those sending custom request headers like `Api-User-Agent`)
+
+            will fail in most current browsers [due to a spec bug](https://github.com/whatwg/fetch/issues/204).
+
+            '
+        '302':
+          description: 'The page is a [redirect page](https://www.mediawiki.org/wiki/Help:Redirects).
+
+            The `location` header points to the redirect target.
+
+            If you would like to avoid automatically following redirect pages, set the `redirect=false` query parameter.
+
+
+            Beware that redirected pre-flighted cross-origin requests (such as those sending custom request headers like `Api-User-Agent`)
+
+            will fail in most current browsers [due to a spec bug](https://github.com/whatwg/fetch/issues/204).
+
+            '
+        '404':
+          description: Unknown page title
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: true
+      x-amples:
+      - title: Get summary from storage
+        request:
+          params:
+            domain: en.wikipedia.org
+            title: San_Francisco
+        response:
+          status: 200
+          headers:
+            etag: /.+/
+            content-type: /^application\/json/
+          body:
+            extract: /.+/
+            extract_html: /.+/
+            thumbnail:
+              source: /^https:/
+            originalimage:
+              source: /^https:/
+            lang: en
+            dir: ltr
+            description: /.+/
+components:
+  schemas:
+    problem:
+      required:
+      - type
+      type: object
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        detail:
+          type: string
+        instance:
+          type: string
+    revisionInfo:
+      type: object
+      description: Complete information about the revision
+      properties:
+        title:
+          type: string
+        page_id:
+          type: integer
+          format: int32
+        rev:
+          type: integer
+          format: int32
+        tid:
+          type: string
+        comment:
+          type: string
+        restrictions:
+          type: array
+          items:
+            type: string
+        tags:
+          type: array
+          items:
+            type: string
+        user_id:
+          type: integer
+          format: int32
+        user_text:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        redirect:
+          type: boolean
+        page_language:
+          type: string
+    originalimage:
+      type: object
+      properties:
+        source:
+          type: string
+          description: Original image URI
+        width:
+          type: integer
+          description: Original image width
+        height:
+          type: integer
+          description: Original image height
+      required:
+      - height
+      - source
+      - width
+    revision:
+      description: Result format for revision items
+      required:
+      - count
+      - items
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+        items:
+          $ref: '#/components/schemas/revisionInfo'
+    listing:
+      description: The result format for listings
+      required:
+      - items
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: string
+        _links:
+          type: object
+          properties:
+            next:
+              type: object
+              properties:
+                href:
+                  type: string
+                  description: Relative link to next result page.
+    summary:
+      type: object
+      properties:
+        titles:
+          $ref: '#/components/schemas/titles_set'
+        title:
+          deprecated: true
+          type: string
+          description: 'The page title.
+
+            Deprecated: Use `titles.normalized` instead.
+
+            '
+        displaytitle:
+          deprecated: true
+          type: string
+          description: 'The page title how it should be shown to the user.
+
+            Deprecated: Use `titles.display` instead.
+
+            '
+        pageid:
+          type: integer
+          description: The page ID
+        extract:
+          type: string
+          description: First several sentences of an article in plain text
+        extract_html:
+          type: string
+          description: First several sentences of an article in simple HTML format
+        thumbnail:
+          $ref: '#/components/schemas/thumbnail'
+        originalimage:
+          $ref: '#/components/schemas/originalimage'
+        lang:
+          type: string
+          description: The page language code
+          example: en
+        dir:
+          type: string
+          description: The page language direction code
+          example: ltr
+        timestamp:
+          type: string
+          description: The time when the page was last edited in the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format
+          example: {}
+        description:
+          type: string
+          description: Wikidata description for the page
+          example: American poet
+        coordinates:
+          type: object
+          description: The coordinates of the item
+          properties:
+            lat:
+              type: number
+              description: The latitude
+            lon:
+              type: number
+              description: The longitude
+          required:
+          - lat
+          - lon
+      required:
+      - dir
+      - extract
+      - lang
+      - titles
+    thumbnail:
+      type: object
+      properties:
+        source:
+          type: string
+          description: Thumbnail image URI
+        width:
+          type: integer
+          description: Thumbnail width
+        height:
+          type: integer
+          description: Thumnail height
+      required:
+      - height
+      - source
+      - width
+    titles_set:
+      type: object
+      description: a good example of the differences can be seen in https://en.wikipedia.org/api/rest_v1/page/summary/IOS_13
+      properties:
+        canonical:
+          type: string
+          description: the DB key (non-prefixed), e.g. may have _ instead of spaces, best for making request URIs, still requires Percent-encoding
+        normalized:
+          type: string
+          description: the normalized title (https://www.mediawiki.org/wiki/API:Query#Example_2:_Title_normalization), e.g. may have spaces instead of _
+        display:
+          type: string
+          description: the title as it should be displayed to the user
+      required:
+      - canonical
+      - normalized
+      - display
+x-host-basePath: /api/rest_v1
+x-default-params: {}

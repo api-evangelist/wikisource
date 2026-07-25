@@ -1,0 +1,198 @@
+openapi: 3.0.1
+info:
+  version: 1.0.0
+  title: Wikimedia REST Citation Mobile API
+  description: "This API provides cacheable and straightforward access to Wikimedia content and data, in machine-readable formats.\n### Global Rules\n- Limit your clients to no more than 200 requests/s to this API.\n  Each API endpoint's documentation may detail more specific usage limits.\n- Set a unique `User-Agent` or `Api-User-Agent` header that\n  allows us to contact you quickly. Email addresses or URLs\n  of contact pages work well.\n\nBy using this API, you agree to Wikimedia's [Terms of Use](https://wikimediafoundation.org/wiki/Terms_of_Use) and [Privacy Policy](https://wikimediafoundation.org/wiki/Privacy_policy). Unless otherwise specified in the endpoint documentation below, content accessed via this API is licensed under the [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) and [GFDL](https://www.gnu.org/copyleft/fdl.html) licenses, and you irrevocably agree to release modifications or additions made through this API under these licenses. Check the [Wikimedia REST API documentation](https://www.mediawiki.org/wiki/Wikimedia_REST_API) for background and details.\n### Endpoint documentation\nPlease consult each endpoint's documentation for details on:\n- Licensing information for the specific type of content\n  and data served via the endpoint.\n- Stability markers to inform you about development status and\n  change policy, according to\n  [our API version policy](https://www.mediawiki.org/wiki/API_versioning).\n- Endpoint specific usage limits.\n"
+  termsOfService: https://wikimediafoundation.org/wiki/Terms_of_Use
+  contact:
+    name: the Wikimedia Services team
+    url: http://mediawiki.org/wiki/Wikimedia_REST_API
+  license:
+    name: Apache2
+    url: http://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: /api/rest_v1
+tags:
+- name: Mobile
+paths:
+  /data/css/mobile/{type}:
+    get:
+      tags:
+      - Mobile
+      summary: Get CSS for mobile apps.
+      description: 'Gets common CSS mobile apps need to properly display pages using Page Content Service.
+
+        In most cases all of the types are needed (preferably in this order):
+
+        * base (Common mobile CSS from ResourceLoader)
+
+        * site (Site-specific, mobile CSS from ResourceLoader, as defined in MediaWiki\:Mobile.css)
+
+        * pcs (CSS for the Page Content Service)
+
+
+        The `base` and `pcs` responses are the same regardless of what domain is used.
+
+        For these we suggest meta.wikimedia.org.
+
+
+        You can still pass pagelib for type, but this is a legacy version of the CSS for
+
+        existing app clients.
+
+
+        Stability: [unstable](https://www.mediawiki.org/wiki/Wikimedia_Product/Wikimedia_Product_Infrastructure_team/API_endpoint_stability_policy#Unstable)
+
+
+        Please follow [wikitech-l](https://lists.wikimedia.org/mailman/listinfo/wikitech-l) or [mediawiki-api-announce](https://lists.wikimedia.org/mailman/listinfo/mediawiki-api-announce) for announcements of breaking changes.
+
+        '
+      parameters:
+      - name: type
+        in: path
+        description: The desired CSS bundle
+        schema:
+          type: string
+          enum:
+          - base
+          - pagelib
+          - pcs
+          - site
+        required: true
+      responses:
+        '200':
+          description: Success
+          headers:
+            ETag:
+              description: Different values indicate that the content has changed
+              schema:
+                type: string
+          content:
+            application/json; charset=utf-8; profile="https://www.mediawiki.org/wiki/Specs/CSS/1.0.0":
+              schema:
+                type: object
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /data/javascript/mobile/{type}:
+    get:
+      tags:
+      - Mobile
+      summary: Get JavaScript for mobileapps
+      description: 'Gets the JavaScript bundle so that clients can have
+
+        convenient access to that for consuming the page HTML.
+
+        Amongst other things,
+
+        * it allows to detect the platform and through that enable platform specific CSS rules,
+
+        * has code to lazy load images on the page,
+
+        * code for collapsing and expanding tables.
+
+
+        Valid types are pagelib or pcs. Passing pcs will return the JavaScript for the
+
+        Page Content Service. Passing pagelib will return a deprecated legacy version
+
+        of the wikimedia-page-library JavaScript to support existing app clients.
+
+
+        Stability: [unstable](https://www.mediawiki.org/wiki/Wikimedia_Product/Wikimedia_Product_Infrastructure_team/API_endpoint_stability_policy#Unstable)
+
+
+        Please follow [wikitech-l](https://lists.wikimedia.org/mailman/listinfo/wikitech-l) or [mediawiki-api-announce](https://lists.wikimedia.org/mailman/listinfo/mediawiki-api-announce) for announcements of breaking changes.
+
+        '
+      parameters:
+      - name: type
+        in: path
+        description: The desired JavaScript bundle
+        schema:
+          type: string
+          enum:
+          - pagelib
+          - pcs
+        required: true
+      responses:
+        '200':
+          description: Success
+          headers:
+            ETag:
+              description: Different values indicate that the content has changed
+              schema:
+                type: string
+          content:
+            application/json; charset=utf-8; profile="https://www.mediawiki.org/wiki/Specs/JavaScript/1.0.0":
+              schema:
+                type: object
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /data/i18n/{type}:
+    get:
+      tags:
+      - Mobile
+      summary: Get internationalization info
+      description: 'Gets internationalization information for the given site. Currently the only
+
+        supported type is pcs for the Page Content Service.
+
+
+        Stability: [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)
+
+        '
+      parameters:
+      - name: type
+        in: path
+        description: The desired internationalization bundle
+        schema:
+          type: string
+          enum:
+          - pcs
+        required: true
+      responses:
+        '200':
+          description: Success
+          headers:
+            ETag:
+              description: Different values indicate that the content has changed
+              schema:
+                type: string
+          content:
+            application/json; charset=utf-8; profile="https://www.mediawiki.org/wiki/Specs/i18n/0.0.1":
+              schema:
+                type: object
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+components:
+  schemas:
+    problem:
+      required:
+      - type
+      type: object
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        detail:
+          type: string
+        instance:
+          type: string
+x-host-basePath: /api/rest_v1
+x-default-params: {}
