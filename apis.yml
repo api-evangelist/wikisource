@@ -10,6 +10,18 @@ description: >-
   All APIs are free at point of use and governed by the Wikimedia API usage guidelines — a contactable
   User-Agent is mandatory and serial requests are preferred over parallel bursts.
 url: https://en.wikisource.org/wiki/Wikisource:Wikisource
+accessModel:
+  pricing: free
+  onboarding: open
+  trial: false
+  try_now: true
+  public: true
+  label: Free · Open access
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
 image: https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Wikisource-logo.svg/120px-Wikisource-logo.svg.png
 specificationVersion: '0.19'
 created: '2026-06-13'
@@ -29,75 +41,141 @@ tags:
   - Non-Profit
   - Open Source
 apis:
-  - name: MediaWiki Action API
-    description: >-
-      The primary programmatic interface to Wikisource, exposed at /w/api.php on each language
-      subdomain. Operations are dispatched via the action= parameter (query, parse, edit, upload,
-      login, patrol, ...). Key for reading transcribed texts, searching categories, and editing or
-      proofread-status updating. JSON is the recommended response format. Requests must carry a
-      contactable User-Agent header.
-    humanURL: https://www.mediawiki.org/wiki/API:Main_page
-    baseURL: https://en.wikisource.org/w/api.php
-    tags:
-      - Action API
-      - Read
-      - Write
-      - Edit
-      - Search
-      - Parse
-    properties:
-      - type: Documentation
-        url: https://www.mediawiki.org/wiki/API:Main_page
-      - type: Sandbox
-        url: https://en.wikisource.org/wiki/Special:ApiSandbox
-      - type: Tutorials
-        url: https://www.mediawiki.org/wiki/API:Tutorial
-      - type: Etiquette
-        url: https://www.mediawiki.org/wiki/API:Etiquette
-
-  - name: MediaWiki Core REST API
-    description: >-
-      Modern REST surface available on Wikisource at /w/rest.php/v1/. Provides page reads (source,
-      HTML, bare metadata), full-text search, file metadata, page history, revision retrieval and
-      comparison, and wikitext-to-HTML / HTML-to-wikitext transforms. Well-suited for integrations
-      that need standard HTTP verbs rather than the action= dispatch style.
-    humanURL: https://www.mediawiki.org/wiki/API:REST_API
-    baseURL: https://en.wikisource.org/w/rest.php/v1
-    tags:
-      - REST API
-      - Core
-      - Pages
-      - Search
-      - History
-      - Transforms
-    properties:
-      - type: Documentation
-        url: https://www.mediawiki.org/wiki/API:REST_API/Reference
-      - type: Sandbox
-        url: https://en.wikisource.org/wiki/Special:RestSandbox
-      - type: APIPortal
-        url: https://api.wikimedia.org/wiki/Core_REST_API
-
-  - name: Wikimedia REST API v1
-    description: >-
-      Caching-optimised read API available at /api/rest_v1/ on each Wikisource language subdomain.
-      Provides page summaries, full HTML, media lists, and language links for Wikisource pages.
-      Backed by Varnish CDN; anonymous read traffic is limited to approximately 200 requests per
-      second per client. Provide a contactable User-Agent; GET is preferred for cacheability.
-    humanURL: https://en.wikisource.org/api/rest_v1/
-    baseURL: https://en.wikisource.org/api/rest_v1
-    tags:
-      - REST API
-      - Cached
-      - Summaries
-      - HTML
-      - Read
-    properties:
-      - type: Documentation
-        url: https://en.wikisource.org/api/rest_v1/
-      - type: Specification
-        url: https://en.wikisource.org/api/rest_v1/?spec
-
+- name: MediaWiki Action API
+  description: >-
+    The primary programmatic interface to Wikisource, exposed at /w/api.php on each language subdomain.
+    Operations are dispatched via the action= parameter (query, parse, edit, upload, login, patrol, ...).
+    Key for reading transcribed texts, searching categories, and editing or proofread-status updating.
+    JSON is the recommended response format. Requests must carry a contactable User-Agent header.
+  humanURL: https://www.mediawiki.org/wiki/API:Main_page
+  baseURL: https://en.wikisource.org/w/api.php
+  tags:
+  - Action API
+  - Read
+  - Write
+  - Edit
+  - Search
+  - Parse
+  properties:
+  - type: Documentation
+    url: https://www.mediawiki.org/wiki/API:Main_page
+  - type: Sandbox
+    url: https://en.wikisource.org/wiki/Special:ApiSandbox
+  - type: Tutorials
+    url: https://www.mediawiki.org/wiki/API:Tutorial
+  - type: Etiquette
+    url: https://www.mediawiki.org/wiki/API:Etiquette
+- name: MediaWiki Core REST API
+  description: >-
+    Modern REST surface available on Wikisource at /w/rest.php/v1/. Provides page reads (source, HTML,
+    bare metadata), full-text search, file metadata, page history, revision retrieval and comparison,
+    and wikitext-to-HTML / HTML-to-wikitext transforms. Well-suited for integrations that need standard
+    HTTP verbs rather than the action= dispatch style.
+  humanURL: https://www.mediawiki.org/wiki/API:REST_API
+  baseURL: https://en.wikisource.org/w/rest.php/v1
+  tags:
+  - REST API
+  - Core
+  - Pages
+  - Search
+  - History
+  - Transforms
+  properties:
+  - type: Documentation
+    url: https://www.mediawiki.org/wiki/API:REST_API/Reference
+  - type: Sandbox
+    url: https://en.wikisource.org/wiki/Special:RestSandbox
+  - type: APIPortal
+    url: https://api.wikimedia.org/wiki/Core_REST_API
+- name: Wikimedia REST API v1
+  description: >-
+    Caching-optimised read API available at /api/rest_v1/ on each Wikisource language subdomain. Provides
+    page summaries, full HTML, media lists, and language links for Wikisource pages. Backed by Varnish
+    CDN; anonymous read traffic is limited to approximately 200 requests per second per client. Provide
+    a contactable User-Agent; GET is preferred for cacheability.
+  humanURL: https://en.wikisource.org/api/rest_v1/
+  baseURL: https://en.wikisource.org/api/rest_v1
+  tags:
+  - REST API
+  - Cached
+  - Summaries
+  - HTML
+  - Read
+  properties:
+  - type: Documentation
+    url: https://en.wikisource.org/api/rest_v1/
+  - type: Specification
+    url: https://en.wikisource.org/api/rest_v1/?spec
+- aid: wikisource:wikisource-citation-api
+  name: Wikisource Citation API
+  description: generation of citation data
+  humanURL: https://www.mediawiki.org/wiki/API:Main_page
+  baseURL: https://en.wikisource.org/w/api.php
+  tags:
+  - Citation
+  properties:
+  - type: OpenAPI
+    url: openapi/wikisource-citation-api-openapi.yml
+- aid: wikisource:wikisource-math-api
+  name: Wikisource Math API
+  description: formula rendering
+  humanURL: https://www.mediawiki.org/wiki/API:Main_page
+  baseURL: https://en.wikisource.org/w/api.php
+  tags:
+  - Math
+  properties:
+  - type: OpenAPI
+    url: openapi/wikisource-math-api-openapi.yml
+- aid: wikisource:wikisource-mobile-api
+  name: Wikisource Mobile API
+  description: The Mobile API from Wikisource — 3 operation(s) for mobile.
+  humanURL: https://www.mediawiki.org/wiki/API:Main_page
+  baseURL: https://en.wikisource.org/w/api.php
+  tags:
+  - Mobile
+  properties:
+  - type: OpenAPI
+    url: openapi/wikisource-mobile-api-openapi.yml
+- aid: wikisource:wikisource-page-content-api
+  name: Wikisource Page content API
+  description: page content in different formats
+  humanURL: https://www.mediawiki.org/wiki/API:Main_page
+  baseURL: https://en.wikisource.org/w/api.php
+  tags:
+  - Page content
+  properties:
+  - type: OpenAPI
+    url: openapi/wikisource-page-content-api-openapi.yml
+- aid: wikisource:wikisource-reading-lists-api
+  name: Wikisource Reading lists API
+  description: Private lists of selected pages
+  humanURL: https://www.mediawiki.org/wiki/API:Main_page
+  baseURL: https://en.wikisource.org/w/api.php
+  tags:
+  - Reading lists
+  properties:
+  - type: OpenAPI
+    url: openapi/wikisource-reading-lists-api-openapi.yml
+- aid: wikisource:wikisource-recommendation-api
+  name: Wikisource Recommendation API
+  description: contribution recommendations
+  humanURL: https://www.mediawiki.org/wiki/API:Main_page
+  baseURL: https://en.wikisource.org/w/api.php
+  tags:
+  - Recommendation
+  properties:
+  - type: OpenAPI
+    url: openapi/wikisource-recommendation-api-openapi.yml
+- aid: wikisource:wikisource-transforms-api
+  name: Wikisource Transforms API
+  description: convert content between HTML and Wikitext
+  humanURL: https://www.mediawiki.org/wiki/API:Main_page
+  baseURL: https://en.wikisource.org/w/api.php
+  tags:
+  - Transforms
+  properties:
+  - type: OpenAPI
+    url: openapi/wikisource-transforms-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/wikisource-agentic-access.yml
