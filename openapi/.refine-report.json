@@ -1,0 +1,26 @@
+{
+  "provider": "wikisource",
+  "sources": [
+    "wikisource-citation-api-openapi.yml",
+    "wikisource-math-api-openapi.yml",
+    "wikisource-mobile-api-openapi.yml",
+    "wikisource-page-content-api-openapi.yml",
+    "wikisource-reading-lists-api-openapi.yml",
+    "wikisource-recommendation-api-openapi.yml",
+    "wikisource-transforms-api-openapi.yml"
+  ],
+  "outputs": [
+    "wikisource-citation-api-openapi.yml",
+    "wikisource-math-api-openapi.yml",
+    "wikisource-mobile-api-openapi.yml",
+    "wikisource-page-content-api-openapi.yml",
+    "wikisource-reading-lists-api-openapi.yml",
+    "wikisource-recommendation-api-openapi.yml",
+    "wikisource-transforms-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
