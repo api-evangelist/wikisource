@@ -1,0 +1,91 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wikimedia REST Citation Math API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Math",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check and normalize a TeX formula.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/rest_v1/media/math/check/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "The input type of the given formula; can be tex or inline-tex"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "q",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Checks the supplied TeX formula for correctness and returns the\nnormalised formula representation as well as information about\nidentifiers. Available types are tex and inline-tex. The response\ncontains the `x-resource-location` header which can be used to retrieve\nthe render of the checked formula in one of the supported rendering\nformats. Just append the value of the header to `/media/math/{format}/`\nand perform a GET request against that URL.\n\n**NOTE**: the use of this endpoint is *strongly di"
+        },
+        {
+          "info": {
+            "name": "Get a previously-stored formula",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/rest_v1/media/math/formula/:hash",
+            "params": [
+              {
+                "name": "hash",
+                "value": "",
+                "type": "path",
+                "description": "The hash string of the previous POST data"
+              }
+            ]
+          },
+          "docs": "Returns the previously-stored formula via `/media/math/check/{type}` for\nthe given hash.\n\n**NOTE**: the use of this endpoint is *strongly discouraged*. Instead, use the identical endpoint of the (canonical) Math API on the `wikimedia.org` domain.\n\nStability: [deprecated](https://www.mediawiki.org/wiki/API_versioning#Deprecated).\n"
+        },
+        {
+          "info": {
+            "name": "Get rendered formula in the given format.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/rest_v1/media/math/render/:format/:hash",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "path",
+                "description": "The output format; can be svg or mml"
+              },
+              {
+                "name": "hash",
+                "value": "",
+                "type": "path",
+                "description": "The hash string of the previous POST data"
+              }
+            ]
+          },
+          "docs": "Given a request hash, renders a TeX formula into its mathematic\nrepresentation in the given format. When a request is issued to the\n`/media/math/check/{format}` POST endpoint, the response contains the\n`x-resource-location` header denoting the hash ID of the POST data. Once\nobtained, this endpoint has to be used to obtain the actual render.\n\n**NOTE**: the use of this endpoint is *strongly discouraged*. Instead, use the identical endpoint of the (canonical) Math API on the `wikimedia.org` domain."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

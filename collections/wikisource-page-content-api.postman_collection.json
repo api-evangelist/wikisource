@@ -1,0 +1,2708 @@
+{
+  "item": [
+    {
+      "id": "ba7d2032-e6ea-4443-80e2-b4ecf039c896",
+      "name": "Page content",
+      "description": {
+        "content": "page content in different formats",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d7ab1758-509a-4bd7-8635-00585447c340",
+          "name": "List page-related API entry points.",
+          "request": {
+            "name": "List page-related API entry points.",
+            "description": {
+              "content": "Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "page",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "11278acd-c989-4f37-b408-cc792b415498",
+              "name": "A list of page-related API end points.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    \"string\",\n    \"string\"\n  ],\n  \"_links\": {\n    \"next\": {\n      \"href\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1590ec3a-5338-4f2a-8cee-b4dbb554661e",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3ab34b84-2404-4ad8-b184-741d29bdda86",
+          "name": "Get revision metadata for a title.",
+          "request": {
+            "name": "Get revision metadata for a title.",
+            "description": {
+              "content": "Returns the revision metadata for the given title. If a revision ID is provided,\nmetadata for that revision is returned, otherwise the latest revision ID is assumed.\n\nStability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "page",
+                "title",
+                ":title"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "title",
+                  "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1dfa6b28-d67b-4a6a-8087-3daf47c4abc1",
+              "name": "The latest revision metadata for the provided title.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "title",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 6337,\n  \"items\": {\n    \"title\": \"string\",\n    \"page_id\": 2821,\n    \"rev\": 6631,\n    \"tid\": \"string\",\n    \"comment\": \"string\",\n    \"restrictions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"user_id\": 1614,\n    \"user_text\": \"string\",\n    \"timestamp\": \"1977-11-21T23:03:22.986Z\",\n    \"redirect\": false,\n    \"page_language\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "18997133-c3a6-4efa-8918-446156370bbd",
+              "name": "A permanent redirect is returned if the supplied article title was not in the normalized form.\nTo avoid these redirects, you can use the [mediawiki-title](https://github.com/wikimedia/mediawiki-title) library to perform\ntitle normalization client side.\n\nBeware that redirected pre-flighted cross-origin requests (such as those sending custom request headers like `Api-User-Agent`)\nwill fail in most current browsers [due to a spec bug](https://github.com/whatwg/fetch/issues/204).\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "title",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "590121dc-658d-4e01-94c8-5828680e3654",
+              "name": "The page is a [redirect page](https://www.mediawiki.org/wiki/Help:Redirects).\nThe `location` header points to the redirect target.\nIf you would like to avoid automatically following redirect pages, set the `redirect=false` query parameter.\n\nBeware that redirected pre-flighted cross-origin requests (such as those sending custom request headers like `Api-User-Agent`)\nwill fail in most current browsers [due to a spec bug](https://github.com/whatwg/fetch/issues/204).\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "title",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7592b5e0-332a-4af5-b145-3ca631d29921",
+              "name": "Unknown page title or no revisions found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "title",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "21e98a83-6fb0-4720-b0fb-92a940d11432",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "title",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9638f272-f81e-45f5-a62e-7e66b94f3c61",
+          "name": "Get revision metadata for a title.",
+          "request": {
+            "name": "Get revision metadata for a title.",
+            "description": {
+              "content": "Returns the revision metadata for the given title. If a revision ID is provided,\nmetadata for that revision is returned, otherwise the latest revision ID is assumed.\n\nStability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "page",
+                "title",
+                ":title",
+                ":revision"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "title",
+                  "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "revision",
+                  "description": "(Required) The revision id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ee3c29be-e510-4450-bece-398ab9f110fa",
+              "name": "The latest revision metadata for the provided title.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "title",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The revision id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 741,\n  \"items\": {\n    \"title\": \"string\",\n    \"page_id\": 2114,\n    \"rev\": 90,\n    \"tid\": \"string\",\n    \"comment\": \"string\",\n    \"restrictions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"user_id\": 6619,\n    \"user_text\": \"string\",\n    \"timestamp\": \"1950-11-22T09:54:23.027Z\",\n    \"redirect\": false,\n    \"page_language\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3d2dc8b2-18df-4d82-88bd-b5eeacf22b5c",
+              "name": "A permanent redirect is returned if the supplied article title was not in the normalized form.\nTo avoid these redirects, you can use the [mediawiki-title](https://github.com/wikimedia/mediawiki-title) library to perform\ntitle normalization client side.\n\nBeware that redirected pre-flighted cross-origin requests (such as those sending custom request headers like `Api-User-Agent`)\nwill fail in most current browsers [due to a spec bug](https://github.com/whatwg/fetch/issues/204).\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "title",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The revision id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ffdfdc31-7be7-446d-9f88-4fe88b1b673c",
+              "name": "The page is a [redirect page](https://www.mediawiki.org/wiki/Help:Redirects).\nThe `location` header points to the redirect target.\nIf you would like to avoid automatically following redirect pages, set the `redirect=false` query parameter.\n\nBeware that redirected pre-flighted cross-origin requests (such as those sending custom request headers like `Api-User-Agent`)\nwill fail in most current browsers [due to a spec bug](https://github.com/whatwg/fetch/issues/204).\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "title",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The revision id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "02eb549d-2749-4c92-a4c7-5c1249c01c8f",
+              "name": "Unknown page title or no revisions found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "title",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The revision id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "af8d27ac-4655-4632-872d-f74ba6f3eaf2",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "title",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The revision id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3c60789d-2b55-4060-bd11-b6a898900483",
+          "name": "Get latest HTML for a title.",
+          "request": {
+            "name": "Get latest HTML for a title.",
+            "description": {
+              "content": "Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "page",
+                "html",
+                ":title"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "redirect",
+                  "value": "<boolean>",
+                  "description": "Requests for [redirect pages](https://www.mediawiki.org/wiki/Help:Redirects) return HTTP 302 with a redirect target in `Location` header and content in the body.\nTo get a 200 response instead, supply `false` to the `redirect` parameter.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "stash",
+                  "value": "<boolean>",
+                  "description": "Whether to temporary stash data-parsoid metadata in order to support transforming the\nmodified content later. If this parameter is set, requests are rate-limited on\na per-client basis (max 5 requests per second per client)\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "title",
+                  "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The desired language variant code for wikis where LanguageConverter is enabled. Example: `sr-el` for Latin transcription of the Serbian language.\n",
+                "key": "Accept-Language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/html; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/HTML/2.1.0\""
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "33d6f61e-d4ee-4dda-a85d-c5a36a081aa7",
+              "name": "The latest HTML for the given page title.\n\nSee [the MediaWiki DOM\nspec](https://www.mediawiki.org/wiki/Parsoid/MediaWiki_DOM_spec) for a\ndescription of the MediaWiki-specific semantic markup in this HTML.\nNote that additional metadata is available in the HTML head.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "html",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "stash",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The desired language variant code for wikis where LanguageConverter is enabled. Example: `sr-el` for Latin transcription of the Serbian language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/html; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/HTML/2.1.0\""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "ETag header indicating the revision and render timeuuid\nseparated by a slash:\n\"701384379/154d7bca-c264-11e5-8c2f-1b51b33b59fc\"\nThis ETag can be passed to the HTML save end point (as\n`base_etag` POST parameter), and can also be used to retrieve\nthe exact corresponding data-parsoid metadata, by requesting\nthe specific `revision` and `tid` indicated by the `ETag`.\n",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "560ef2d4-0170-4a40-8126-5247fcff2a8b",
+              "name": "A permanent redirect is returned if the supplied article title was not in the normalized form.\nTo avoid this kind of redirect, you can use the [mediawiki-title](https://github.com/wikimedia/mediawiki-title) library to perform\ntitle normalization client-side.\n\nBeware that redirected pre-flighted cross-origin requests (such as those sending custom request headers like `Api-User-Agent`)\nwill fail in most current browsers [due to a spec bug](https://github.com/whatwg/fetch/issues/204).\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "html",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "stash",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The desired language variant code for wikis where LanguageConverter is enabled. Example: `sr-el` for Latin transcription of the Serbian language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5dd19619-5887-4a20-98fb-5e96a2e07962",
+              "name": "The page is a [redirect page](https://www.mediawiki.org/wiki/Help:Redirects).\nThe `location` header points to the redirect target, and the body contains the actual page contents as HTML.\nIf you would like to avoid automatically following redirect pages, set the `redirect=false` query parameter.\n\nBeware that redirected pre-flighted cross-origin requests (such as those sending custom request headers like `Api-User-Agent`)\nwill fail in most current browsers [due to a spec bug](https://github.com/whatwg/fetch/issues/204).\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "html",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "stash",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The desired language variant code for wikis where LanguageConverter is enabled. Example: `sr-el` for Latin transcription of the Serbian language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9541563b-97af-4f9f-87f5-c3450f06c1ad",
+              "name": "Unknown page title",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "html",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "stash",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The desired language variant code for wikis where LanguageConverter is enabled. Example: `sr-el` for Latin transcription of the Serbian language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "818f1e02-f252-4f03-9d07-c4eec9bb322b",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "html",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "stash",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The desired language variant code for wikis where LanguageConverter is enabled. Example: `sr-el` for Latin transcription of the Serbian language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a8059ea-2712-4187-ab2c-22f36074b459",
+          "name": "Get HTML for a specific title/revision & optionally timeuuid.",
+          "request": {
+            "name": "Get HTML for a specific title/revision & optionally timeuuid.",
+            "description": {
+              "content": "Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "page",
+                "html",
+                ":title",
+                ":revision"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "redirect",
+                  "value": "<boolean>",
+                  "description": "Requests for [redirect pages](https://www.mediawiki.org/wiki/Help:Redirects) return HTTP 302 with a redirect target in `Location` header and content in the body.\nTo get a 200 response instead, supply `false` to the `redirect` parameter.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "stash",
+                  "value": "<boolean>",
+                  "description": "Whether to temporary stash data-parsoid metadata in order to support transforming the\nmodified content later. If this parameter is set, requests are rate-limited on\na per-client basis (max 5 requests per second per client)\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "title",
+                  "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "revision",
+                  "description": "(Required) The revision"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The desired language variant code for wikis where LanguageConverter is enabled. Example: `sr-el` for Latin transcription of the Serbian language.\n",
+                "key": "Accept-Language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/html; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/HTML/2.1.0\""
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bba8eed8-d7a3-439b-9c5d-a50a588b522c",
+              "name": "The html for the given page, revision and tid.\n\nSee [the MediaWiki DOM\nspec](https://www.mediawiki.org/wiki/Parsoid/MediaWiki_DOM_spec) for a\ndescription of the MediaWiki-specific semantic markup in this HTML.\nNote that additional metadata is available in the HTML head.\n\nThis HTML can be edited using arbitrary HTML tools. The modified HTML\ncan be converted back to wikitext using the\n[/transform/html/to/wikitext{/title}{/revision}](#!/Transforms/transform_html_to_wikitext__title___revision__post)\nentry point.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "html",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "stash",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The revision"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The desired language variant code for wikis where LanguageConverter is enabled. Example: `sr-el` for Latin transcription of the Serbian language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/html; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/HTML/2.1.0\""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "ETag header indicating the revision and render timeuuid\nseparated by a slash:\n\"701384379/154d7bca-c264-11e5-8c2f-1b51b33b59fc\"\nThis ETag can be passed to the HTML save end point (as\n`base_etag` POST parameter), and can also be used to retrieve\nthe exact corresponding data-parsoid metadata, by requesting\nthe specific `revision` and `tid` indicated by the `ETag`.\n",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "69e630d0-9ed2-4db4-949d-52ac0afaf273",
+              "name": "A permanent redirect is returned if the supplied article title was not in the normalized form.\nTo avoid this kind of redirect, you can use the [mediawiki-title](https://github.com/wikimedia/mediawiki-title) library to perform\ntitle normalization client-side.\n\nBeware that redirected pre-flighted cross-origin requests (such as those sending custom request headers like `Api-User-Agent`)\nwill fail in most current browsers [due to a spec bug](https://github.com/whatwg/fetch/issues/204).\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "html",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "stash",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The revision"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The desired language variant code for wikis where LanguageConverter is enabled. Example: `sr-el` for Latin transcription of the Serbian language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c91b35b9-06c0-4442-93e2-e98f899e620e",
+              "name": "The page is a [redirect page](https://www.mediawiki.org/wiki/Help:Redirects).\nThe `location` header points to the redirect target, and the body contains the actual page revision contents as HTML.\nIf you would like to avoid automatically following redirect pages, set the `redirect=false` query parameter.\n\nBeware that redirected pre-flighted cross-origin requests (such as those sending custom request headers like `Api-User-Agent`)\nwill fail in most current browsers [due to a spec bug](https://github.com/whatwg/fetch/issues/204).\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "html",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "stash",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The revision"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The desired language variant code for wikis where LanguageConverter is enabled. Example: `sr-el` for Latin transcription of the Serbian language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9915e80b-a382-4dbf-b663-18836a7bc14d",
+              "name": "Invalid revision or tid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "html",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "stash",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The revision"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The desired language variant code for wikis where LanguageConverter is enabled. Example: `sr-el` for Latin transcription of the Serbian language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b98e552-de1f-478a-97bc-1845de5e88b6",
+              "name": "Access to the specific revision is restricted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "html",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "stash",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The revision"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The desired language variant code for wikis where LanguageConverter is enabled. Example: `sr-el` for Latin transcription of the Serbian language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c3a4db1-766f-4790-aba4-b3b17a54f0fa",
+              "name": "Unknown page, revision or tid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "html",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "stash",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The revision"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The desired language variant code for wikis where LanguageConverter is enabled. Example: `sr-el` for Latin transcription of the Serbian language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2198e471-6ca2-4388-9619-4e5496535f81",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "html",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "stash",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The revision"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The desired language variant code for wikis where LanguageConverter is enabled. Example: `sr-el` for Latin transcription of the Serbian language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8584fe29-e544-440a-9b83-968f1aca37b8",
+          "name": "Get the linter errors for a specific title/revision.",
+          "request": {
+            "name": "Get the linter errors for a specific title/revision.",
+            "description": {
+              "content": "Stability: [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "page",
+                "lint",
+                ":title"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "title",
+                  "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "22398eeb-b75b-4386-ac29-636619af0867",
+              "name": "The lint errors for the given page and optionally revision.\n\nSee [the Linter extension docs](https://www.mediawiki.org/wiki/Extension:Linter) for more\ndetails.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "lint",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "58bf1250-00be-40f9-91b9-6dd1f6b1dddb",
+              "name": "A permanent redirect is returned if the supplied article title was not in the normalized form.\nTo avoid this kind of redirect, you can use the [mediawiki-title](https://github.com/wikimedia/mediawiki-title) library to perform\ntitle normalization client-side.\n\nBeware that redirected pre-flighted cross-origin requests (such as those sending custom request headers like `Api-User-Agent`)\nwill fail in most current browsers [due to a spec bug](https://github.com/whatwg/fetch/issues/204).\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "lint",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fad75efc-f071-41f6-b216-764a5a07a436",
+              "name": "The page is a [redirect page](https://www.mediawiki.org/wiki/Help:Redirects).\nThe `location` header points to the redirect target, and the body contains the actual page revision contents as HTML.\nIf you would like to avoid automatically following redirect pages, set the `redirect=false` query parameter.\n\nBeware that redirected pre-flighted cross-origin requests (such as those sending custom request headers like `Api-User-Agent`)\nwill fail in most current browsers [due to a spec bug](https://github.com/whatwg/fetch/issues/204).\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "lint",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "df92583d-0e9f-48b4-b613-73011e3c487f",
+              "name": "Invalid revision or tid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "lint",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "653bc22c-2531-48af-a9df-aa74b680ec4a",
+              "name": "Access to the specific revision is restricted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "lint",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e637604e-d319-4dfe-a8c2-59eb00938bdf",
+              "name": "Unknown page, revision or tid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "lint",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae22ff6d-e82f-4873-bfa7-33f61d37a2ae",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "lint",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "147bee65-ca1e-49a9-bc75-b2d76df83230",
+          "name": "Get the linter errors for a specific title/revision.",
+          "request": {
+            "name": "Get the linter errors for a specific title/revision.",
+            "description": {
+              "content": "Stability: [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "page",
+                "lint",
+                ":title",
+                ":revision"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "title",
+                  "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "revision",
+                  "description": "(Required) The revision"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2f419259-f01b-497a-96e0-bf6002f2b4d4",
+              "name": "The lint errors for the given page and optionally revision.\n\nSee [the Linter extension docs](https://www.mediawiki.org/wiki/Extension:Linter) for more\ndetails.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "lint",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The revision"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b082e3c2-4ead-464f-b265-6e0193866640",
+              "name": "A permanent redirect is returned if the supplied article title was not in the normalized form.\nTo avoid this kind of redirect, you can use the [mediawiki-title](https://github.com/wikimedia/mediawiki-title) library to perform\ntitle normalization client-side.\n\nBeware that redirected pre-flighted cross-origin requests (such as those sending custom request headers like `Api-User-Agent`)\nwill fail in most current browsers [due to a spec bug](https://github.com/whatwg/fetch/issues/204).\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "lint",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The revision"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "42b4f09d-7497-4b0e-8964-bf88fd2ee08b",
+              "name": "The page is a [redirect page](https://www.mediawiki.org/wiki/Help:Redirects).\nThe `location` header points to the redirect target, and the body contains the actual page revision contents as HTML.\nIf you would like to avoid automatically following redirect pages, set the `redirect=false` query parameter.\n\nBeware that redirected pre-flighted cross-origin requests (such as those sending custom request headers like `Api-User-Agent`)\nwill fail in most current browsers [due to a spec bug](https://github.com/whatwg/fetch/issues/204).\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "lint",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The revision"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "090f93e2-5bb4-44ad-9728-c02f8a280bed",
+              "name": "Invalid revision or tid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "lint",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The revision"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e18170a2-97c3-4551-8c92-b82f4d8136fc",
+              "name": "Access to the specific revision is restricted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "lint",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The revision"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed8a4e64-e867-4001-a049-23d2739c6978",
+              "name": "Unknown page, revision or tid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "lint",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The revision"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "372f4c90-696b-4e92-8427-cc7a10125676",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "lint",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The revision"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aaa23af8-6781-49ab-b161-5ef5e0ea6ea6",
+          "name": "Get basic metadata and simplified article introduction.",
+          "request": {
+            "name": "Get basic metadata and simplified article introduction.",
+            "description": {
+              "content": "The summary response includes an extract of the first paragraph of the page in plain text\nand HTML as well as the type of page. This is useful for page previews (fka. Hovercards,\naka. Popups) on the web and link previews in the apps.\n\nStability: [stable](https://www.mediawiki.org/wiki/Wikimedia_Product/Wikimedia_Product_Infrastructure_team/API_endpoint_stability_policy#Stable)\n\nPlease follow [wikitech-l](https://lists.wikimedia.org/mailman/listinfo/wikitech-l) or [mediawiki-api-announce](https://lists.wikimedia.org/mailman/listinfo/mediawiki-api-announce) for announcements of breaking changes.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "page",
+                "summary",
+                ":title"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "redirect",
+                  "value": "<boolean>",
+                  "description": "Requests for [redirect pages](https://www.mediawiki.org/wiki/Help:Redirects) return HTTP 302 with a redirect target in `Location` header and content in the body.\nTo get a 200 response instead, supply `false` to the `redirect` parameter.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "title",
+                  "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The desired language variant code for wikis where LanguageConverter is enabled. Example: `sr-el` for Latin transcription of the Serbian language.\n",
+                "key": "Accept-Language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/Summary/1.4.2\""
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5a835c5c-d921-468c-8895-de22b932e695",
+              "name": "The summary for the given page",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "summary",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The desired language variant code for wikis where LanguageConverter is enabled. Example: `sr-el` for Latin transcription of the Serbian language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/Summary/1.4.2\""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Syntax: \"{revision}/{tid}\". Example: \"701384379/154d7bca-c264-11e5-8c2f-1b51b33b59fc\"\n",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/Summary/1.4.2\""
+                }
+              ],
+              "body": "{\n  \"dir\": \"ltr\",\n  \"extract\": \"string\",\n  \"lang\": \"en\",\n  \"titles\": {\n    \"canonical\": \"string\",\n    \"normalized\": \"string\",\n    \"display\": \"string\"\n  },\n  \"title\": \"string\",\n  \"displaytitle\": \"string\",\n  \"pageid\": 3468,\n  \"extract_html\": \"string\",\n  \"thumbnail\": {\n    \"height\": 6156,\n    \"source\": \"string\",\n    \"width\": 9440\n  },\n  \"originalimage\": {\n    \"height\": 8585,\n    \"source\": \"string\",\n    \"width\": 6836\n  },\n  \"timestamp\": \"string\",\n  \"description\": \"American poet\",\n  \"coordinates\": {\n    \"lat\": 4947.537565916472,\n    \"lon\": 7732.993488020729\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "953d6a09-6f01-4a4a-97ce-a75d59cabcde",
+              "name": "A permanent redirect is returned if the supplied article title was not in the normalized form.\nTo avoid this kind of redirect, you can use the [mediawiki-title](https://github.com/wikimedia/mediawiki-title) library to perform\ntitle normalization client-side.\n\nBeware that redirected pre-flighted cross-origin requests (such as those sending custom request headers like `Api-User-Agent`)\nwill fail in most current browsers [due to a spec bug](https://github.com/whatwg/fetch/issues/204).\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "summary",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The desired language variant code for wikis where LanguageConverter is enabled. Example: `sr-el` for Latin transcription of the Serbian language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4300ac3b-7fc9-4597-bc91-9b218abd887c",
+              "name": "The page is a [redirect page](https://www.mediawiki.org/wiki/Help:Redirects).\nThe `location` header points to the redirect target.\nIf you would like to avoid automatically following redirect pages, set the `redirect=false` query parameter.\n\nBeware that redirected pre-flighted cross-origin requests (such as those sending custom request headers like `Api-User-Agent`)\nwill fail in most current browsers [due to a spec bug](https://github.com/whatwg/fetch/issues/204).\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "summary",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The desired language variant code for wikis where LanguageConverter is enabled. Example: `sr-el` for Latin transcription of the Serbian language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3f08e8fd-f037-49eb-bc74-76bd0532f453",
+              "name": "Unknown page title",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "summary",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The desired language variant code for wikis where LanguageConverter is enabled. Example: `sr-el` for Latin transcription of the Serbian language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "520a2213-533b-4f87-b681-b4665cf65385",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page",
+                    "summary",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The desired language variant code for wikis where LanguageConverter is enabled. Example: `sr-el` for Latin transcription of the Serbian language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/api/rest_v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "555e7468-e11b-4a9e-959c-4e9a1258f617",
+    "name": "Wikimedia REST Citation Page content API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This API provides cacheable and straightforward access to Wikimedia content and data, in machine-readable formats.\n### Global Rules\n- Limit your clients to no more than 200 requests/s to this API.\n  Each API endpoint's documentation may detail more specific usage limits.\n- Set a unique `User-Agent` or `Api-User-Agent` header that\n  allows us to contact you quickly. Email addresses or URLs\n  of contact pages work well.\n\nBy using this API, you agree to Wikimedia's [Terms of Use](https://wikimediafoundation.org/wiki/Terms_of_Use) and [Privacy Policy](https://wikimediafoundation.org/wiki/Privacy_policy). Unless otherwise specified in the endpoint documentation below, content accessed via this API is licensed under the [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) and [GFDL](https://www.gnu.org/copyleft/fdl.html) licenses, and you irrevocably agree to release modifications or additions made through this API under these licenses. Check the [Wikimedia REST API documentation](https://www.mediawiki.org/wiki/Wikimedia_REST_API) for background and details.\n### Endpoint documentation\nPlease consult each endpoint's documentation for details on:\n- Licensing information for the specific type of content\n  and data served via the endpoint.\n- Stability markers to inform you about development status and\n  change policy, according to\n  [our API version policy](https://www.mediawiki.org/wiki/API_versioning).\n- Endpoint specific usage limits.\n\n\nContact Support:\n Name: the Wikimedia Services team",
+      "type": "text/plain"
+    }
+  }
+}

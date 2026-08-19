@@ -1,0 +1,4296 @@
+{
+  "item": [
+    {
+      "id": "5f21b8e4-2e54-4e20-97ab-3a1461467f54",
+      "name": "Transforms",
+      "description": {
+        "content": "convert content between HTML and Wikitext",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "eef223ee-b963-46c5-a896-a733f6ce6a3d",
+          "name": "Transform HTML to Wikitext",
+          "request": {
+            "name": "Transform HTML to Wikitext",
+            "description": {
+              "content": "Transform [Parsoid HTML](https://www.mediawiki.org/wiki/Parsoid/MediaWiki_DOM_spec)\nto Wikitext.\n\nWhen converting pre-existing (possibly modified) content, you should\npass in the `title`, `revision`, and `If-Match` header. This lets\n[Parsoid](https://www.mediawiki.org/wiki/Parsoid) preserve small\nsyntactic variations in wikitext, which ensures that diffs are\nreadable.\n\n- Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)\n- Rate limit: 25 req/s\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transform",
+                "html",
+                "to",
+                "wikitext"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The `ETag` header of the original render indicating it's revision and timeuuid.\nRequired if both `title` and `revision` parameters are present.\n",
+                "key": "if-match",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/wikitext/1.0.0\""
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "html",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) The HTML to transform"
+                },
+                {
+                  "key": "scrub_wikitext",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": "Normalise the DOM to yield cleaner wikitext?"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e7f24982-296f-457e-9648-e7c4af34012a",
+              "name": "MediaWiki Wikitext.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "html",
+                    "to",
+                    "wikitext"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The `ETag` header of the original render indicating it's revision and timeuuid.\nRequired if both `title` and `revision` parameters are present.\n",
+                    "key": "if-match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/wikitext/1.0.0\""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The HTML to transform",
+                        "type": "text/plain"
+                      },
+                      "key": "html",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Normalise the DOM to yield cleaner wikitext?",
+                        "type": "text/plain"
+                      },
+                      "key": "scrub_wikitext",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/wikitext/1.0.0\""
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ddfbf860-1859-4763-a68f-9fc92f2957be",
+              "name": "Access to the specific revision is restricted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "html",
+                    "to",
+                    "wikitext"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The `ETag` header of the original render indicating it's revision and timeuuid.\nRequired if both `title` and `revision` parameters are present.\n",
+                    "key": "if-match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The HTML to transform",
+                        "type": "text/plain"
+                      },
+                      "key": "html",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Normalise the DOM to yield cleaner wikitext?",
+                        "type": "text/plain"
+                      },
+                      "key": "scrub_wikitext",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a0214a3-2028-495d-bf8f-a6e5678b0f93",
+              "name": "Unknown page title or revision",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "html",
+                    "to",
+                    "wikitext"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The `ETag` header of the original render indicating it's revision and timeuuid.\nRequired if both `title` and `revision` parameters are present.\n",
+                    "key": "if-match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The HTML to transform",
+                        "type": "text/plain"
+                      },
+                      "key": "html",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Normalise the DOM to yield cleaner wikitext?",
+                        "type": "text/plain"
+                      },
+                      "key": "scrub_wikitext",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "63cecdfc-6ed3-4965-94b2-4bd62634b0ec",
+              "name": "Revision was restricted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "html",
+                    "to",
+                    "wikitext"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The `ETag` header of the original render indicating it's revision and timeuuid.\nRequired if both `title` and `revision` parameters are present.\n",
+                    "key": "if-match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The HTML to transform",
+                        "type": "text/plain"
+                      },
+                      "key": "html",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Normalise the DOM to yield cleaner wikitext?",
+                        "type": "text/plain"
+                      },
+                      "key": "scrub_wikitext",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3475a98e-b88d-4f98-a994-eabc222feb9e",
+              "name": "Page was deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "html",
+                    "to",
+                    "wikitext"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The `ETag` header of the original render indicating it's revision and timeuuid.\nRequired if both `title` and `revision` parameters are present.\n",
+                    "key": "if-match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The HTML to transform",
+                        "type": "text/plain"
+                      },
+                      "key": "html",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Normalise the DOM to yield cleaner wikitext?",
+                        "type": "text/plain"
+                      },
+                      "key": "scrub_wikitext",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "354eb923-dbca-4c55-a47c-c9805e1057d0",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "html",
+                    "to",
+                    "wikitext"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The `ETag` header of the original render indicating it's revision and timeuuid.\nRequired if both `title` and `revision` parameters are present.\n",
+                    "key": "if-match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The HTML to transform",
+                        "type": "text/plain"
+                      },
+                      "key": "html",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Normalise the DOM to yield cleaner wikitext?",
+                        "type": "text/plain"
+                      },
+                      "key": "scrub_wikitext",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f21d7f55-0219-4da2-a1b8-c00f18885186",
+          "name": "Transform HTML to Wikitext",
+          "request": {
+            "name": "Transform HTML to Wikitext",
+            "description": {
+              "content": "Transform [Parsoid HTML](https://www.mediawiki.org/wiki/Parsoid/MediaWiki_DOM_spec)\nto Wikitext.\n\nWhen converting pre-existing (possibly modified) content, you should\npass in the `title`, `revision`, and `If-Match` header. This lets\n[Parsoid](https://www.mediawiki.org/wiki/Parsoid) preserve small\nsyntactic variations in wikitext, which ensures that diffs are\nreadable.\n\n- Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)\n- Rate limit: 25 req/s\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transform",
+                "html",
+                "to",
+                "wikitext",
+                ":title"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "title",
+                  "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The `ETag` header of the original render indicating it's revision and timeuuid.\nRequired if both `title` and `revision` parameters are present.\n",
+                "key": "if-match",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/wikitext/1.0.0\""
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "html",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) The HTML to transform"
+                },
+                {
+                  "key": "scrub_wikitext",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": "Normalise the DOM to yield cleaner wikitext?"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cd0b8ae1-0030-4915-aeb8-5a402e5e911b",
+              "name": "MediaWiki Wikitext.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "html",
+                    "to",
+                    "wikitext",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The `ETag` header of the original render indicating it's revision and timeuuid.\nRequired if both `title` and `revision` parameters are present.\n",
+                    "key": "if-match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/wikitext/1.0.0\""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The HTML to transform",
+                        "type": "text/plain"
+                      },
+                      "key": "html",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Normalise the DOM to yield cleaner wikitext?",
+                        "type": "text/plain"
+                      },
+                      "key": "scrub_wikitext",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/wikitext/1.0.0\""
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0327f32d-08b7-4ef1-9d64-7af1e25b027d",
+              "name": "Access to the specific revision is restricted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "html",
+                    "to",
+                    "wikitext",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The `ETag` header of the original render indicating it's revision and timeuuid.\nRequired if both `title` and `revision` parameters are present.\n",
+                    "key": "if-match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The HTML to transform",
+                        "type": "text/plain"
+                      },
+                      "key": "html",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Normalise the DOM to yield cleaner wikitext?",
+                        "type": "text/plain"
+                      },
+                      "key": "scrub_wikitext",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3ea144de-a51d-4d59-8d08-ca18f8d21654",
+              "name": "Unknown page title or revision",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "html",
+                    "to",
+                    "wikitext",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The `ETag` header of the original render indicating it's revision and timeuuid.\nRequired if both `title` and `revision` parameters are present.\n",
+                    "key": "if-match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The HTML to transform",
+                        "type": "text/plain"
+                      },
+                      "key": "html",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Normalise the DOM to yield cleaner wikitext?",
+                        "type": "text/plain"
+                      },
+                      "key": "scrub_wikitext",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c53f001e-4c59-49d4-aea5-1b51725e8e47",
+              "name": "Revision was restricted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "html",
+                    "to",
+                    "wikitext",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The `ETag` header of the original render indicating it's revision and timeuuid.\nRequired if both `title` and `revision` parameters are present.\n",
+                    "key": "if-match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The HTML to transform",
+                        "type": "text/plain"
+                      },
+                      "key": "html",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Normalise the DOM to yield cleaner wikitext?",
+                        "type": "text/plain"
+                      },
+                      "key": "scrub_wikitext",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a09dc2d2-245c-4a53-9ef2-c53aeb811567",
+              "name": "Page was deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "html",
+                    "to",
+                    "wikitext",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The `ETag` header of the original render indicating it's revision and timeuuid.\nRequired if both `title` and `revision` parameters are present.\n",
+                    "key": "if-match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The HTML to transform",
+                        "type": "text/plain"
+                      },
+                      "key": "html",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Normalise the DOM to yield cleaner wikitext?",
+                        "type": "text/plain"
+                      },
+                      "key": "scrub_wikitext",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ea00e02-7d91-423b-94f5-0d3774429361",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "html",
+                    "to",
+                    "wikitext",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The `ETag` header of the original render indicating it's revision and timeuuid.\nRequired if both `title` and `revision` parameters are present.\n",
+                    "key": "if-match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The HTML to transform",
+                        "type": "text/plain"
+                      },
+                      "key": "html",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Normalise the DOM to yield cleaner wikitext?",
+                        "type": "text/plain"
+                      },
+                      "key": "scrub_wikitext",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2acc8cfe-c8b7-4dfb-b97d-97cd3d687036",
+          "name": "Transform HTML to Wikitext",
+          "request": {
+            "name": "Transform HTML to Wikitext",
+            "description": {
+              "content": "Transform [Parsoid HTML](https://www.mediawiki.org/wiki/Parsoid/MediaWiki_DOM_spec)\nto Wikitext.\n\nWhen converting pre-existing (possibly modified) content, you should\npass in the `title`, `revision`, and `If-Match` header. This lets\n[Parsoid](https://www.mediawiki.org/wiki/Parsoid) preserve small\nsyntactic variations in wikitext, which ensures that diffs are\nreadable.\n\n- Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)\n- Rate limit: 25 req/s\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transform",
+                "html",
+                "to",
+                "wikitext",
+                ":title",
+                ":revision"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "title",
+                  "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "revision",
+                  "description": "(Required) The page revision"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The `ETag` header of the original render indicating it's revision and timeuuid.\nRequired if both `title` and `revision` parameters are present.\n",
+                "key": "if-match",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/wikitext/1.0.0\""
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "html",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) The HTML to transform"
+                },
+                {
+                  "key": "scrub_wikitext",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": "Normalise the DOM to yield cleaner wikitext?"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "41a0105a-5b84-41d2-9cc1-5bff02a2ec04",
+              "name": "MediaWiki Wikitext.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "html",
+                    "to",
+                    "wikitext",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The page revision"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The `ETag` header of the original render indicating it's revision and timeuuid.\nRequired if both `title` and `revision` parameters are present.\n",
+                    "key": "if-match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/wikitext/1.0.0\""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The HTML to transform",
+                        "type": "text/plain"
+                      },
+                      "key": "html",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Normalise the DOM to yield cleaner wikitext?",
+                        "type": "text/plain"
+                      },
+                      "key": "scrub_wikitext",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/wikitext/1.0.0\""
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d7b5316b-231d-4699-9d01-93938e00d3f1",
+              "name": "Access to the specific revision is restricted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "html",
+                    "to",
+                    "wikitext",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The page revision"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The `ETag` header of the original render indicating it's revision and timeuuid.\nRequired if both `title` and `revision` parameters are present.\n",
+                    "key": "if-match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The HTML to transform",
+                        "type": "text/plain"
+                      },
+                      "key": "html",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Normalise the DOM to yield cleaner wikitext?",
+                        "type": "text/plain"
+                      },
+                      "key": "scrub_wikitext",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12b09ec8-f8b8-40a6-aea3-c877ab305e1f",
+              "name": "Unknown page title or revision",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "html",
+                    "to",
+                    "wikitext",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The page revision"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The `ETag` header of the original render indicating it's revision and timeuuid.\nRequired if both `title` and `revision` parameters are present.\n",
+                    "key": "if-match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The HTML to transform",
+                        "type": "text/plain"
+                      },
+                      "key": "html",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Normalise the DOM to yield cleaner wikitext?",
+                        "type": "text/plain"
+                      },
+                      "key": "scrub_wikitext",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fabed9e2-e34b-4e2e-b9fe-39910cc2e1ce",
+              "name": "Revision was restricted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "html",
+                    "to",
+                    "wikitext",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The page revision"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The `ETag` header of the original render indicating it's revision and timeuuid.\nRequired if both `title` and `revision` parameters are present.\n",
+                    "key": "if-match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The HTML to transform",
+                        "type": "text/plain"
+                      },
+                      "key": "html",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Normalise the DOM to yield cleaner wikitext?",
+                        "type": "text/plain"
+                      },
+                      "key": "scrub_wikitext",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "67a7fa6a-2abf-4149-bb0d-237bbc853f9c",
+              "name": "Page was deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "html",
+                    "to",
+                    "wikitext",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The page revision"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The `ETag` header of the original render indicating it's revision and timeuuid.\nRequired if both `title` and `revision` parameters are present.\n",
+                    "key": "if-match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The HTML to transform",
+                        "type": "text/plain"
+                      },
+                      "key": "html",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Normalise the DOM to yield cleaner wikitext?",
+                        "type": "text/plain"
+                      },
+                      "key": "scrub_wikitext",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a5ae4b4-0ebd-4ff3-afda-e9afce57fa22",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "html",
+                    "to",
+                    "wikitext",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The page revision"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The `ETag` header of the original render indicating it's revision and timeuuid.\nRequired if both `title` and `revision` parameters are present.\n",
+                    "key": "if-match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The HTML to transform",
+                        "type": "text/plain"
+                      },
+                      "key": "html",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Normalise the DOM to yield cleaner wikitext?",
+                        "type": "text/plain"
+                      },
+                      "key": "scrub_wikitext",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9909b8a8-6c9f-4d2d-9b21-f6b87c2e9030",
+          "name": "Transform Wikitext to HTML",
+          "request": {
+            "name": "Transform Wikitext to HTML",
+            "description": {
+              "content": "Transform wikitext to HTML. Note that if you set `stash: true`, you\nalso need to supply the title.\n\n- Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)\n- Rate limit: 25 req/s (5 req/s when `stash: true`)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transform",
+                "wikitext",
+                "to",
+                "html"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "text/html; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/HTML/2.1.0\""
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "wikitext",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) The Wikitext to transform to HTML"
+                },
+                {
+                  "key": "body_only",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": "Return only `body.innerHTML`"
+                },
+                {
+                  "key": "stash",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": "Whether to temporarily stash the result of the transformation"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6d3136e2-df43-4101-8f9c-c1e5d5298f1b",
+              "name": "See wikipage https://www.mediawiki.org/wiki/Parsoid/MediaWiki_DOM_spec",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "html"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/HTML/2.1.0\""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to transform to HTML",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Return only `body.innerHTML`",
+                        "type": "text/plain"
+                      },
+                      "key": "body_only",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Whether to temporarily stash the result of the transformation",
+                        "type": "text/plain"
+                      },
+                      "key": "stash",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/html; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/HTML/2.1.0\""
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8a5247f6-160e-4aed-af9a-4896c92334a5",
+              "name": "access to the specific revision is restricted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "html"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to transform to HTML",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Return only `body.innerHTML`",
+                        "type": "text/plain"
+                      },
+                      "key": "body_only",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Whether to temporarily stash the result of the transformation",
+                        "type": "text/plain"
+                      },
+                      "key": "stash",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a4031958-3887-4ee9-9d91-c3621e7623f7",
+              "name": "Unknown page title or revision",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "html"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to transform to HTML",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Return only `body.innerHTML`",
+                        "type": "text/plain"
+                      },
+                      "key": "body_only",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Whether to temporarily stash the result of the transformation",
+                        "type": "text/plain"
+                      },
+                      "key": "stash",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed41c848-7549-489a-8e1c-48cd10a4483e",
+              "name": "Revision was restricted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "html"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to transform to HTML",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Return only `body.innerHTML`",
+                        "type": "text/plain"
+                      },
+                      "key": "body_only",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Whether to temporarily stash the result of the transformation",
+                        "type": "text/plain"
+                      },
+                      "key": "stash",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c91a1f8e-acc8-4de4-8516-adc943cd8721",
+              "name": "Page was deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "html"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to transform to HTML",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Return only `body.innerHTML`",
+                        "type": "text/plain"
+                      },
+                      "key": "body_only",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Whether to temporarily stash the result of the transformation",
+                        "type": "text/plain"
+                      },
+                      "key": "stash",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8aaa7f2c-1d64-428a-bcec-0271c9f22851",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "html"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to transform to HTML",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Return only `body.innerHTML`",
+                        "type": "text/plain"
+                      },
+                      "key": "body_only",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Whether to temporarily stash the result of the transformation",
+                        "type": "text/plain"
+                      },
+                      "key": "stash",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac2dfbe8-7d26-4757-9454-c5a6bf55262e",
+          "name": "Transform Wikitext to HTML",
+          "request": {
+            "name": "Transform Wikitext to HTML",
+            "description": {
+              "content": "Transform wikitext to HTML. Note that if you set `stash: true`, you\nalso need to supply the title.\n\n- Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)\n- Rate limit: 25 req/s (5 req/s when `stash: true`)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transform",
+                "wikitext",
+                "to",
+                "html",
+                ":title"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "title",
+                  "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "text/html; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/HTML/2.1.0\""
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "wikitext",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) The Wikitext to transform to HTML"
+                },
+                {
+                  "key": "body_only",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": "Return only `body.innerHTML`"
+                },
+                {
+                  "key": "stash",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": "Whether to temporarily stash the result of the transformation"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b448779d-23c3-45a9-b4a2-272a6e065bb8",
+              "name": "See wikipage https://www.mediawiki.org/wiki/Parsoid/MediaWiki_DOM_spec",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "html",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/HTML/2.1.0\""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to transform to HTML",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Return only `body.innerHTML`",
+                        "type": "text/plain"
+                      },
+                      "key": "body_only",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Whether to temporarily stash the result of the transformation",
+                        "type": "text/plain"
+                      },
+                      "key": "stash",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/html; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/HTML/2.1.0\""
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "51bbc2a9-edbb-4d5e-9eb7-7a32b8b3a031",
+              "name": "access to the specific revision is restricted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "html",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to transform to HTML",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Return only `body.innerHTML`",
+                        "type": "text/plain"
+                      },
+                      "key": "body_only",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Whether to temporarily stash the result of the transformation",
+                        "type": "text/plain"
+                      },
+                      "key": "stash",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "adca48a8-8724-4d66-9ac9-3c824dbc25af",
+              "name": "Unknown page title or revision",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "html",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to transform to HTML",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Return only `body.innerHTML`",
+                        "type": "text/plain"
+                      },
+                      "key": "body_only",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Whether to temporarily stash the result of the transformation",
+                        "type": "text/plain"
+                      },
+                      "key": "stash",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "242a50ce-86f7-4bba-80a0-d46a99d90204",
+              "name": "Revision was restricted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "html",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to transform to HTML",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Return only `body.innerHTML`",
+                        "type": "text/plain"
+                      },
+                      "key": "body_only",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Whether to temporarily stash the result of the transformation",
+                        "type": "text/plain"
+                      },
+                      "key": "stash",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4910d90a-7201-44d8-ae55-a2741f3bfe2f",
+              "name": "Page was deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "html",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to transform to HTML",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Return only `body.innerHTML`",
+                        "type": "text/plain"
+                      },
+                      "key": "body_only",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Whether to temporarily stash the result of the transformation",
+                        "type": "text/plain"
+                      },
+                      "key": "stash",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "131d9460-35c7-4daa-9c11-e4bd729f573c",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "html",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to transform to HTML",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Return only `body.innerHTML`",
+                        "type": "text/plain"
+                      },
+                      "key": "body_only",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Whether to temporarily stash the result of the transformation",
+                        "type": "text/plain"
+                      },
+                      "key": "stash",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7bb730b4-4aa7-463f-a6dd-3631b578b764",
+          "name": "Transform Wikitext to HTML",
+          "request": {
+            "name": "Transform Wikitext to HTML",
+            "description": {
+              "content": "Transform wikitext to HTML. Note that if you set `stash: true`, you\nalso need to supply the title.\n\n- Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)\n- Rate limit: 25 req/s (5 req/s when `stash: true`)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transform",
+                "wikitext",
+                "to",
+                "html",
+                ":title",
+                ":revision"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "title",
+                  "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "revision",
+                  "description": "(Required) The page revision"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "text/html; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/HTML/2.1.0\""
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "wikitext",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) The Wikitext to transform to HTML"
+                },
+                {
+                  "key": "body_only",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": "Return only `body.innerHTML`"
+                },
+                {
+                  "key": "stash",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": "Whether to temporarily stash the result of the transformation"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "51289a84-c7dd-427e-aca5-3624c8d9937a",
+              "name": "See wikipage https://www.mediawiki.org/wiki/Parsoid/MediaWiki_DOM_spec",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "html",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The page revision"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/HTML/2.1.0\""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to transform to HTML",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Return only `body.innerHTML`",
+                        "type": "text/plain"
+                      },
+                      "key": "body_only",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Whether to temporarily stash the result of the transformation",
+                        "type": "text/plain"
+                      },
+                      "key": "stash",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/html; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/HTML/2.1.0\""
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "342b513d-f79d-4bfa-af34-23e23a9a1084",
+              "name": "access to the specific revision is restricted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "html",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The page revision"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to transform to HTML",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Return only `body.innerHTML`",
+                        "type": "text/plain"
+                      },
+                      "key": "body_only",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Whether to temporarily stash the result of the transformation",
+                        "type": "text/plain"
+                      },
+                      "key": "stash",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea3355d9-eff8-4238-86c7-1038227f3172",
+              "name": "Unknown page title or revision",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "html",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The page revision"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to transform to HTML",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Return only `body.innerHTML`",
+                        "type": "text/plain"
+                      },
+                      "key": "body_only",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Whether to temporarily stash the result of the transformation",
+                        "type": "text/plain"
+                      },
+                      "key": "stash",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2d03fe14-0709-4a90-a478-f8f5825248f0",
+              "name": "Revision was restricted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "html",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The page revision"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to transform to HTML",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Return only `body.innerHTML`",
+                        "type": "text/plain"
+                      },
+                      "key": "body_only",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Whether to temporarily stash the result of the transformation",
+                        "type": "text/plain"
+                      },
+                      "key": "stash",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b03a1d40-9acd-4f75-9c93-d6e6ba05f061",
+              "name": "Page was deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "html",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The page revision"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to transform to HTML",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Return only `body.innerHTML`",
+                        "type": "text/plain"
+                      },
+                      "key": "body_only",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Whether to temporarily stash the result of the transformation",
+                        "type": "text/plain"
+                      },
+                      "key": "stash",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96e7bd61-9580-4420-940d-1ff968fcbf78",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "html",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The page revision"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to transform to HTML",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Return only `body.innerHTML`",
+                        "type": "text/plain"
+                      },
+                      "key": "body_only",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Whether to temporarily stash the result of the transformation",
+                        "type": "text/plain"
+                      },
+                      "key": "stash",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a6308e82-c706-4800-9ffc-44825d53e19c",
+          "name": "Check Wikitext for lint errors",
+          "request": {
+            "name": "Check Wikitext for lint errors",
+            "description": {
+              "content": "Parse the supplied wikitext and check it for lint errors.\n\n- Stability: [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)\n- Rate limit: 25 req/s\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transform",
+                "wikitext",
+                "to",
+                "lint"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "wikitext",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) The Wikitext to check"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "322fff7c-57a9-4adb-96b0-9886cfd93bfb",
+              "name": "Linter errors, if any, as a JSON blob",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "lint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to check",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c9d1c872-dd34-4f26-b243-84691522f2dd",
+              "name": "Unknown page title",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "lint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to check",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ee84e978-608c-4137-b443-0898aa68efc7",
+              "name": "Latest revision was restricted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "lint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to check",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3bd08c4e-dbba-495b-96fb-2ab6d7ad7ac5",
+              "name": "Page was deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "lint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to check",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "463c7d2f-db5e-42e2-b893-a4e37613a8f8",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "lint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to check",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "63bdd849-87b7-4b20-9a9f-6e14f8cc8455",
+          "name": "Check Wikitext for lint errors",
+          "request": {
+            "name": "Check Wikitext for lint errors",
+            "description": {
+              "content": "Parse the supplied wikitext and check it for lint errors.\n\n- Stability: [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)\n- Rate limit: 25 req/s\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transform",
+                "wikitext",
+                "to",
+                "lint",
+                ":title"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "title",
+                  "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "wikitext",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) The Wikitext to check"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "61619391-5367-470e-986d-a6e6db5cd79c",
+              "name": "Linter errors, if any, as a JSON blob",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "lint",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to check",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fc68328b-e990-40cc-81d4-7ecff781ffdb",
+              "name": "Unknown page title",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "lint",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to check",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "77dbd634-f14c-421a-96c2-646401cc8cb8",
+              "name": "Latest revision was restricted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "lint",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to check",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d28e592f-67a3-4acc-a7ba-9a780aecaf35",
+              "name": "Page was deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "lint",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to check",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a33183b-e230-4c09-97b2-00ff316641bd",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "lint",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to check",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aaf8191f-4311-4271-9d32-f1524a44d189",
+          "name": "Check Wikitext for lint errors",
+          "request": {
+            "name": "Check Wikitext for lint errors",
+            "description": {
+              "content": "Parse the supplied wikitext and check it for lint errors.\n\n- Stability: [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)\n- Rate limit: 25 req/s\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transform",
+                "wikitext",
+                "to",
+                "lint",
+                ":title",
+                ":revision"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "title",
+                  "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "revision",
+                  "description": "(Required) The page revision"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "wikitext",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) The Wikitext to check"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "376cad77-e9a3-4174-827c-28de1d51e5d9",
+              "name": "Linter errors, if any, as a JSON blob",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "lint",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The page revision"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to check",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dbcab6ca-9567-42ed-af53-60f917dc1ffb",
+              "name": "Unknown page title",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "lint",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The page revision"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to check",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6d99c305-0006-4ab3-b186-bfc1881ffbab",
+              "name": "Latest revision was restricted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "lint",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The page revision"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to check",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b9611832-bfdc-497a-8e90-d5fef74006ee",
+              "name": "Page was deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "lint",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The page revision"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to check",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2680f9a0-8440-4a4c-beed-c3aa9a1c690e",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform",
+                    "wikitext",
+                    "to",
+                    "lint",
+                    ":title",
+                    ":revision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revision",
+                      "description": "(Required) The page revision"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The Wikitext to check",
+                        "type": "text/plain"
+                      },
+                      "key": "wikitext",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/api/rest_v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "38ab5d45-2250-4667-a677-174bbc0de5a0",
+    "name": "Wikimedia REST Citation Transforms API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This API provides cacheable and straightforward access to Wikimedia content and data, in machine-readable formats.\n### Global Rules\n- Limit your clients to no more than 200 requests/s to this API.\n  Each API endpoint's documentation may detail more specific usage limits.\n- Set a unique `User-Agent` or `Api-User-Agent` header that\n  allows us to contact you quickly. Email addresses or URLs\n  of contact pages work well.\n\nBy using this API, you agree to Wikimedia's [Terms of Use](https://wikimediafoundation.org/wiki/Terms_of_Use) and [Privacy Policy](https://wikimediafoundation.org/wiki/Privacy_policy). Unless otherwise specified in the endpoint documentation below, content accessed via this API is licensed under the [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) and [GFDL](https://www.gnu.org/copyleft/fdl.html) licenses, and you irrevocably agree to release modifications or additions made through this API under these licenses. Check the [Wikimedia REST API documentation](https://www.mediawiki.org/wiki/Wikimedia_REST_API) for background and details.\n### Endpoint documentation\nPlease consult each endpoint's documentation for details on:\n- Licensing information for the specific type of content\n  and data served via the endpoint.\n- Stability markers to inform you about development status and\n  change policy, according to\n  [our API version policy](https://www.mediawiki.org/wiki/API_versioning).\n- Endpoint specific usage limits.\n\n\nContact Support:\n Name: the Wikimedia Services team",
+      "type": "text/plain"
+    }
+  }
+}

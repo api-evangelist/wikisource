@@ -1,0 +1,228 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wikimedia REST Citation Page content API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Page content",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List page-related API entry points.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/rest_v1/page/"
+          },
+          "docs": "Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)\n"
+        },
+        {
+          "info": {
+            "name": "Get revision metadata for a title.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/rest_v1/page/title/:title",
+            "params": [
+              {
+                "name": "title",
+                "value": "",
+                "type": "path",
+                "description": "Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+              }
+            ]
+          },
+          "docs": "Returns the revision metadata for the given title. If a revision ID is provided,\nmetadata for that revision is returned, otherwise the latest revision ID is assumed.\n\nStability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable).\n"
+        },
+        {
+          "info": {
+            "name": "Get revision metadata for a title.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/rest_v1/page/title/:title/:revision",
+            "params": [
+              {
+                "name": "title",
+                "value": "",
+                "type": "path",
+                "description": "Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+              },
+              {
+                "name": "revision",
+                "value": "",
+                "type": "path",
+                "description": "The revision id"
+              }
+            ]
+          },
+          "docs": "Returns the revision metadata for the given title. If a revision ID is provided,\nmetadata for that revision is returned, otherwise the latest revision ID is assumed.\n\nStability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable).\n"
+        },
+        {
+          "info": {
+            "name": "Get latest HTML for a title.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/rest_v1/page/html/:title",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "title",
+                "value": "",
+                "type": "path",
+                "description": "Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+              },
+              {
+                "name": "redirect",
+                "value": "",
+                "type": "query",
+                "description": "Requests for [redirect pages](https://www.mediawiki.org/wiki/Help:Redirects) return HTTP 302 with a redirect target in `Location` header and content in the body.\nTo get a 200 response instead, supply `false` to the `redirect` parameter.\n"
+              },
+              {
+                "name": "stash",
+                "value": "",
+                "type": "query",
+                "description": "Whether to temporary stash data-parsoid metadata in order to support transforming the\nmodified content later. If this parameter is set, requests are rate-limited on\na per-client basis (max 5 requests per second per client)\n"
+              }
+            ]
+          },
+          "docs": "Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)\n"
+        },
+        {
+          "info": {
+            "name": "Get HTML for a specific title/revision & optionally timeuuid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/rest_v1/page/html/:title/:revision",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "title",
+                "value": "",
+                "type": "path",
+                "description": "Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+              },
+              {
+                "name": "revision",
+                "value": "",
+                "type": "path",
+                "description": "The revision"
+              },
+              {
+                "name": "redirect",
+                "value": "",
+                "type": "query",
+                "description": "Requests for [redirect pages](https://www.mediawiki.org/wiki/Help:Redirects) return HTTP 302 with a redirect target in `Location` header and content in the body.\nTo get a 200 response instead, supply `false` to the `redirect` parameter.\n"
+              },
+              {
+                "name": "stash",
+                "value": "",
+                "type": "query",
+                "description": "Whether to temporary stash data-parsoid metadata in order to support transforming the\nmodified content later. If this parameter is set, requests are rate-limited on\na per-client basis (max 5 requests per second per client)\n"
+              }
+            ]
+          },
+          "docs": "Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)\n"
+        },
+        {
+          "info": {
+            "name": "Get the linter errors for a specific title/revision.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/rest_v1/page/lint/:title",
+            "params": [
+              {
+                "name": "title",
+                "value": "",
+                "type": "path",
+                "description": "Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+              }
+            ]
+          },
+          "docs": "Stability: [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)\n"
+        },
+        {
+          "info": {
+            "name": "Get the linter errors for a specific title/revision.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/rest_v1/page/lint/:title/:revision",
+            "params": [
+              {
+                "name": "title",
+                "value": "",
+                "type": "path",
+                "description": "Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+              },
+              {
+                "name": "revision",
+                "value": "",
+                "type": "path",
+                "description": "The revision"
+              }
+            ]
+          },
+          "docs": "Stability: [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)\n"
+        },
+        {
+          "info": {
+            "name": "Get basic metadata and simplified article introduction.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/rest_v1/page/summary/:title",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "title",
+                "value": "",
+                "type": "path",
+                "description": "Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+              },
+              {
+                "name": "redirect",
+                "value": "",
+                "type": "query",
+                "description": "Requests for [redirect pages](https://www.mediawiki.org/wiki/Help:Redirects) return HTTP 302 with a redirect target in `Location` header and content in the body.\nTo get a 200 response instead, supply `false` to the `redirect` parameter.\n"
+              }
+            ]
+          },
+          "docs": "The summary response includes an extract of the first paragraph of the page in plain text\nand HTML as well as the type of page. This is useful for page previews (fka. Hovercards,\naka. Popups) on the web and link previews in the apps.\n\nStability: [stable](https://www.mediawiki.org/wiki/Wikimedia_Product/Wikimedia_Product_Infrastructure_team/API_endpoint_stability_policy#Stable)\n\nPlease follow [wikitech-l](https://lists.wikimedia.org/mailman/listinfo/wikitech-l) or [mediawiki-api-announce](https:/"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

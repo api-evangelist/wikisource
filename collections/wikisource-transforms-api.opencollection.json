@@ -1,0 +1,330 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wikimedia REST Citation Transforms API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Transforms",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Transform HTML to Wikitext",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/rest_v1/transform/html/to/wikitext",
+            "headers": [
+              {
+                "name": "if-match",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "html",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "scrub_wikitext",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Transform [Parsoid HTML](https://www.mediawiki.org/wiki/Parsoid/MediaWiki_DOM_spec)\nto Wikitext.\n\nWhen converting pre-existing (possibly modified) content, you should\npass in the `title`, `revision`, and `If-Match` header. This lets\n[Parsoid](https://www.mediawiki.org/wiki/Parsoid) preserve small\nsyntactic variations in wikitext, which ensures that diffs are\nreadable.\n\n- Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)\n- Rate limit: 25 req/s\n"
+        },
+        {
+          "info": {
+            "name": "Transform HTML to Wikitext",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/rest_v1/transform/html/to/wikitext/:title",
+            "headers": [
+              {
+                "name": "if-match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "title",
+                "value": "",
+                "type": "path",
+                "description": "Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "html",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "scrub_wikitext",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Transform [Parsoid HTML](https://www.mediawiki.org/wiki/Parsoid/MediaWiki_DOM_spec)\nto Wikitext.\n\nWhen converting pre-existing (possibly modified) content, you should\npass in the `title`, `revision`, and `If-Match` header. This lets\n[Parsoid](https://www.mediawiki.org/wiki/Parsoid) preserve small\nsyntactic variations in wikitext, which ensures that diffs are\nreadable.\n\n- Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)\n- Rate limit: 25 req/s\n"
+        },
+        {
+          "info": {
+            "name": "Transform HTML to Wikitext",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/rest_v1/transform/html/to/wikitext/:title/:revision",
+            "headers": [
+              {
+                "name": "if-match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "title",
+                "value": "",
+                "type": "path",
+                "description": "Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+              },
+              {
+                "name": "revision",
+                "value": "",
+                "type": "path",
+                "description": "The page revision"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "html",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "scrub_wikitext",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Transform [Parsoid HTML](https://www.mediawiki.org/wiki/Parsoid/MediaWiki_DOM_spec)\nto Wikitext.\n\nWhen converting pre-existing (possibly modified) content, you should\npass in the `title`, `revision`, and `If-Match` header. This lets\n[Parsoid](https://www.mediawiki.org/wiki/Parsoid) preserve small\nsyntactic variations in wikitext, which ensures that diffs are\nreadable.\n\n- Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)\n- Rate limit: 25 req/s\n"
+        },
+        {
+          "info": {
+            "name": "Transform Wikitext to HTML",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/rest_v1/transform/wikitext/to/html",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "wikitext",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "body_only",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "stash",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Transform wikitext to HTML. Note that if you set `stash: true`, you\nalso need to supply the title.\n\n- Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)\n- Rate limit: 25 req/s (5 req/s when `stash: true`)\n"
+        },
+        {
+          "info": {
+            "name": "Transform Wikitext to HTML",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/rest_v1/transform/wikitext/to/html/:title",
+            "params": [
+              {
+                "name": "title",
+                "value": "",
+                "type": "path",
+                "description": "Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "wikitext",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "body_only",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "stash",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Transform wikitext to HTML. Note that if you set `stash: true`, you\nalso need to supply the title.\n\n- Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)\n- Rate limit: 25 req/s (5 req/s when `stash: true`)\n"
+        },
+        {
+          "info": {
+            "name": "Transform Wikitext to HTML",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/rest_v1/transform/wikitext/to/html/:title/:revision",
+            "params": [
+              {
+                "name": "title",
+                "value": "",
+                "type": "path",
+                "description": "Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+              },
+              {
+                "name": "revision",
+                "value": "",
+                "type": "path",
+                "description": "The page revision"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "wikitext",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "body_only",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "stash",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Transform wikitext to HTML. Note that if you set `stash: true`, you\nalso need to supply the title.\n\n- Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)\n- Rate limit: 25 req/s (5 req/s when `stash: true`)\n"
+        },
+        {
+          "info": {
+            "name": "Check Wikitext for lint errors",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/rest_v1/transform/wikitext/to/lint",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Parse the supplied wikitext and check it for lint errors.\n\n- Stability: [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)\n- Rate limit: 25 req/s\n"
+        },
+        {
+          "info": {
+            "name": "Check Wikitext for lint errors",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/rest_v1/transform/wikitext/to/lint/:title",
+            "params": [
+              {
+                "name": "title",
+                "value": "",
+                "type": "path",
+                "description": "Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "wikitext",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Parse the supplied wikitext and check it for lint errors.\n\n- Stability: [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)\n- Rate limit: 25 req/s\n"
+        },
+        {
+          "info": {
+            "name": "Check Wikitext for lint errors",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/rest_v1/transform/wikitext/to/lint/:title/:revision",
+            "params": [
+              {
+                "name": "title",
+                "value": "",
+                "type": "path",
+                "description": "Page title. Use underscores instead of spaces. Use percent-encoding. Example: `Main_Page`."
+              },
+              {
+                "name": "revision",
+                "value": "",
+                "type": "path",
+                "description": "The page revision"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "wikitext",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Parse the supplied wikitext and check it for lint errors.\n\n- Stability: [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)\n- Rate limit: 25 req/s\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

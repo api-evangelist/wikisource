@@ -1,0 +1,670 @@
+{
+  "item": [
+    {
+      "id": "2ebd117e-d1f0-4cb6-b96e-956c28602bec",
+      "name": "Math",
+      "description": {
+        "content": "formula rendering",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "becc38ee-f6ba-4ba1-956a-712abfff2214",
+          "name": "Check and normalize a TeX formula.",
+          "request": {
+            "name": "Check and normalize a TeX formula.",
+            "description": {
+              "content": "Checks the supplied TeX formula for correctness and returns the\nnormalised formula representation as well as information about\nidentifiers. Available types are tex and inline-tex. The response\ncontains the `x-resource-location` header which can be used to retrieve\nthe render of the checked formula in one of the supported rendering\nformats. Just append the value of the header to `/media/math/{format}/`\nand perform a GET request against that URL.\n\n**NOTE**: the use of this endpoint is *strongly discouraged*. Instead, use the identical endpoint of the (canonical) Math API on the `wikimedia.org` domain.\n\nStability: [deprecated](https://www.mediawiki.org/wiki/API_versioning#Deprecated).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "media",
+                "math",
+                "check",
+                ":type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) The input type of the given formula; can be tex or inline-tex"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "q",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) The formula to check"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4f68b795-faad-408f-a091-bd8c8379c15a",
+              "name": "Information about the checked formula",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "math",
+                    "check",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) The input type of the given formula; can be tex or inline-tex"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The formula to check",
+                        "type": "text/plain"
+                      },
+                      "key": "q",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7e0961ab-7262-4a9d-b2c2-c4cf7573464e",
+              "name": "Invalid type",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "math",
+                    "check",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) The input type of the given formula; can be tex or inline-tex"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The formula to check",
+                        "type": "text/plain"
+                      },
+                      "key": "q",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7b998192-9c95-4fef-bae8-0c0d6589e2d9",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "math",
+                    "check",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) The input type of the given formula; can be tex or inline-tex"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The formula to check",
+                        "type": "text/plain"
+                      },
+                      "key": "q",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1693f357-7a5d-4122-a195-665ded2c6919",
+          "name": "Get a previously-stored formula",
+          "request": {
+            "name": "Get a previously-stored formula",
+            "description": {
+              "content": "Returns the previously-stored formula via `/media/math/check/{type}` for\nthe given hash.\n\n**NOTE**: the use of this endpoint is *strongly discouraged*. Instead, use the identical endpoint of the (canonical) Math API on the `wikimedia.org` domain.\n\nStability: [deprecated](https://www.mediawiki.org/wiki/API_versioning#Deprecated).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "media",
+                "math",
+                "formula",
+                ":hash"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "hash",
+                  "description": "(Required) The hash string of the previous POST data"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "86a92e67-07a4-442f-8b08-8c752bf0abc1",
+              "name": "Information about the checked formula",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "math",
+                    "formula",
+                    ":hash"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hash",
+                      "description": "(Required) The hash string of the previous POST data"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a5634ab-62ff-4379-aeea-923803716470",
+              "name": "Data for the given hash cannot be found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "math",
+                    "formula",
+                    ":hash"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hash",
+                      "description": "(Required) The hash string of the previous POST data"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "be1eaeb0-b40e-4c29-8e19-7ee522acd1d8",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "math",
+                    "formula",
+                    ":hash"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hash",
+                      "description": "(Required) The hash string of the previous POST data"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b9d3e61c-b881-421f-8456-5431a78a788d",
+          "name": "Get rendered formula in the given format.",
+          "request": {
+            "name": "Get rendered formula in the given format.",
+            "description": {
+              "content": "Given a request hash, renders a TeX formula into its mathematic\nrepresentation in the given format. When a request is issued to the\n`/media/math/check/{format}` POST endpoint, the response contains the\n`x-resource-location` header denoting the hash ID of the POST data. Once\nobtained, this endpoint has to be used to obtain the actual render.\n\n**NOTE**: the use of this endpoint is *strongly discouraged*. Instead, use the identical endpoint of the (canonical) Math API on the `wikimedia.org` domain.\n\nStability: [deprecated](https://www.mediawiki.org/wiki/API_versioning#Deprecated).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "media",
+                "math",
+                "render",
+                ":format",
+                ":hash"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "format",
+                  "description": "(Required) The output format; can be svg or mml"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "hash",
+                  "description": "(Required) The hash string of the previous POST data"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "image/svg+xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c104e772-7b5c-408d-91bb-84f9310ea452",
+              "name": "The rendered formula",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "math",
+                    "render",
+                    ":format",
+                    ":hash"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "format",
+                      "description": "(Required) The output format; can be svg or mml"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hash",
+                      "description": "(Required) The hash string of the previous POST data"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "image/svg+xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/mathml+xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "bde50d3e-6133-4886-8b16-a32ce32347e8",
+              "name": "Unknown format or hash ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "math",
+                    "render",
+                    ":format",
+                    ":hash"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "format",
+                      "description": "(Required) The output format; can be svg or mml"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hash",
+                      "description": "(Required) The hash string of the previous POST data"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a97e0d5d-4d87-4d77-9ee3-ef5013dc83d3",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "math",
+                    "render",
+                    ":format",
+                    ":hash"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "format",
+                      "description": "(Required) The output format; can be svg or mml"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hash",
+                      "description": "(Required) The hash string of the previous POST data"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/api/rest_v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "24693d73-1397-423f-9078-5a772d039b82",
+    "name": "Wikimedia REST Citation Math API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This API provides cacheable and straightforward access to Wikimedia content and data, in machine-readable formats.\n### Global Rules\n- Limit your clients to no more than 200 requests/s to this API.\n  Each API endpoint's documentation may detail more specific usage limits.\n- Set a unique `User-Agent` or `Api-User-Agent` header that\n  allows us to contact you quickly. Email addresses or URLs\n  of contact pages work well.\n\nBy using this API, you agree to Wikimedia's [Terms of Use](https://wikimediafoundation.org/wiki/Terms_of_Use) and [Privacy Policy](https://wikimediafoundation.org/wiki/Privacy_policy). Unless otherwise specified in the endpoint documentation below, content accessed via this API is licensed under the [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) and [GFDL](https://www.gnu.org/copyleft/fdl.html) licenses, and you irrevocably agree to release modifications or additions made through this API under these licenses. Check the [Wikimedia REST API documentation](https://www.mediawiki.org/wiki/Wikimedia_REST_API) for background and details.\n### Endpoint documentation\nPlease consult each endpoint's documentation for details on:\n- Licensing information for the specific type of content\n  and data served via the endpoint.\n- Stability markers to inform you about development status and\n  change policy, according to\n  [our API version policy](https://www.mediawiki.org/wiki/API_versioning).\n- Endpoint specific usage limits.\n\n\nContact Support:\n Name: the Wikimedia Services team",
+      "type": "text/plain"
+    }
+  }
+}

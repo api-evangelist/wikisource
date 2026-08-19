@@ -1,0 +1,316 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wikimedia REST Citation Reading lists API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reading lists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Opt in to use reading lists.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/rest_v1/data/lists/setup",
+            "params": [
+              {
+                "name": "csrf_token",
+                "value": "",
+                "type": "query",
+                "description": "The CRSF edit token provided by the MediaWiki API"
+              }
+            ]
+          },
+          "docs": "Must precede other list operations.\n\nRequest must be authenticated with a MediaWiki session cookie.\n\nStability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)\n"
+        },
+        {
+          "info": {
+            "name": "Opt out from using reading lists.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/rest_v1/data/lists/teardown",
+            "params": [
+              {
+                "name": "csrf_token",
+                "value": "",
+                "type": "query",
+                "description": "The CRSF edit token provided by the MediaWiki API"
+              }
+            ]
+          },
+          "docs": "Deletes all data. User needs to opt in again before being able to do anything.\n\nRequest must be authenticated with a MediaWiki session cookie.\n\nStability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)\n"
+        },
+        {
+          "info": {
+            "name": "Get all lists of the current user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/rest_v1/data/lists/",
+            "params": [
+              {
+                "name": "next",
+                "value": "",
+                "type": "query",
+                "description": "Continuation parameter from previous request"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort order\n- `name`: by name, ascending;\n- `updated`: by last modification date, descending.\n"
+              }
+            ]
+          },
+          "docs": "Returns metadata describing the lists of the current user. Might be truncated and include\na continuation token.\n\nRequest must be authenticated with a MediaWiki session cookie.\n\nStability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)\n"
+        },
+        {
+          "info": {
+            "name": "Create a new list for the current user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/rest_v1/data/lists/",
+            "params": [
+              {
+                "name": "csrf_token",
+                "value": "",
+                "type": "query",
+                "description": "The CRSF edit token provided by the MediaWiki API"
+              }
+            ]
+          },
+          "docs": "Creates a new empty list. On name conflict, does nothing and returns the data of an\nexisting list.\n\nRequest must be authenticated with a MediaWiki session cookie.\n\nStability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)\n\nThis endpoint is deprecated and might be removed without warning. Use the batch version\ninstead.\n"
+        },
+        {
+          "info": {
+            "name": "Update a list.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/rest_v1/data/lists/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "csrf_token",
+                "value": "",
+                "type": "query",
+                "description": "The CRSF edit token provided by the MediaWiki API"
+              }
+            ]
+          },
+          "docs": "List must belong to current user and request must be authenticated with\na MediaWiki session cookie. If the name is changed, the new name must not be in use.\n\nStability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)\n"
+        },
+        {
+          "info": {
+            "name": "Delete a list.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/rest_v1/data/lists/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List must belong to current user and request must be authenticated with\na MediaWiki session cookie.\n\nStability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)\n"
+        },
+        {
+          "info": {
+            "name": "Create multiple new lists for the current user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/rest_v1/data/lists/batch",
+            "params": [
+              {
+                "name": "csrf_token",
+                "value": "",
+                "type": "query",
+                "description": "The CRSF edit token provided by the MediaWiki API"
+              }
+            ]
+          },
+          "docs": "See `POST /lists/`.\n\nStability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)\n"
+        },
+        {
+          "info": {
+            "name": "Get all entries of a given list.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/rest_v1/data/lists/:id/entries/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "next",
+                "value": "",
+                "type": "query",
+                "description": "Continuation parameter from previous request"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort order\n- `name`: by page title, ascending;\n- `updated`: by last modification date, descending.\n"
+              }
+            ]
+          },
+          "docs": "Returns pages contained by the given list. Might be truncated and include\na continuation token.\n\nList must belong to current user and request must be authenticated with\na MediaWiki session cookie.\n\nStability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)\n"
+        },
+        {
+          "info": {
+            "name": "Create a new list entry.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/rest_v1/data/lists/:id/entries/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "csrf_token",
+                "value": "",
+                "type": "query",
+                "description": "The CRSF edit token provided by the MediaWiki API"
+              }
+            ]
+          },
+          "docs": "Creates a new list entry in the given list. On conflict, does nothing and returns the\ndata of an existing list.\n\nThe list must belong to the current user and the request must be\nauthenticated with a MediaWiki session cookie.\n\nStability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)\n\nThis endpoint is deprecated and might be removed without warning. Use the batch version\ninstead.\n"
+        },
+        {
+          "info": {
+            "name": "Delete a list entry.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/rest_v1/data/lists/:id/entries/:entry_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "entry_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a given list entry.\n\nThe list must belong to the current user and the request must be\nauthenticated with a MediaWiki session cookie.\n\nStability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)\n"
+        },
+        {
+          "info": {
+            "name": "Create multiple new list entries.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/rest_v1/data/lists/:id/entries/batch",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "csrf_token",
+                "value": "",
+                "type": "query",
+                "description": "The CRSF edit token provided by the MediaWiki API"
+              }
+            ]
+          },
+          "docs": "See `POST /lists/{id}/entries/`.\n\nStability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)\n"
+        },
+        {
+          "info": {
+            "name": "Get lists of the current user which contain a given page.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/rest_v1/data/lists/pages/:project/:title",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "title",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "next",
+                "value": "",
+                "type": "query",
+                "description": "Continuation parameter from previous request"
+              }
+            ]
+          },
+          "docs": "Request must be authenticated with a MediaWiki session cookie.\n\nStability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)\n"
+        },
+        {
+          "info": {
+            "name": "Get recent changes to the lists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/rest_v1/data/lists/changes/since/:date",
+            "params": [
+              {
+                "name": "date",
+                "value": "",
+                "type": "path",
+                "description": "Cutoff date (in ISO 8601). To ensure reliable synchronization, the API\nmight return changes which are slightly older than the cutoff date.\n"
+              },
+              {
+                "name": "next",
+                "value": "",
+                "type": "query",
+                "description": "Continuation parameter from previous request"
+              }
+            ]
+          },
+          "docs": "Returns metadata describing lists and entries which have changed. Might be truncated\nand include a continuation token.\n\nRequest must be authenticated with a MediaWiki session cookie.\n\nFor safe synchronization, the date parameter should be taken from the `continue-from`\nfield of a previous `GET /lists/` or `GET /lists/changes/since/{date}` request. This will\nensure that no changes are skipped, at the cost of sometimes receiving the same change\nmultitple times. Clients should handle changes in an "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

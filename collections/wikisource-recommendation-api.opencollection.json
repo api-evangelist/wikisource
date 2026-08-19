@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wikimedia REST Citation Recommendation API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Recommendation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Recommend articles for translation.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/rest_v1/data/recommendation/article/creation/translation/:from_lang",
+            "params": [
+              {
+                "name": "from_lang",
+                "value": "",
+                "type": "path",
+                "description": "The source language code"
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "The max number of articles to return"
+              }
+            ]
+          },
+          "docs": "Recommends articles to be translated from the source\nto the domain language.\n\nSee more at [Recommendation API documentation](https://meta.wikimedia.org/wiki/Recommendation_API)\n\nStability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)\n"
+        },
+        {
+          "info": {
+            "name": "Recommend articles for translation.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/rest_v1/data/recommendation/article/creation/translation/:from_lang/:seed_article",
+            "params": [
+              {
+                "name": "from_lang",
+                "value": "",
+                "type": "path",
+                "description": "The source language code"
+              },
+              {
+                "name": "seed_article",
+                "value": "",
+                "type": "path",
+                "description": "The article to use as a search seed"
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "The max number of articles to return"
+              }
+            ]
+          },
+          "docs": "Recommends articles to be translated from the source\nto the domain language.\n\nSee more at [Recommendation API documentation](https://meta.wikimedia.org/wiki/Recommendation_API)\n\nStability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)\n"
+        },
+        {
+          "info": {
+            "name": "Recommend missing articles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/rest_v1/data/recommendation/article/creation/morelike/:seed_article",
+            "params": [
+              {
+                "name": "seed_article",
+                "value": "",
+                "type": "path",
+                "description": "The article title used to search similar but missing articles"
+              }
+            ]
+          },
+          "docs": "Recommends articles similar to the seed article but are missing\nfrom the domain language Wikipedia.\n\nStability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

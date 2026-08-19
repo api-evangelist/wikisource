@@ -1,0 +1,461 @@
+{
+  "item": [
+    {
+      "id": "6236241a-2fb1-4928-9a53-0350f1ed168b",
+      "name": "Mobile",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8ba88cfd-bf50-40ba-b77e-46ceceda2e0c",
+          "name": "Get CSS for mobile apps.",
+          "request": {
+            "name": "Get CSS for mobile apps.",
+            "description": {
+              "content": "Gets common CSS mobile apps need to properly display pages using Page Content Service.\nIn most cases all of the types are needed (preferably in this order):\n* base (Common mobile CSS from ResourceLoader)\n* site (Site-specific, mobile CSS from ResourceLoader, as defined in MediaWiki\\:Mobile.css)\n* pcs (CSS for the Page Content Service)\n\nThe `base` and `pcs` responses are the same regardless of what domain is used.\nFor these we suggest meta.wikimedia.org.\n\nYou can still pass pagelib for type, but this is a legacy version of the CSS for\nexisting app clients.\n\nStability: [unstable](https://www.mediawiki.org/wiki/Wikimedia_Product/Wikimedia_Product_Infrastructure_team/API_endpoint_stability_policy#Unstable)\n\nPlease follow [wikitech-l](https://lists.wikimedia.org/mailman/listinfo/wikitech-l) or [mediawiki-api-announce](https://lists.wikimedia.org/mailman/listinfo/mediawiki-api-announce) for announcements of breaking changes.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "css",
+                "mobile",
+                ":type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) The desired CSS bundle"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/CSS/1.0.0\""
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b1ea1c16-10d8-4a4f-83a5-5a56b1f5d16d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "css",
+                    "mobile",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) The desired CSS bundle"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/CSS/1.0.0\""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Different values indicate that the content has changed",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/CSS/1.0.0\""
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c891dbe-73da-444a-934b-b4bb2f3420b0",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "css",
+                    "mobile",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) The desired CSS bundle"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be31fc7a-c7cc-4153-ad99-cdf8c40320ec",
+          "name": "Get JavaScript for mobileapps",
+          "request": {
+            "name": "Get JavaScript for mobileapps",
+            "description": {
+              "content": "Gets the JavaScript bundle so that clients can have\nconvenient access to that for consuming the page HTML.\nAmongst other things,\n* it allows to detect the platform and through that enable platform specific CSS rules,\n* has code to lazy load images on the page,\n* code for collapsing and expanding tables.\n\nValid types are pagelib or pcs. Passing pcs will return the JavaScript for the\nPage Content Service. Passing pagelib will return a deprecated legacy version\nof the wikimedia-page-library JavaScript to support existing app clients.\n\nStability: [unstable](https://www.mediawiki.org/wiki/Wikimedia_Product/Wikimedia_Product_Infrastructure_team/API_endpoint_stability_policy#Unstable)\n\nPlease follow [wikitech-l](https://lists.wikimedia.org/mailman/listinfo/wikitech-l) or [mediawiki-api-announce](https://lists.wikimedia.org/mailman/listinfo/mediawiki-api-announce) for announcements of breaking changes.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "javascript",
+                "mobile",
+                ":type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) The desired JavaScript bundle"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/JavaScript/1.0.0\""
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "007b662e-c409-414a-b019-de5e31573490",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "javascript",
+                    "mobile",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) The desired JavaScript bundle"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/JavaScript/1.0.0\""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Different values indicate that the content has changed",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/JavaScript/1.0.0\""
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62d5b8e4-02fb-4c37-8b06-c132879a91db",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "javascript",
+                    "mobile",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) The desired JavaScript bundle"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a449713-f1d3-4089-9bd6-28f3fe7f12b9",
+          "name": "Get internationalization info",
+          "request": {
+            "name": "Get internationalization info",
+            "description": {
+              "content": "Gets internationalization information for the given site. Currently the only\nsupported type is pcs for the Page Content Service.\n\nStability: [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "i18n",
+                ":type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) The desired internationalization bundle"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/i18n/0.0.1\""
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "878cb1eb-37ad-423b-b958-902195cc21c2",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "i18n",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) The desired internationalization bundle"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/i18n/0.0.1\""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Different values indicate that the content has changed",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/i18n/0.0.1\""
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f464fc23-2a9c-4929-af37-d77126dba502",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "i18n",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) The desired internationalization bundle"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/api/rest_v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "da36060b-4ecb-4f83-b750-1bc0cb14c5b1",
+    "name": "Wikimedia REST Citation Mobile API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This API provides cacheable and straightforward access to Wikimedia content and data, in machine-readable formats.\n### Global Rules\n- Limit your clients to no more than 200 requests/s to this API.\n  Each API endpoint's documentation may detail more specific usage limits.\n- Set a unique `User-Agent` or `Api-User-Agent` header that\n  allows us to contact you quickly. Email addresses or URLs\n  of contact pages work well.\n\nBy using this API, you agree to Wikimedia's [Terms of Use](https://wikimediafoundation.org/wiki/Terms_of_Use) and [Privacy Policy](https://wikimediafoundation.org/wiki/Privacy_policy). Unless otherwise specified in the endpoint documentation below, content accessed via this API is licensed under the [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) and [GFDL](https://www.gnu.org/copyleft/fdl.html) licenses, and you irrevocably agree to release modifications or additions made through this API under these licenses. Check the [Wikimedia REST API documentation](https://www.mediawiki.org/wiki/Wikimedia_REST_API) for background and details.\n### Endpoint documentation\nPlease consult each endpoint's documentation for details on:\n- Licensing information for the specific type of content\n  and data served via the endpoint.\n- Stability markers to inform you about development status and\n  change policy, according to\n  [our API version policy](https://www.mediawiki.org/wiki/API_versioning).\n- Endpoint specific usage limits.\n\n\nContact Support:\n Name: the Wikimedia Services team",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wikimedia REST Citation Mobile API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Mobile",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get CSS for mobile apps.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/rest_v1/data/css/mobile/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "The desired CSS bundle"
+              }
+            ]
+          },
+          "docs": "Gets common CSS mobile apps need to properly display pages using Page Content Service.\nIn most cases all of the types are needed (preferably in this order):\n* base (Common mobile CSS from ResourceLoader)\n* site (Site-specific, mobile CSS from ResourceLoader, as defined in MediaWiki\\:Mobile.css)\n* pcs (CSS for the Page Content Service)\n\nThe `base` and `pcs` responses are the same regardless of what domain is used.\nFor these we suggest meta.wikimedia.org.\n\nYou can still pass pagelib for type, but "
+        },
+        {
+          "info": {
+            "name": "Get JavaScript for mobileapps",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/rest_v1/data/javascript/mobile/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "The desired JavaScript bundle"
+              }
+            ]
+          },
+          "docs": "Gets the JavaScript bundle so that clients can have\nconvenient access to that for consuming the page HTML.\nAmongst other things,\n* it allows to detect the platform and through that enable platform specific CSS rules,\n* has code to lazy load images on the page,\n* code for collapsing and expanding tables.\n\nValid types are pagelib or pcs. Passing pcs will return the JavaScript for the\nPage Content Service. Passing pagelib will return a deprecated legacy version\nof the wikimedia-page-library JavaScr"
+        },
+        {
+          "info": {
+            "name": "Get internationalization info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/rest_v1/data/i18n/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "The desired internationalization bundle"
+              }
+            ]
+          },
+          "docs": "Gets internationalization information for the given site. Currently the only\nsupported type is pcs for the Page Content Service.\n\nStability: [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

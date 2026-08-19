@@ -1,0 +1,2030 @@
+{
+  "item": [
+    {
+      "id": "c599d330-e575-42ce-9eb8-5747fa61cbd0",
+      "name": "Reading lists",
+      "description": {
+        "content": "Private lists of selected pages",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "04e37286-2335-4b65-bddf-47383bed4096",
+          "name": "Opt in to use reading lists.",
+          "request": {
+            "name": "Opt in to use reading lists.",
+            "description": {
+              "content": "Must precede other list operations.\n\nRequest must be authenticated with a MediaWiki session cookie.\n\nStability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "lists",
+                "setup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "csrf_token",
+                  "value": "<string>",
+                  "description": "(Required) The CRSF edit token provided by the MediaWiki API"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e61e951a-8f79-4e68-9bee-7820fa5ac14c",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "lists",
+                    "setup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "csrf_token",
+                      "value": "f63c343876da566045e6b59c4532450559c828d3+\\"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2c33f0f2-3796-462e-93e7-f1a8f3b4e58b",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "lists",
+                    "setup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "csrf_token",
+                      "value": "f63c343876da566045e6b59c4532450559c828d3+\\"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "955ef1ba-1b8d-450d-b637-46fda55752ef",
+          "name": "Opt out from using reading lists.",
+          "request": {
+            "name": "Opt out from using reading lists.",
+            "description": {
+              "content": "Deletes all data. User needs to opt in again before being able to do anything.\n\nRequest must be authenticated with a MediaWiki session cookie.\n\nStability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "lists",
+                "teardown"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "csrf_token",
+                  "value": "<string>",
+                  "description": "(Required) The CRSF edit token provided by the MediaWiki API"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1d62fe77-2beb-4954-93a2-27a2715d1967",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "lists",
+                    "teardown"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "csrf_token",
+                      "value": "f63c343876da566045e6b59c4532450559c828d3+\\"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8bcd2a38-85b8-4e6d-955a-833f2a7ee89f",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "lists",
+                    "teardown"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "csrf_token",
+                      "value": "f63c343876da566045e6b59c4532450559c828d3+\\"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b18f69f5-f2f4-461d-89c0-c417fc5ff55b",
+          "name": "Get all lists of the current user.",
+          "request": {
+            "name": "Get all lists of the current user.",
+            "description": {
+              "content": "Returns metadata describing the lists of the current user. Might be truncated and include\na continuation token.\n\nRequest must be authenticated with a MediaWiki session cookie.\n\nStability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "lists",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "next",
+                  "value": "<string>",
+                  "description": "Continuation parameter from previous request"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "updated",
+                  "description": "Sort order\n- `name`: by name, ascending;\n- `updated`: by last modification date, descending.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/Lists/0.1\""
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b41bc99c-8414-4047-8107-f59a744e2a2b",
+              "name": "An array of list metadata.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "lists",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "updated"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/Lists/0.1\""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/Lists/0.1\""
+                }
+              ],
+              "body": "{\n  \"lists\": [\n    {\n      \"id\": 42,\n      \"name\": \"Planets\",\n      \"created\": \"1967-03-18T12:11:12.439Z\",\n      \"updated\": \"1960-01-07T01:13:19.465Z\",\n      \"description\": \"Planets of the Solar System\"\n    },\n    {\n      \"id\": 42,\n      \"name\": \"Planets\",\n      \"created\": \"1998-01-06T09:41:52.912Z\",\n      \"updated\": \"1958-08-04T22:49:50.476Z\",\n      \"description\": \"Planets of the Solar System\"\n    }\n  ],\n  \"next\": \"string\",\n  \"continue-from\": \"1991-10-28T13:31:20.095Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf3b2923-5a13-4720-9a75-b47182951886",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "lists",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "updated"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d565fa8-27d2-410b-aec4-946b27a034de",
+          "name": "Create a new list for the current user.",
+          "request": {
+            "name": "Create a new list for the current user.",
+            "description": {
+              "content": "Creates a new empty list. On name conflict, does nothing and returns the data of an\nexisting list.\n\nRequest must be authenticated with a MediaWiki session cookie.\n\nStability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)\n\nThis endpoint is deprecated and might be removed without warning. Use the batch version\ninstead.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "lists",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "csrf_token",
+                  "value": "<string>",
+                  "description": "(Required) The CRSF edit token provided by the MediaWiki API"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "54edc678-1d32-4047-8ab9-364bba9e6ae5",
+              "name": "The data for the new list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "lists",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "csrf_token",
+                      "value": "f63c343876da566045e6b59c4532450559c828d3+\\"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Planets\",\n  \"description\": \"Planets of the Solar System\"\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"id\": 7,\n  \"list\": {\n    \"id\": 42,\n    \"name\": \"Planets\",\n    \"created\": \"1983-03-27T01:49:31.954Z\",\n    \"updated\": \"2010-12-07T07:57:27.897Z\",\n    \"description\": \"Planets of the Solar System\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bfee022e-7f76-4eb9-af07-155195e9b767",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "lists",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "csrf_token",
+                      "value": "f63c343876da566045e6b59c4532450559c828d3+\\"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Planets\",\n  \"description\": \"Planets of the Solar System\"\n}"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "771a9517-ddd2-471f-a7a3-264f73ebb1df",
+          "name": "Update a list.",
+          "request": {
+            "name": "Update a list.",
+            "description": {
+              "content": "List must belong to current user and request must be authenticated with\na MediaWiki session cookie. If the name is changed, the new name must not be in use.\n\nStability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "lists",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "csrf_token",
+                  "value": "<string>",
+                  "description": "(Required) The CRSF edit token provided by the MediaWiki API"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "bd54e5c2-1808-4147-bc91-12570b8165e1",
+              "name": "The updated data for the list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "lists",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "csrf_token",
+                      "value": "f63c343876da566045e6b59c4532450559c828d3+\\"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Planets\",\n  \"description\": \"Planets of the Solar System\"\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"id\": 7,\n  \"list\": {\n    \"id\": 42,\n    \"name\": \"Planets\",\n    \"created\": \"1983-03-27T01:49:31.954Z\",\n    \"updated\": \"2010-12-07T07:57:27.897Z\",\n    \"description\": \"Planets of the Solar System\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "46a82dea-fabc-410d-9859-afdc8b4f54a5",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "lists",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "csrf_token",
+                      "value": "f63c343876da566045e6b59c4532450559c828d3+\\"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Planets\",\n  \"description\": \"Planets of the Solar System\"\n}"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "10542bad-1d91-4f03-9593-f0ef8466efe6",
+          "name": "Delete a list.",
+          "request": {
+            "name": "Delete a list.",
+            "description": {
+              "content": "List must belong to current user and request must be authenticated with\na MediaWiki session cookie.\n\nStability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "lists",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7edd964b-837e-4370-aece-50953e3343c8",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "lists",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7aa67efe-198a-4581-9e1c-a13efd760bab",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "lists",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "69472fe9-61a0-4538-9c0f-955c47e6f4d6",
+          "name": "Create multiple new lists for the current user.",
+          "request": {
+            "name": "Create multiple new lists for the current user.",
+            "description": {
+              "content": "See `POST /lists/`.\n\nStability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "lists",
+                "batch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "csrf_token",
+                  "value": "<string>",
+                  "description": "(Required) The CRSF edit token provided by the MediaWiki API"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"batch\": [\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ]\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "b756425b-ea87-4f8d-8c02-aae23178ae2e",
+              "name": "The data for the new lists (in the same order as the inputs).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "lists",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "csrf_token",
+                      "value": "f63c343876da566045e6b59c4532450559c828d3+\\"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"batch\": [\n    {\n      \"name\": \"Planets\",\n      \"description\": \"Planets of the Solar System\"\n    },\n    {\n      \"name\": \"Planets\",\n      \"description\": \"Planets of the Solar System\"\n    }\n  ]\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"batch\": [\n    {\n      \"id\": 7\n    },\n    {\n      \"id\": 7\n    }\n  ],\n  \"lists\": [\n    {\n      \"id\": 42,\n      \"name\": \"Planets\",\n      \"created\": \"1997-06-30T17:03:35.537Z\",\n      \"updated\": \"1977-07-29T03:07:53.827Z\",\n      \"description\": \"Planets of the Solar System\"\n    },\n    {\n      \"id\": 42,\n      \"name\": \"Planets\",\n      \"created\": \"1968-06-11T22:03:00.004Z\",\n      \"updated\": \"1968-11-24T19:28:42.916Z\",\n      \"description\": \"Planets of the Solar System\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c858a348-1f4f-4fc6-8ab0-bb28b7947517",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "lists",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "csrf_token",
+                      "value": "f63c343876da566045e6b59c4532450559c828d3+\\"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"batch\": [\n    {\n      \"name\": \"Planets\",\n      \"description\": \"Planets of the Solar System\"\n    },\n    {\n      \"name\": \"Planets\",\n      \"description\": \"Planets of the Solar System\"\n    }\n  ]\n}"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "858a2112-5b18-49f1-a577-4483452e2520",
+          "name": "Get all entries of a given list.",
+          "request": {
+            "name": "Get all entries of a given list.",
+            "description": {
+              "content": "Returns pages contained by the given list. Might be truncated and include\na continuation token.\n\nList must belong to current user and request must be authenticated with\na MediaWiki session cookie.\n\nStability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "lists",
+                ":id",
+                "entries",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "next",
+                  "value": "<string>",
+                  "description": "Continuation parameter from previous request"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "updated",
+                  "description": "Sort order\n- `name`: by page title, ascending;\n- `updated`: by last modification date, descending.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/Lists/0.1\""
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2213029a-0d6f-4a55-8e49-a9e51b889453",
+              "name": "An array of list entries.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "lists",
+                    ":id",
+                    "entries",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "updated"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/Lists/0.1\""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/Lists/0.1\""
+                }
+              ],
+              "body": "{\n  \"entries\": [\n    {\n      \"id\": 64,\n      \"project\": \"https://en.wikipedia.org\",\n      \"title\": \"Barack_Obama\",\n      \"created\": \"1983-07-15T03:08:14.336Z\",\n      \"updated\": \"2026-02-24T10:59:57.544Z\"\n    },\n    {\n      \"id\": 64,\n      \"project\": \"https://en.wikipedia.org\",\n      \"title\": \"Barack_Obama\",\n      \"created\": \"1953-08-23T18:45:43.056Z\",\n      \"updated\": \"1957-06-10T12:02:25.452Z\"\n    }\n  ],\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2292d1c0-15ff-4e60-bde4-a9948656e7e6",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "lists",
+                    ":id",
+                    "entries",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "updated"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "061dd1f2-740c-4760-835d-2cbc69ff2b39",
+          "name": "Create a new list entry.",
+          "request": {
+            "name": "Create a new list entry.",
+            "description": {
+              "content": "Creates a new list entry in the given list. On conflict, does nothing and returns the\ndata of an existing list.\n\nThe list must belong to the current user and the request must be\nauthenticated with a MediaWiki session cookie.\n\nStability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)\n\nThis endpoint is deprecated and might be removed without warning. Use the batch version\ninstead.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "lists",
+                ":id",
+                "entries",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "csrf_token",
+                  "value": "<string>",
+                  "description": "(Required) The CRSF edit token provided by the MediaWiki API"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"project\": \"<string>\",\n  \"title\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "11c8af86-1d63-414c-8aaa-382cdf35f5a2",
+              "name": "The data for the new list entry.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "lists",
+                    ":id",
+                    "entries",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "csrf_token",
+                      "value": "f63c343876da566045e6b59c4532450559c828d3+\\"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"project\": \"https://en.wikipedia.org\",\n  \"title\": \"Barack_Obama\"\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"id\": 13,\n  \"entry\": {\n    \"id\": 64,\n    \"project\": \"https://en.wikipedia.org\",\n    \"title\": \"Barack_Obama\",\n    \"created\": \"2017-02-04T03:23:23.707Z\",\n    \"updated\": \"1955-07-14T18:17:07.212Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "14e0c32c-11c1-4cad-8139-f527dee8179e",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "lists",
+                    ":id",
+                    "entries",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "csrf_token",
+                      "value": "f63c343876da566045e6b59c4532450559c828d3+\\"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"project\": \"https://en.wikipedia.org\",\n  \"title\": \"Barack_Obama\"\n}"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "44dbd556-e3c1-489d-8161-9dfd78f254cf",
+          "name": "Delete a list entry.",
+          "request": {
+            "name": "Delete a list entry.",
+            "description": {
+              "content": "Deletes a given list entry.\n\nThe list must belong to the current user and the request must be\nauthenticated with a MediaWiki session cookie.\n\nStability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "lists",
+                ":id",
+                "entries",
+                ":entry_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "entry_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2007200b-403a-4219-8b25-c40ed92075cd",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "lists",
+                    ":id",
+                    "entries",
+                    ":entry_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "entry_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6cfdb986-2076-455f-91cf-6329256eab1e",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "lists",
+                    ":id",
+                    "entries",
+                    ":entry_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "entry_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "380f0988-c258-429e-acf7-5c87c8dbb535",
+          "name": "Create multiple new list entries.",
+          "request": {
+            "name": "Create multiple new list entries.",
+            "description": {
+              "content": "See `POST /lists/{id}/entries/`.\n\nStability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "lists",
+                ":id",
+                "entries",
+                "batch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "csrf_token",
+                  "value": "<string>",
+                  "description": "(Required) The CRSF edit token provided by the MediaWiki API"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"batch\": [\n    {\n      \"project\": \"<string>\",\n      \"title\": \"<string>\"\n    },\n    {\n      \"project\": \"<string>\",\n      \"title\": \"<string>\"\n    }\n  ]\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "27529c3e-a086-486e-8c0e-2383cc95df65",
+              "name": "The data for the new list entries (in the same order as the inputs).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "lists",
+                    ":id",
+                    "entries",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "csrf_token",
+                      "value": "f63c343876da566045e6b59c4532450559c828d3+\\"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"batch\": [\n    {\n      \"project\": \"https://en.wikipedia.org\",\n      \"title\": \"Barack_Obama\"\n    },\n    {\n      \"project\": \"https://en.wikipedia.org\",\n      \"title\": \"Barack_Obama\"\n    }\n  ]\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"entries\": [\n    {\n      \"id\": 64,\n      \"project\": \"https://en.wikipedia.org\",\n      \"title\": \"Barack_Obama\",\n      \"created\": \"1999-04-10T11:38:42.021Z\",\n      \"updated\": \"2024-10-11T00:06:12.697Z\"\n    },\n    {\n      \"id\": 64,\n      \"project\": \"https://en.wikipedia.org\",\n      \"title\": \"Barack_Obama\",\n      \"created\": \"1959-12-25T02:03:28.725Z\",\n      \"updated\": \"2026-03-05T17:11:07.654Z\"\n    }\n  ],\n  \"batch\": [\n    {\n      \"id\": 13\n    },\n    {\n      \"id\": 13\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c84f7a84-d870-4364-829e-3071cf89b560",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "lists",
+                    ":id",
+                    "entries",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "csrf_token",
+                      "value": "f63c343876da566045e6b59c4532450559c828d3+\\"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"batch\": [\n    {\n      \"project\": \"https://en.wikipedia.org\",\n      \"title\": \"Barack_Obama\"\n    },\n    {\n      \"project\": \"https://en.wikipedia.org\",\n      \"title\": \"Barack_Obama\"\n    }\n  ]\n}"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "70cb63e2-d664-4a9d-b9ac-c18b805f1250",
+          "name": "Get lists of the current user which contain a given page.",
+          "request": {
+            "name": "Get lists of the current user which contain a given page.",
+            "description": {
+              "content": "Request must be authenticated with a MediaWiki session cookie.\n\nStability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "lists",
+                "pages",
+                ":project",
+                ":title"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "next",
+                  "value": "<string>",
+                  "description": "Continuation parameter from previous request"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "title",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/Lists/0.1\""
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "87b09a81-7a6b-4259-8b07-b9391503194a",
+              "name": "An array of list metadata.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "lists",
+                    "pages",
+                    ":project",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/Lists/0.1\""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/Lists/0.1\""
+                }
+              ],
+              "body": "{\n  \"lists\": [\n    {\n      \"id\": 42,\n      \"name\": \"Planets\",\n      \"created\": \"1997-02-13T22:21:52.432Z\",\n      \"updated\": \"1971-10-22T09:00:33.199Z\",\n      \"description\": \"Planets of the Solar System\"\n    },\n    {\n      \"id\": 42,\n      \"name\": \"Planets\",\n      \"created\": \"1967-05-03T12:36:14.282Z\",\n      \"updated\": \"1950-02-04T18:42:38.057Z\",\n      \"description\": \"Planets of the Solar System\"\n    }\n  ],\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "730b8a06-277f-4c27-adb1-e5bc394f86d4",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "lists",
+                    "pages",
+                    ":project",
+                    ":title"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "title",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "931adf6e-ad27-4000-b358-635c71ea893a",
+          "name": "Get recent changes to the lists",
+          "request": {
+            "name": "Get recent changes to the lists",
+            "description": {
+              "content": "Returns metadata describing lists and entries which have changed. Might be truncated\nand include a continuation token.\n\nRequest must be authenticated with a MediaWiki session cookie.\n\nFor safe synchronization, the date parameter should be taken from the `continue-from`\nfield of a previous `GET /lists/` or `GET /lists/changes/since/{date}` request. This will\nensure that no changes are skipped, at the cost of sometimes receiving the same change\nmultitple times. Clients should handle changes in an idempotent way.\n\nStability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "lists",
+                "changes",
+                "since",
+                ":date"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "next",
+                  "value": "<string>",
+                  "description": "Continuation parameter from previous request"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<dateTime>",
+                  "key": "date",
+                  "description": "(Required) Cutoff date (in ISO 8601). To ensure reliable synchronization, the API\nmight return changes which are slightly older than the cutoff date.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/Lists/0.1\""
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4104289b-f310-4811-bc96-570d4af8f0eb",
+              "name": "An array of list and entry metadata.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "lists",
+                    "changes",
+                    "since",
+                    ":date"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<dateTime>",
+                      "key": "date",
+                      "description": "(Required) Cutoff date (in ISO 8601). To ensure reliable synchronization, the API\nmight return changes which are slightly older than the cutoff date.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/Lists/0.1\""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/Lists/0.1\""
+                }
+              ],
+              "body": "{\n  \"lists\": [\n    {\n      \"id\": 42,\n      \"name\": \"Planets\",\n      \"created\": \"1967-03-18T12:11:12.439Z\",\n      \"updated\": \"1960-01-07T01:13:19.465Z\",\n      \"description\": \"Planets of the Solar System\"\n    },\n    {\n      \"id\": 42,\n      \"name\": \"Planets\",\n      \"created\": \"1998-01-06T09:41:52.912Z\",\n      \"updated\": \"1958-08-04T22:49:50.476Z\",\n      \"description\": \"Planets of the Solar System\"\n    }\n  ],\n  \"next\": \"string\",\n  \"continue-from\": \"1991-10-28T13:31:20.095Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf4806a6-c85f-473c-ae08-2209465cef5e",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "lists",
+                    "changes",
+                    "since",
+                    ":date"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<dateTime>",
+                      "key": "date",
+                      "description": "(Required) Cutoff date (in ISO 8601). To ensure reliable synchronization, the API\nmight return changes which are slightly older than the cutoff date.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/api/rest_v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3cb3c7ee-14d7-45a8-b6bc-ec7254c06bb5",
+    "name": "Wikimedia REST Citation Reading lists API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This API provides cacheable and straightforward access to Wikimedia content and data, in machine-readable formats.\n### Global Rules\n- Limit your clients to no more than 200 requests/s to this API.\n  Each API endpoint's documentation may detail more specific usage limits.\n- Set a unique `User-Agent` or `Api-User-Agent` header that\n  allows us to contact you quickly. Email addresses or URLs\n  of contact pages work well.\n\nBy using this API, you agree to Wikimedia's [Terms of Use](https://wikimediafoundation.org/wiki/Terms_of_Use) and [Privacy Policy](https://wikimediafoundation.org/wiki/Privacy_policy). Unless otherwise specified in the endpoint documentation below, content accessed via this API is licensed under the [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) and [GFDL](https://www.gnu.org/copyleft/fdl.html) licenses, and you irrevocably agree to release modifications or additions made through this API under these licenses. Check the [Wikimedia REST API documentation](https://www.mediawiki.org/wiki/Wikimedia_REST_API) for background and details.\n### Endpoint documentation\nPlease consult each endpoint's documentation for details on:\n- Licensing information for the specific type of content\n  and data served via the endpoint.\n- Stability markers to inform you about development status and\n  change policy, according to\n  [our API version policy](https://www.mediawiki.org/wiki/API_versioning).\n- Endpoint specific usage limits.\n\n\nContact Support:\n Name: the Wikimedia Services team",
+      "type": "text/plain"
+    }
+  }
+}
