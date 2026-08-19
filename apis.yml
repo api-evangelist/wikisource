@@ -23,7 +23,7 @@ accessModel:
   generated: '2026-07-22'
   method: derived
 image: https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Wikisource-logo.svg/120px-Wikisource-logo.svg.png
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 created: '2026-06-13'
 modified: '2026-06-13'
 x-type: opensource
