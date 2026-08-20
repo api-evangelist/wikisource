@@ -39,6 +39,16 @@ tags:
   - Transcription
   - Primary Sources
   - Non-Profit
+  - Open-Source
+tags_raw:
+  - Open Data
+  - Open Knowledge
+  - Literature
+  - Historical Documents
+  - Public Domain
+  - Transcription
+  - Primary Sources
+  - Non-Profit
   - Open Source
 apis:
 - name: MediaWiki Action API
@@ -50,6 +60,11 @@ apis:
   humanURL: https://www.mediawiki.org/wiki/API:Main_page
   baseURL: https://en.wikisource.org/w/api.php
   tags:
+  - Action API
+  - Edit
+  - Search
+  - Parse
+  tags_raw:
   - Action API
   - Read
   - Write
@@ -96,6 +111,11 @@ apis:
   humanURL: https://en.wikisource.org/api/rest_v1/
   baseURL: https://en.wikisource.org/api/rest_v1
   tags:
+  - REST API
+  - Cached
+  - Summary
+  - HTML
+  tags_raw:
   - REST API
   - Cached
   - Summaries
