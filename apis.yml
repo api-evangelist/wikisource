@@ -184,6 +184,8 @@ apis:
   humanURL: https://www.mediawiki.org/wiki/API:Main_page
   baseURL: https://en.wikisource.org/w/api.php
   tags:
+  - Reading Lists
+  tags_raw:
   - Reading lists
   properties:
   - type: OpenAPI
