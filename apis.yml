@@ -144,6 +144,8 @@ apis:
   humanURL: https://www.mediawiki.org/wiki/API:Main_page
   baseURL: https://en.wikisource.org/w/api.php
   tags:
+  - Citations
+  tags_raw:
   - Citation
   properties:
   - type: OpenAPI
@@ -196,6 +198,8 @@ apis:
   humanURL: https://www.mediawiki.org/wiki/API:Main_page
   baseURL: https://en.wikisource.org/w/api.php
   tags:
+  - Recommendations
+  tags_raw:
   - Recommendation
   properties:
   - type: OpenAPI
