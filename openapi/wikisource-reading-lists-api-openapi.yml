@@ -1,8 +1,8 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   version: 1.0.0
-  title: Wikimedia REST Citation Reading lists API
-  description: "This API provides cacheable and straightforward access to Wikimedia content and data, in machine-readable formats.\n### Global Rules\n- Limit your clients to no more than 200 requests/s to this API.\n  Each API endpoint's documentation may detail more specific usage limits.\n- Set a unique `User-Agent` or `Api-User-Agent` header that\n  allows us to contact you quickly. Email addresses or URLs\n  of contact pages work well.\n\nBy using this API, you agree to Wikimedia's [Terms of Use](https://wikimediafoundation.org/wiki/Terms_of_Use) and [Privacy Policy](https://wikimediafoundation.org/wiki/Privacy_policy). Unless otherwise specified in the endpoint documentation below, content accessed via this API is licensed under the [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) and [GFDL](https://www.gnu.org/copyleft/fdl.html) licenses, and you irrevocably agree to release modifications or additions made through this API under these licenses. Check the [Wikimedia REST API documentation](https://www.mediawiki.org/wiki/Wikimedia_REST_API) for background and details.\n### Endpoint documentation\nPlease consult each endpoint's documentation for details on:\n- Licensing information for the specific type of content\n  and data served via the endpoint.\n- Stability markers to inform you about development status and\n  change policy, according to\n  [our API version policy](https://www.mediawiki.org/wiki/API_versioning).\n- Endpoint specific usage limits.\n"
+  title: Wikimedia REST Reading lists API
+  description: This API provides cacheable and straightforward access to Wikimedia content and data, in machine-readable formats.
   termsOfService: https://wikimediafoundation.org/wiki/Terms_of_Use
   contact:
     name: the Wikimedia Services team
@@ -23,16 +23,14 @@ paths:
     post:
       tags:
       - Reading lists
-      summary: Opt in to use reading lists.
+      summary: Opt in to use reading lists
       description: 'Must precede other list operations.
 
 
         Request must be authenticated with a MediaWiki session cookie.
 
 
-        Stability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)
-
-        '
+        Stability: unstable'
       parameters:
       - name: csrf_token
         in: query
@@ -55,20 +53,20 @@ paths:
               schema:
                 $ref: '#/components/schemas/problem'
       x-monitor: false
+      operationId: postDataListsSetup
+      x-operation-id-source: derived
   /data/lists/teardown:
     post:
       tags:
       - Reading lists
-      summary: Opt out from using reading lists.
+      summary: Opt out from using reading lists
       description: 'Deletes all data. User needs to opt in again before being able to do anything.
 
 
         Request must be authenticated with a MediaWiki session cookie.
 
 
-        Stability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)
-
-        '
+        Stability: unstable'
       parameters:
       - name: csrf_token
         in: query
@@ -91,11 +89,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/problem'
       x-monitor: false
+      operationId: postDataListsTeardown
+      x-operation-id-source: derived
   /data/lists/:
     get:
       tags:
       - Reading lists
-      summary: Get all lists of the current user.
+      summary: Get all lists of the current user
       description: 'Returns metadata describing the lists of the current user. Might be truncated and include
 
         a continuation token.
@@ -104,9 +104,7 @@ paths:
         Request must be authenticated with a MediaWiki session cookie.
 
 
-        Stability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)
-
-        '
+        Stability: unstable'
       parameters:
       - name: next
         in: query
@@ -158,10 +156,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/problem'
       x-monitor: false
+      operationId: getDataLists
+      x-operation-id-source: derived
     post:
       tags:
       - Reading lists
-      summary: Create a new list for the current user.
+      summary: Create a new list for the current user
       description: 'Creates a new empty list. On name conflict, does nothing and returns the data of an
 
         existing list.
@@ -170,14 +170,12 @@ paths:
         Request must be authenticated with a MediaWiki session cookie.
 
 
-        Stability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)
+        Stability: unstable
 
 
         This endpoint is deprecated and might be removed without warning. Use the batch version
 
-        instead.
-
-        '
+        instead.'
       x-maxsize: 5000
       parameters:
       - name: csrf_token
@@ -222,19 +220,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/problem'
       x-monitor: false
+      operationId: postDataLists
+      x-operation-id-source: derived
   /data/lists/{id}:
     put:
       tags:
       - Reading lists
-      summary: Update a list.
+      summary: Update a list
       description: 'List must belong to current user and request must be authenticated with
 
         a MediaWiki session cookie. If the name is changed, the new name must not be in use.
 
 
-        Stability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)
-
-        '
+        Stability: unstable'
       parameters:
       - name: id
         in: path
@@ -284,18 +282,18 @@ paths:
               schema:
                 $ref: '#/components/schemas/problem'
       x-monitor: false
+      operationId: putDataListsById
+      x-operation-id-source: derived
     delete:
       tags:
       - Reading lists
-      summary: Delete a list.
+      summary: Delete a list
       description: 'List must belong to current user and request must be authenticated with
 
         a MediaWiki session cookie.
 
 
-        Stability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)
-
-        '
+        Stability: unstable'
       parameters:
       - name: id
         in: path
@@ -317,17 +315,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/problem'
       x-monitor: false
+      operationId: deleteDataListsById
+      x-operation-id-source: derived
   /data/lists/batch:
     post:
       tags:
       - Reading lists
-      summary: Create multiple new lists for the current user.
+      summary: Create multiple new lists for the current user
       description: 'See `POST /lists/`.
 
 
-        Stability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)
-
-        '
+        Stability: unstable'
       x-maxsize: 5000
       parameters:
       - name: csrf_token
@@ -388,11 +386,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/problem'
       x-monitor: false
+      operationId: postDataListsBatch
+      x-operation-id-source: derived
   /data/lists/{id}/entries/:
     get:
       tags:
       - Reading lists
-      summary: Get all entries of a given list.
+      summary: Get all entries of a given list
       description: 'Returns pages contained by the given list. Might be truncated and include
 
         a continuation token.
@@ -403,9 +403,7 @@ paths:
         a MediaWiki session cookie.
 
 
-        Stability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)
-
-        '
+        Stability: unstable'
       parameters:
       - name: id
         in: path
@@ -459,7 +457,7 @@ paths:
     post:
       tags:
       - Reading lists
-      summary: Create a new list entry.
+      summary: Create a new list entry
       description: 'Creates a new list entry in the given list. On conflict, does nothing and returns the
 
         data of an existing list.
@@ -470,14 +468,12 @@ paths:
         authenticated with a MediaWiki session cookie.
 
 
-        Stability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)
+        Stability: unstable
 
 
         This endpoint is deprecated and might be removed without warning. Use the batch version
 
-        instead.
-
-        '
+        instead.'
       x-maxsize: 100
       parameters:
       - name: id
@@ -528,11 +524,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/problem'
       x-monitor: false
+      operationId: postDataListsByIdEntries
+      x-operation-id-source: derived
   /data/lists/{id}/entries/{entry_id}:
     delete:
       tags:
       - Reading lists
-      summary: Delete a list entry.
+      summary: Delete a list entry
       description: 'Deletes a given list entry.
 
 
@@ -541,9 +539,7 @@ paths:
         authenticated with a MediaWiki session cookie.
 
 
-        Stability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)
-
-        '
+        Stability: unstable'
       parameters:
       - name: id
         in: path
@@ -571,17 +567,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/problem'
       x-monitor: false
+      operationId: deleteDataListsByIdEntriesByEntryId
+      x-operation-id-source: derived
   /data/lists/{id}/entries/batch:
     post:
       tags:
       - Reading lists
-      summary: Create multiple new list entries.
+      summary: Create multiple new list entries
       description: 'See `POST /lists/{id}/entries/`.
 
 
-        Stability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)
-
-        '
+        Stability: unstable'
       x-maxsize: 100
       parameters:
       - name: id
@@ -643,17 +639,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/problem'
       x-monitor: false
+      operationId: postDataListsByIdEntriesBatch
+      x-operation-id-source: derived
   /data/lists/pages/{project}/{title}:
     get:
       tags:
       - Reading lists
-      summary: Get lists of the current user which contain a given page.
+      summary: Get lists of the current user which contain a given page
       description: 'Request must be authenticated with a MediaWiki session cookie.
 
 
-        Stability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)
-
-        '
+        Stability: unstable'
       parameters:
       - name: project
         in: path
@@ -696,6 +692,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/problem'
       x-monitor: false
+      operationId: getDataListsPagesByProjectByTitle
+      x-operation-id-source: derived
   /data/lists/changes/since/{date}:
     get:
       tags:
@@ -718,9 +716,7 @@ paths:
         multitple times. Clients should handle changes in an idempotent way.
 
 
-        Stability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)
-
-        '
+        Stability: unstable'
       parameters:
       - name: date
         in: path
@@ -768,28 +764,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/problem'
       x-monitor: false
+      operationId: getDataListsChangesSinceByDate
+      x-operation-id-source: derived
 components:
   schemas:
-    problem:
-      required:
-      - type
+    list_entry_write:
       type: object
       properties:
-        type:
-          type: string
-        title:
-          type: string
-        detail:
-          type: string
-        instance:
-          type: string
-    list_entry_read:
-      title: list_entry
-      type: object
-      properties:
-        id:
-          type: integer
-          example: 64
         project:
           type: string
           description: Domain of the wiki containing the page.
@@ -798,14 +779,9 @@ components:
           type: string
           description: Title of the page containing the page, in database format.
           example: Barack_Obama
-        created:
-          type: string
-          format: date-time
-          description: Creation date (in ISO 8601)
-        updated:
-          type: string
-          format: date-time
-          description: Last modification date (in ISO 8601)
+      required:
+      - project
+      - title
     list_read:
       title: list
       type: object
@@ -844,9 +820,13 @@ components:
           example: Planets of the Solar System
       required:
       - name
-    list_entry_write:
+    list_entry_read:
+      title: list_entry
       type: object
       properties:
+        id:
+          type: integer
+          example: 64
         project:
           type: string
           description: Domain of the wiki containing the page.
@@ -855,8 +835,26 @@ components:
           type: string
           description: Title of the page containing the page, in database format.
           example: Barack_Obama
+        created:
+          type: string
+          format: date-time
+          description: Creation date (in ISO 8601)
+        updated:
+          type: string
+          format: date-time
+          description: Last modification date (in ISO 8601)
+    problem:
       required:
-      - project
-      - title
+      - type
+      type: object
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        detail:
+          type: string
+        instance:
+          type: string
 x-host-basePath: /api/rest_v1
 x-default-params: {}

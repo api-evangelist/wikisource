@@ -1,8 +1,8 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   version: 1.0.0
-  title: Wikimedia REST Citation Recommendation API
-  description: "This API provides cacheable and straightforward access to Wikimedia content and data, in machine-readable formats.\n### Global Rules\n- Limit your clients to no more than 200 requests/s to this API.\n  Each API endpoint's documentation may detail more specific usage limits.\n- Set a unique `User-Agent` or `Api-User-Agent` header that\n  allows us to contact you quickly. Email addresses or URLs\n  of contact pages work well.\n\nBy using this API, you agree to Wikimedia's [Terms of Use](https://wikimediafoundation.org/wiki/Terms_of_Use) and [Privacy Policy](https://wikimediafoundation.org/wiki/Privacy_policy). Unless otherwise specified in the endpoint documentation below, content accessed via this API is licensed under the [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) and [GFDL](https://www.gnu.org/copyleft/fdl.html) licenses, and you irrevocably agree to release modifications or additions made through this API under these licenses. Check the [Wikimedia REST API documentation](https://www.mediawiki.org/wiki/Wikimedia_REST_API) for background and details.\n### Endpoint documentation\nPlease consult each endpoint's documentation for details on:\n- Licensing information for the specific type of content\n  and data served via the endpoint.\n- Stability markers to inform you about development status and\n  change policy, according to\n  [our API version policy](https://www.mediawiki.org/wiki/API_versioning).\n- Endpoint specific usage limits.\n"
+  title: Wikimedia REST Recommendation API
+  description: This API provides cacheable and straightforward access to Wikimedia content and data, in machine-readable formats.
   termsOfService: https://wikimediafoundation.org/wiki/Terms_of_Use
   contact:
     name: the Wikimedia Services team
@@ -20,18 +20,16 @@ paths:
     get:
       tags:
       - Recommendation
-      summary: Recommend articles for translation.
+      summary: Recommend articles for translation
       description: 'Recommends articles to be translated from the source
 
         to the domain language.
 
 
-        See more at [Recommendation API documentation](https://meta.wikimedia.org/wiki/Recommendation_API)
+        See more at Recommendation API documentation
 
 
-        Stability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)
-
-        '
+        Stability: unstable'
       parameters:
       - name: from_lang
         in: path
@@ -59,22 +57,22 @@ paths:
               schema:
                 $ref: '#/components/schemas/problem'
       x-monitor: false
+      operationId: getDataRecommendationArticleCreationTranslationByFromLang
+      x-operation-id-source: derived
   /data/recommendation/article/creation/translation/{from_lang}/{seed_article}:
     get:
       tags:
       - Recommendation
-      summary: Recommend articles for translation.
+      summary: Recommend articles for translation
       description: 'Recommends articles to be translated from the source
 
         to the domain language.
 
 
-        See more at [Recommendation API documentation](https://meta.wikimedia.org/wiki/Recommendation_API)
+        See more at Recommendation API documentation
 
 
-        Stability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)
-
-        '
+        Stability: unstable'
       parameters:
       - name: from_lang
         in: path
@@ -108,6 +106,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/problem'
       x-monitor: false
+      operationId: getDataRecommendationArticleCreationTranslationByFromLangBySeedArticle
+      x-operation-id-source: derived
   /data/recommendation/article/creation/morelike/{seed_article}:
     get:
       tags:
@@ -118,9 +118,7 @@ paths:
         from the domain language Wikipedia.
 
 
-        Stability: [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)
-
-        '
+        Stability: unstable'
       parameters:
       - name: seed_article
         in: path
@@ -142,21 +140,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/problem'
       x-monitor: false
+      operationId: getDataRecommendationArticleCreationMorelikeBySeedArticle
+      x-operation-id-source: derived
 components:
   schemas:
-    problem:
-      required:
-      - type
-      type: object
-      properties:
-        type:
-          type: string
-        title:
-          type: string
-        detail:
-          type: string
-        instance:
-          type: string
     recommendation_result:
       type: object
       properties:
@@ -178,6 +165,19 @@ components:
               sitelink_count:
                 type: integer
                 description: count of sites the wikidata item is linked to
+    problem:
+      required:
+      - type
+      type: object
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        detail:
+          type: string
+        instance:
+          type: string
     morelike_result:
       type: array
       description: the prioritized list of Wikidata IDs recommended for creation as Wikipedia articles

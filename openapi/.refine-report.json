@@ -1,13 +1,7 @@
 {
   "provider": "wikisource",
   "sources": [
-    "wikisource-citation-api-openapi.yml",
-    "wikisource-math-api-openapi.yml",
-    "wikisource-mobile-api-openapi.yml",
-    "wikisource-page-content-api-openapi.yml",
-    "wikisource-reading-lists-api-openapi.yml",
-    "wikisource-recommendation-api-openapi.yml",
-    "wikisource-transforms-api-openapi.yml"
+    "_original/wikimedia-rest-api-v1-openapi.json"
   ],
   "outputs": [
     "wikisource-citation-api-openapi.yml",
@@ -21,6 +15,19 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "wikimedia-rest-api-v1-openapi.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "wikimedia-rest-api-v1-openapi.json: declared missing tag: Mobile",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "wikisource-citation-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wikisource-math-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wikisource-mobile-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wikisource-page-content-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wikisource-reading-lists-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wikisource-recommendation-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wikisource-transforms-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

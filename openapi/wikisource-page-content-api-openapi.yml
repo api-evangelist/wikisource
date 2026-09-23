@@ -1,8 +1,8 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   version: 1.0.0
-  title: Wikimedia REST Citation Page content API
-  description: "This API provides cacheable and straightforward access to Wikimedia content and data, in machine-readable formats.\n### Global Rules\n- Limit your clients to no more than 200 requests/s to this API.\n  Each API endpoint's documentation may detail more specific usage limits.\n- Set a unique `User-Agent` or `Api-User-Agent` header that\n  allows us to contact you quickly. Email addresses or URLs\n  of contact pages work well.\n\nBy using this API, you agree to Wikimedia's [Terms of Use](https://wikimediafoundation.org/wiki/Terms_of_Use) and [Privacy Policy](https://wikimediafoundation.org/wiki/Privacy_policy). Unless otherwise specified in the endpoint documentation below, content accessed via this API is licensed under the [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) and [GFDL](https://www.gnu.org/copyleft/fdl.html) licenses, and you irrevocably agree to release modifications or additions made through this API under these licenses. Check the [Wikimedia REST API documentation](https://www.mediawiki.org/wiki/Wikimedia_REST_API) for background and details.\n### Endpoint documentation\nPlease consult each endpoint's documentation for details on:\n- Licensing information for the specific type of content\n  and data served via the endpoint.\n- Stability markers to inform you about development status and\n  change policy, according to\n  [our API version policy](https://www.mediawiki.org/wiki/API_versioning).\n- Endpoint specific usage limits.\n"
+  title: Wikimedia REST Page content API
+  description: This API provides cacheable and straightforward access to Wikimedia content and data, in machine-readable formats.
   termsOfService: https://wikimediafoundation.org/wiki/Terms_of_Use
   contact:
     name: the Wikimedia Services team
@@ -13,17 +13,15 @@ info:
 servers:
 - url: /api/rest_v1
 tags:
-- name: Page content
+- name: Page Content
   description: page content in different formats
 paths:
   /page/:
     get:
       tags:
-      - Page content
-      summary: List page-related API entry points.
-      description: 'Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)
-
-        '
+      - Page Content
+      summary: List page-related API entry points
+      description: 'Stability: stable'
       responses:
         '200':
           description: A list of page-related API end points.
@@ -38,19 +36,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/problem'
       x-monitor: false
+      operationId: getPage
+      x-operation-id-source: derived
   /page/title/{title}:
     get:
       tags:
-      - Page content
-      summary: Get revision metadata for a title.
+      - Page Content
+      summary: Get revision metadata for a title
       description: 'Returns the revision metadata for the given title. If a revision ID is provided,
 
         metadata for that revision is returned, otherwise the latest revision ID is assumed.
 
 
-        Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable).
-
-        '
+        Stability: stable.'
       parameters:
       - name: title
         in: path
@@ -122,19 +120,19 @@ paths:
               tid: /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/
               comment: /.*/
               page_language: en
+      operationId: getPageTitleByTitle
+      x-operation-id-source: derived
   /page/title/{title}/{revision}:
     get:
       tags:
-      - Page content
-      summary: Get revision metadata for a title.
+      - Page Content
+      summary: Get revision metadata for a title
       description: 'Returns the revision metadata for the given title. If a revision ID is provided,
 
         metadata for that revision is returned, otherwise the latest revision ID is assumed.
 
 
-        Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable).
-
-        '
+        Stability: stable.'
       parameters:
       - name: title
         in: path
@@ -212,14 +210,14 @@ paths:
               tid: /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/
               comment: /.*/
               page_language: en
+      operationId: getPageTitleByTitleByRevision
+      x-operation-id-source: derived
   /page/html/{title}:
     get:
       tags:
-      - Page content
-      summary: Get latest HTML for a title.
-      description: 'Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)
-
-        '
+      - Page Content
+      summary: Get latest HTML for a title
+      description: 'Stability: stable'
       parameters:
       - name: title
         in: path
@@ -346,14 +344,14 @@ paths:
             etag: /.+/
             content-type: /^text\/html.+/
           body: /^<!DOCTYPE html>.*/
+      operationId: getPageHtmlByTitle
+      x-operation-id-source: derived
   /page/html/{title}/{revision}:
     get:
       tags:
-      - Page content
-      summary: Get HTML for a specific title/revision & optionally timeuuid.
-      description: 'Stability: [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)
-
-        '
+      - Page Content
+      summary: Get HTML for a specific title/revision & optionally timeuuid
+      description: 'Stability: stable'
       operationId: getFormatRevision
       parameters:
       - name: title
@@ -498,11 +496,9 @@ paths:
   /page/lint/{title}:
     get:
       tags:
-      - Page content
-      summary: Get the linter errors for a specific title/revision.
-      description: 'Stability: [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)
-
-        '
+      - Page Content
+      summary: Get the linter errors for a specific title/revision
+      description: 'Stability: experimental'
       parameters:
       - name: title
         in: path
@@ -575,14 +571,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/problem'
       x-monitor: false
+      operationId: getPageLintByTitle
+      x-operation-id-source: derived
   /page/lint/{title}/{revision}:
     get:
       tags:
-      - Page content
-      summary: Get the linter errors for a specific title/revision.
-      description: 'Stability: [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)
-
-        '
+      - Page Content
+      summary: Get the linter errors for a specific title/revision
+      description: 'Stability: experimental'
       parameters:
       - name: title
         in: path
@@ -661,11 +657,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/problem'
       x-monitor: false
+      operationId: getPageLintByTitleByRevision
+      x-operation-id-source: derived
   /page/summary/{title}:
     get:
       tags:
-      - Page content
-      summary: Get basic metadata and simplified article introduction.
+      - Page Content
+      summary: Get basic metadata and simplified article introduction
       description: 'The summary response includes an extract of the first paragraph of the page in plain text
 
         and HTML as well as the type of page. This is useful for page previews (fka. Hovercards,
@@ -673,12 +671,10 @@ paths:
         aka. Popups) on the web and link previews in the apps.
 
 
-        Stability: [stable](https://www.mediawiki.org/wiki/Wikimedia_Product/Wikimedia_Product_Infrastructure_team/API_endpoint_stability_policy#Stable)
+        Stability: stable
 
 
-        Please follow [wikitech-l](https://lists.wikimedia.org/mailman/listinfo/wikitech-l) or [mediawiki-api-announce](https://lists.wikimedia.org/mailman/listinfo/mediawiki-api-announce) for announcements of breaking changes.
-
-        '
+        Please follow wikitech-l or mediawiki-api-announce for announcements of breaking changes.'
       parameters:
       - name: title
         in: path
@@ -776,104 +772,10 @@ paths:
             lang: en
             dir: ltr
             description: /.+/
+      operationId: getPageSummaryByTitle
+      x-operation-id-source: derived
 components:
   schemas:
-    problem:
-      required:
-      - type
-      type: object
-      properties:
-        type:
-          type: string
-        title:
-          type: string
-        detail:
-          type: string
-        instance:
-          type: string
-    revisionInfo:
-      type: object
-      description: Complete information about the revision
-      properties:
-        title:
-          type: string
-        page_id:
-          type: integer
-          format: int32
-        rev:
-          type: integer
-          format: int32
-        tid:
-          type: string
-        comment:
-          type: string
-        restrictions:
-          type: array
-          items:
-            type: string
-        tags:
-          type: array
-          items:
-            type: string
-        user_id:
-          type: integer
-          format: int32
-        user_text:
-          type: string
-        timestamp:
-          type: string
-          format: date-time
-        redirect:
-          type: boolean
-        page_language:
-          type: string
-    originalimage:
-      type: object
-      properties:
-        source:
-          type: string
-          description: Original image URI
-        width:
-          type: integer
-          description: Original image width
-        height:
-          type: integer
-          description: Original image height
-      required:
-      - height
-      - source
-      - width
-    revision:
-      description: Result format for revision items
-      required:
-      - count
-      - items
-      type: object
-      properties:
-        count:
-          type: integer
-          format: int32
-        items:
-          $ref: '#/components/schemas/revisionInfo'
-    listing:
-      description: The result format for listings
-      required:
-      - items
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            type: string
-        _links:
-          type: object
-          properties:
-            next:
-              type: object
-              properties:
-                href:
-                  type: string
-                  description: Relative link to next result page.
     summary:
       type: object
       properties:
@@ -942,6 +844,61 @@ components:
       - extract
       - lang
       - titles
+    revisionInfo:
+      type: object
+      description: Complete information about the revision
+      properties:
+        title:
+          type: string
+        page_id:
+          type: integer
+          format: int32
+        rev:
+          type: integer
+          format: int32
+        tid:
+          type: string
+        comment:
+          type: string
+        restrictions:
+          type: array
+          items:
+            type: string
+        tags:
+          type: array
+          items:
+            type: string
+        user_id:
+          type: integer
+          format: int32
+        user_text:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        redirect:
+          type: boolean
+        page_language:
+          type: string
+    listing:
+      description: The result format for listings
+      required:
+      - items
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: string
+        _links:
+          type: object
+          properties:
+            next:
+              type: object
+              properties:
+                href:
+                  type: string
+                  description: Relative link to next result page.
     thumbnail:
       type: object
       properties:
@@ -958,6 +915,18 @@ components:
       - height
       - source
       - width
+    revision:
+      description: Result format for revision items
+      required:
+      - count
+      - items
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+        items:
+          $ref: '#/components/schemas/revisionInfo'
     titles_set:
       type: object
       description: a good example of the differences can be seen in https://en.wikipedia.org/api/rest_v1/page/summary/IOS_13
@@ -975,5 +944,34 @@ components:
       - canonical
       - normalized
       - display
+    problem:
+      required:
+      - type
+      type: object
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        detail:
+          type: string
+        instance:
+          type: string
+    originalimage:
+      type: object
+      properties:
+        source:
+          type: string
+          description: Original image URI
+        width:
+          type: integer
+          description: Original image width
+        height:
+          type: integer
+          description: Original image height
+      required:
+      - height
+      - source
+      - width
 x-host-basePath: /api/rest_v1
 x-default-params: {}
