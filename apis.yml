@@ -51,7 +51,7 @@ tags:
   - Transcription
   - Primary Sources
   - Non-Profit
-  - Open-Source
+  - Open Source
 tags_raw:
   - Open Data
   - Open Knowledge
@@ -62,6 +62,7 @@ tags_raw:
   - Primary Sources
   - Non-Profit
   - Open Source
+  - Open-Source
 apis:
 - name: MediaWiki Action API
   description: >-
