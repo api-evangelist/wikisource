@@ -768,6 +768,68 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    list_entry_read:
+      title: list_entry
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 64
+        project:
+          type: string
+          description: Domain of the wiki containing the page.
+          example: https://en.wikipedia.org
+        title:
+          type: string
+          description: Title of the page containing the page, in database format.
+          example: Barack_Obama
+        created:
+          type: string
+          format: date-time
+          description: Creation date (in ISO 8601)
+        updated:
+          type: string
+          format: date-time
+          description: Last modification date (in ISO 8601)
+    list_write:
+      title: list
+      type: object
+      properties:
+        name:
+          type: string
+          example: Planets
+        description:
+          type: string
+          example: Planets of the Solar System
+      required:
+      - name
+    list_entry_write:
+      type: object
+      properties:
+        project:
+          type: string
+          description: Domain of the wiki containing the page.
+          example: https://en.wikipedia.org
+        title:
+          type: string
+          description: Title of the page containing the page, in database format.
+          example: Barack_Obama
+      required:
+      - project
+      - title
+    problem:
+      required:
+      - type
+      type: object
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        detail:
+          type: string
+        instance:
+          type: string
     list_read:
       title: list
       type: object
@@ -794,67 +856,5 @@ components:
       - name
       - created
       - updated
-    problem:
-      required:
-      - type
-      type: object
-      properties:
-        type:
-          type: string
-        title:
-          type: string
-        detail:
-          type: string
-        instance:
-          type: string
-    list_entry_read:
-      title: list_entry
-      type: object
-      properties:
-        id:
-          type: integer
-          example: 64
-        project:
-          type: string
-          description: Domain of the wiki containing the page.
-          example: https://en.wikipedia.org
-        title:
-          type: string
-          description: Title of the page containing the page, in database format.
-          example: Barack_Obama
-        created:
-          type: string
-          format: date-time
-          description: Creation date (in ISO 8601)
-        updated:
-          type: string
-          format: date-time
-          description: Last modification date (in ISO 8601)
-    list_entry_write:
-      type: object
-      properties:
-        project:
-          type: string
-          description: Domain of the wiki containing the page.
-          example: https://en.wikipedia.org
-        title:
-          type: string
-          description: Title of the page containing the page, in database format.
-          example: Barack_Obama
-      required:
-      - project
-      - title
-    list_write:
-      title: list
-      type: object
-      properties:
-        name:
-          type: string
-          example: Planets
-        description:
-          type: string
-          example: Planets of the Solar System
-      required:
-      - name
 x-host-basePath: /api/rest_v1
 x-default-params: {}
