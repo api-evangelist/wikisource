@@ -776,6 +776,87 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    revisionInfo:
+      type: object
+      description: Complete information about the revision
+      properties:
+        title:
+          type: string
+        page_id:
+          type: integer
+          format: int32
+        rev:
+          type: integer
+          format: int32
+        tid:
+          type: string
+        comment:
+          type: string
+        restrictions:
+          type: array
+          items:
+            type: string
+        tags:
+          type: array
+          items:
+            type: string
+        user_id:
+          type: integer
+          format: int32
+        user_text:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        redirect:
+          type: boolean
+        page_language:
+          type: string
+    revision:
+      description: Result format for revision items
+      required:
+      - count
+      - items
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+        items:
+          $ref: '#/components/schemas/revisionInfo'
+    titles_set:
+      type: object
+      description: a good example of the differences can be seen in https://en.wikipedia.org/api/rest_v1/page/summary/IOS_13
+      properties:
+        canonical:
+          type: string
+          description: the DB key (non-prefixed), e.g. may have _ instead of spaces, best for making request URIs, still requires Percent-encoding
+        normalized:
+          type: string
+          description: the normalized title (https://www.mediawiki.org/wiki/API:Query#Example_2:_Title_normalization), e.g. may have spaces instead of _
+        display:
+          type: string
+          description: the title as it should be displayed to the user
+      required:
+      - canonical
+      - normalized
+      - display
+    originalimage:
+      type: object
+      properties:
+        source:
+          type: string
+          description: Original image URI
+        width:
+          type: integer
+          description: Original image width
+        height:
+          type: integer
+          description: Original image height
+      required:
+      - height
+      - source
+      - width
     listing:
       description: The result format for listings
       required:
@@ -795,64 +876,6 @@ components:
                 href:
                   type: string
                   description: Relative link to next result page.
-    problem:
-      required:
-      - type
-      type: object
-      properties:
-        type:
-          type: string
-        title:
-          type: string
-        detail:
-          type: string
-        instance:
-          type: string
-    revision:
-      description: Result format for revision items
-      required:
-      - count
-      - items
-      type: object
-      properties:
-        count:
-          type: integer
-          format: int32
-        items:
-          $ref: '#/components/schemas/revisionInfo'
-    originalimage:
-      type: object
-      properties:
-        source:
-          type: string
-          description: Original image URI
-        width:
-          type: integer
-          description: Original image width
-        height:
-          type: integer
-          description: Original image height
-      required:
-      - height
-      - source
-      - width
-    titles_set:
-      type: object
-      description: a good example of the differences can be seen in https://en.wikipedia.org/api/rest_v1/page/summary/IOS_13
-      properties:
-        canonical:
-          type: string
-          description: the DB key (non-prefixed), e.g. may have _ instead of spaces, best for making request URIs, still requires Percent-encoding
-        normalized:
-          type: string
-          description: the normalized title (https://www.mediawiki.org/wiki/API:Query#Example_2:_Title_normalization), e.g. may have spaces instead of _
-        display:
-          type: string
-          description: the title as it should be displayed to the user
-      required:
-      - canonical
-      - normalized
-      - display
     summary:
       type: object
       properties:
@@ -921,41 +944,18 @@ components:
       - extract
       - lang
       - titles
-    revisionInfo:
+    problem:
+      required:
+      - type
       type: object
-      description: Complete information about the revision
       properties:
+        type:
+          type: string
         title:
           type: string
-        page_id:
-          type: integer
-          format: int32
-        rev:
-          type: integer
-          format: int32
-        tid:
+        detail:
           type: string
-        comment:
-          type: string
-        restrictions:
-          type: array
-          items:
-            type: string
-        tags:
-          type: array
-          items:
-            type: string
-        user_id:
-          type: integer
-          format: int32
-        user_text:
-          type: string
-        timestamp:
-          type: string
-          format: date-time
-        redirect:
-          type: boolean
-        page_language:
+        instance:
           type: string
     thumbnail:
       type: object
