@@ -37,7 +37,7 @@ accessModel:
 image: https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Wikisource-logo.svg/120px-Wikisource-logo.svg.png
 specificationVersion: '0.23'
 created: '2026-06-13'
-modified: '2026-06-13'
+modified: '2026-10-06'
 x-type: opensource
 x-category: Open Data
 x-tier: 2
@@ -216,6 +216,10 @@ apis:
   - type: OpenAPI
     url: openapi/wikisource-transforms-api-openapi.yml
 common:
+  - url: https://wikisource.org/wiki/Wikisource:News
+    type: Blog
+  - url: https://wikisource.org/w/api.php?hidebots=1&hidecategorization=1&hideWikibase=1&translations=filter&urlversion=1&days=7&limit=50&action=feedrecentchanges&feedformat=atom
+    type: BlogRSS
   - type: AgenticAccess
     url: agentic-access/wikisource-agentic-access.yml
   - type: VulnerabilityDisclosure
