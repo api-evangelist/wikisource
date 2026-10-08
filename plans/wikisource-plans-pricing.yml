@@ -101,3 +101,22 @@ plans:
       - name: ProofreadPage status querying and updating
       - name: Wikitext-to-HTML transforms
       - name: Bulk text dumps at dumps.wikimedia.org
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - hybrid
+  units:
+  - object
+  - request
+  plans:
+  - name: Wikisource Free API
+    access: free
+    model: hybrid
+    model_how: derived
+    units:
+    - object
+    - request
+    periods:
+    - per-use
+    - second
