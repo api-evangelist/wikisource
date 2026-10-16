@@ -1,0 +1,21 @@
+{
+  "repo": "wikisource",
+  "feeds": [
+    {
+      "source": "https://wikisource.org/wiki/Wikisource:News",
+      "feed_url": "https://wikisource.org/w/index.php?title=Special:RecentChanges&feed=atom",
+      "title": "",
+      "saved": 44,
+      "method": "discovered"
+    },
+    {
+      "source": "https://wikisource.org/w/api.php?hidebots=1&hidecategorization=1&hideWikibase=1&translations=filter&urlversion=1&days=7&limit=50&action=feedrecentchanges&feedformat=atom",
+      "feed_url": "https://wikisource.org/w/api.php?hidebots=1&hidecategorization=1&hideWikibase=1&translations=filter&urlversion=1&days=7&limit=50&action=feedrecentchanges&feedformat=atom",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    }
+  ],
+  "post_count": 44,
+  "fetched": "2026-10-10T13:15:00Z"
+}
