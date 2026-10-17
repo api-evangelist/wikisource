@@ -96,19 +96,6 @@ paths:
       x-monitor: false
 components:
   schemas:
-    result:
-      required:
-      - title
-      - url
-      - itemType
-      type: object
-      properties:
-        itemType:
-          type: string
-        title:
-          type: string
-        url:
-          type: string
     problem:
       required:
       - type
@@ -121,6 +108,19 @@ components:
         detail:
           type: string
         instance:
+          type: string
+    result:
+      required:
+      - title
+      - url
+      - itemType
+      type: object
+      properties:
+        itemType:
+          type: string
+        title:
+          type: string
+        url:
           type: string
 x-host-basePath: /api/rest_v1
 x-default-params: {}
