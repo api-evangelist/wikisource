@@ -5,7 +5,7 @@
       "source": "https://wikisource.org/wiki/Wikisource:News",
       "feed_url": "https://wikisource.org/w/index.php?title=Special:RecentChanges&feed=atom",
       "title": "",
-      "saved": 44,
+      "saved": 8,
       "method": "discovered"
     },
     {
@@ -14,8 +14,15 @@
       "title": "",
       "saved": 0,
       "method": "feed"
+    },
+    {
+      "source": "https://wikisource.org/w/index.php?title=Special:RecentChanges&feed=atom",
+      "feed_url": "https://wikisource.org/w/index.php?title=Special:RecentChanges&feed=atom",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
     }
   ],
-  "post_count": 44,
-  "fetched": "2026-10-10T13:15:00Z"
+  "post_count": 98,
+  "fetched": "2026-10-17T14:53:57Z"
 }
